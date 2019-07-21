@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Security Advisory 2019-04-30
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Jenkins Security Advisory 2019-04-30" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Security Advisory 2019-04-30" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Security Advisory 2019-04-30" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-04-30/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Security Advisory 2019-04-30" property="og:site_name">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="og:image">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/footer.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-md navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Use Jenkins
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc/developer">
+Extend Jenkins
+</a>
+<span class="dropdown-item">
+<strong>
+Use-cases
+</strong>
+</span>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+&nbsp;-&nbsp;Android
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+&nbsp;-&nbsp;C/C++
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+&nbsp;-&nbsp;Docker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+&nbsp;-&nbsp;Embedded
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+&nbsp;-&nbsp;GitHub
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+&nbsp;-&nbsp;Java
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+&nbsp;-&nbsp;PHP
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+&nbsp;-&nbsp;Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+&nbsp;-&nbsp;Python
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+&nbsp;-&nbsp;Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam/">
+Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/remoting/">
+Jenkins Remoting
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security">
+Security
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/press">
+Press
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<p>
+<a href="../../advisories">
+Security Advisories
+</a>
+&raquo;
+Jenkins Security Advisory 2019-04-30
+</p>
+<h1>
+Jenkins Security Advisory 2019-04-30
+</h1>
+<p>
+This advisory announces vulnerabilities in the following Jenkins deliverables:
+</p>
+<p>
+<ul>
+<li>
+<a href="https://plugins.jenkins.io/ansible-tower">
+Ansible Tower
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/aqua-microscanner">
+Aqua MicroScanner
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/azure-ad">
+Azure AD
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/github-oauth">
+GitHub Authentication
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/koji">
+Koji
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/swarm">
+Self-Organizing Swarm Plug-in Modules
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/sitemonitor">
+SiteMonitor
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/analysis-core">
+Static Analysis Utilities
+Plugin
+</a>
+</li>
+<li>
+<a href="https://plugins.jenkins.io/twitter">
+Twitter
+Plugin
+</a>
+</li>
+</ul>
+</p>
+<h2>
+Descriptions
+</h2>
+<h3 id="SECURITY-1100">
+CSRF vulnerability and missing permission check allowed changing default graph configuration in Static Analysis Utilities Plugin
+</h3>
+<strong>
+SECURITY-1100
+/
+CVE-2019-10307 (CSRF) and CVE-2019-10308 (permission check)
+</strong>
+<div class="paragraph">
+<p>Static Analysis Utilities Plugin has the capability to allow other plugins to display trend graphs for their static analysis results.
+Static Analysis Utilities Plugin provides the configuration form for the default settings of each graph.</p>
+</div>
+<div class="paragraph">
+<p>The configuration form and form submission handler did not perform a permission check, allowing attackers with Job/Read access to change the per-job graph configuration defaults for all users.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, the form submission handler did not require POST requests, resulting in a cross-site request forgery vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>Static Analysis Utilities Plugin now requires Job/Configure permission and POST requests to configure the per-job graph defaults for all users.</p>
+</div>
+<h3 id="SECURITY-930">
+SiteMonitor Plugin globally and unconditionally disables SSL/TLS certificate validation
+</h3>
+<strong>
+SECURITY-930
+/
+CVE-2019-10317
+</strong>
+<div class="paragraph">
+<p>SiteMonitor Plugin unconditionally disables SSL/TLS certificate validation for the entire Jenkins master JVM.</p>
+</div>
+<div class="paragraph">
+<p>SiteMonitor Plugin no longer does that.
+Instead, it now has an opt-in option to ignore SSL/TLS errors for each site check individually.</p>
+</div>
+<h3 id="SECURITY-1252">
+XXE vulnerability via UDP broadcast response in Self-Organizing Swarm Plug-in Modules Plugin client
+</h3>
+<strong>
+SECURITY-1252
+/
+CVE-2019-10309
+</strong>
+<div class="paragraph">
+<p>Self-Organizing Swarm Plug-in Modules Plugin allows clients to auto-discover Jenkins instances on the same network through a UDP discovery request.
+Responses to this request are XML documents.</p>
+</div>
+<div class="paragraph">
+<p>Self-Organizing Swarm Plug-in Modules Plugin does not configure the XML parser in a way that would prevent XML External Entity (XXE) processing.
+This allows unauthenticated attackers on the same network to have Swarm clients parse a maliciously crafted XML response that uses external entities to read arbitrary files from the Swarm client or denial-of-service attacks.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-1355 (1)">
+CSRF vulnerability and missing permission check in Ansible Tower Plugin allowed capturing credentials
+</h3>
+<strong>
+SECURITY-1355 (1)
+/
+CVE-2019-10310 (CSRF) and CVE-2019-10311 (permission check)
+</strong>
+<div class="paragraph">
+<p>Ansible Tower Plugin did not perform permission checks on a method implementing form validation.
+This allowed users with Overall/Read access to Jenkins to connect to an attacker-specified URL using attacker-specified credentials IDs obtained through another method, capturing credentials stored in Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, this form validation method did not require POST requests, resulting in a cross-site request forgery vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>This form validation method now requires POST requests and Overall/Administer permissions.</p>
+</div>
+<h3 id="SECURITY-1355 (2)">
+Users with Overall/Read access are able to enumerate credential IDs in Ansible Tower Plugin
+</h3>
+<strong>
+SECURITY-1355 (2)
+/
+CVE-2019-10312
+</strong>
+<div class="paragraph">
+<p>Ansible Tower Plugin provides a list of applicable credential IDs to allow users configuring the plugin to select the one to use.</p>
+</div>
+<div class="paragraph">
+<p>This functionality did not check permissions, allowing any user with Overall/Read permission to get a list of valid credentials IDs.
+Those could be used as part of an attack to capture the credentials using another vulnerability.</p>
+</div>
+<div class="paragraph">
+<p>An enumeration of credentials IDs in this plugin now requires Overall/Administer permission.</p>
+</div>
+<h3 id="SECURITY-1390">
+Azure AD Plugin stored credentials in plain text
+</h3>
+<strong>
+SECURITY-1390
+/
+CVE-2019-10318
+</strong>
+<div class="paragraph">
+<p>Azure AD Plugin stored the client secret unencrypted in the global <code>config.xml</code> configuration file on the Jenkins master.
+These credentials could be viewed by users with access to the master file system.</p>
+</div>
+<div class="paragraph">
+<p>Azure AD Plugin now stores the client secret encrypted.</p>
+</div>
+<h3 id="SECURITY-1143">
+Twitter Plugin stores credentials in plain text
+</h3>
+<strong>
+SECURITY-1143
+/
+CVE-2019-10313
+</strong>
+<div class="paragraph">
+<p>Twitter Plugin stores credentials unencrypted in its global configuration file on the Jenkins master.
+These credentials could be viewed by users with access to the master file system.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-936">
+Koji Plugin globally and unconditionally disables SSL/TLS certificate validation
+</h3>
+<strong>
+SECURITY-936
+/
+CVE-2019-10314
+</strong>
+<div class="paragraph">
+<p>Koji Plugin unconditionally disables SSL/TLS certificate validation for the entire Jenkins master JVM.</p>
+</div>
+<div class="paragraph">
+<p>As of publication of this advisory, there is no fix.</p>
+</div>
+<h3 id="SECURITY-443">
+CSRF vulnerability in OAuth callback in GitHub Authentication Plugin
+</h3>
+<strong>
+SECURITY-443
+/
+CVE-2019-10315
+</strong>
+<div class="paragraph">
+<p>GitHub Authentication Plugin did not manage the state parameter of OAuth to prevent CSRF.
+This allowed an attacker to catch the redirect URL provided during the authentication process using OAuth and send it to the victim.
+If the victim was already connected to Jenkins, their Jenkins account would be attached to the attacker&#8217;s GitHub account.</p>
+</div>
+<div class="paragraph">
+<p>The state parameter is now correctly managed.</p>
+</div>
+<h3 id="SECURITY-1380">
+Aqua MicroScanner Plugin stored credentials in plain text
+</h3>
+<strong>
+SECURITY-1380
+/
+CVE-2019-10316
+</strong>
+<div class="paragraph">
+<p>Aqua MicroScanner Plugin stored credentials unencrypted in its global configuration file on the Jenkins master.
+These credentials could be viewed by users with access to the master file system.</p>
+</div>
+<div class="paragraph">
+<p>Aqua MicroScanner Plugin now stores credentials encrypted.</p>
+</div>
+<h2>
+Severity
+</h2>
+<ul>
+<li>
+SECURITY-443:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:L">
+Medium
+</a>
+</li>
+<li>
+SECURITY-930:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-936:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1100:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1143:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1252:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:L">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1355 (1):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1355 (2):
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Medium
+</a>
+</li>
+<li>
+SECURITY-1380:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+<li>
+SECURITY-1390:
+<a href="https://www.first.org/cvss/calculator/3.0#CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N">
+Low
+</a>
+</li>
+</ul>
+<h2>
+Affected Versions
+</h2>
+<ul>
+<li>
+<strong>
+Ansible Tower
+Plugin
+</strong>
+up to and including
+0.9.1
+</li>
+<li>
+<strong>
+Aqua MicroScanner
+Plugin
+</strong>
+up to and including
+1.0.5
+</li>
+<li>
+<strong>
+Azure AD
+Plugin
+</strong>
+up to and including
+0.3.3
+</li>
+<li>
+<strong>
+GitHub Authentication
+Plugin
+</strong>
+up to and including
+0.31
+</li>
+<li>
+<strong>
+Koji
+Plugin
+</strong>
+up to and including
+0.3
+</li>
+<li>
+<strong>
+Self-Organizing Swarm Plug-in Modules
+Plugin
+</strong>
+up to and including
+3.15
+</li>
+<li>
+<strong>
+SiteMonitor
+Plugin
+</strong>
+up to and including
+0.5
+</li>
+<li>
+<strong>
+Static Analysis Utilities
+Plugin
+</strong>
+up to and including
+1.95
+</li>
+<li>
+<strong>
+Twitter
+Plugin
+</strong>
+up to and including
+0.7
+</li>
+</ul>
+<h2>
+Fix
+</h2>
+<ul>
+<li>
+<strong>
+Ansible Tower
+Plugin
+</strong>
+should be updated to version
+0.9.2
+</li>
+<li>
+<strong>
+Aqua MicroScanner
+Plugin
+</strong>
+should be updated to version
+1.0.6
+</li>
+<li>
+<strong>
+Azure AD
+Plugin
+</strong>
+should be updated to version
+0.3.4
+</li>
+<li>
+<strong>
+GitHub Authentication
+Plugin
+</strong>
+should be updated to version
+0.32
+</li>
+<li>
+<strong>
+SiteMonitor
+Plugin
+</strong>
+should be updated to version
+0.6
+</li>
+<li>
+<strong>
+Static Analysis Utilities
+Plugin
+</strong>
+should be updated to version
+1.96
+</li>
+</ul>
+<p>
+These versions include fixes to the vulnerabilities described above. All prior versions are considered to be affected by these vulnerabilities unless otherwise indicated.
+</p>
+<p>
+As of publication of this advisory, no fixes are available for the following plugins:
+</p>
+<ul>
+<li>
+Koji
+Plugin
+</li>
+<li>
+Self-Organizing Swarm Plug-in Modules
+Plugin
+</li>
+<li>
+Twitter
+Plugin
+</li>
+</ul>
+<h2>
+Credit
+</h2>
+<p>
+The Jenkins project would like to thank the reporters for discovering and
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/#reporting-vulnerabilities">
+reporting
+</a>
+these vulnerabilities:
+<ul>
+<li>
+<strong>
+Daniel Beck, CloudBees, Inc.
+</strong>
+for
+SECURITY-930, SECURITY-936
+</li>
+<li>
+<strong>
+Mark Combellack, CafeX Communications
+</strong>
+for
+SECURITY-1390
+</li>
+<li>
+<strong>
+Oleg Nenashev, CloudBees, Inc.
+</strong>
+for
+SECURITY-1100
+</li>
+<li>
+<strong>
+Peter Adkins of Cisco Umbrella
+</strong>
+for
+SECURITY-1252, SECURITY-1355 (1), SECURITY-1355 (2)
+</li>
+</ul>
+</p>
+
+</div>
+</div>
+</div>
+
+
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//security/advisory/2019-04-30.adoc" title="Edit /security/advisory/2019-04-30.adoc on GitHub">Improve this page</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//security/advisory/2019-04-30.adoc" title="View /security/advisory/2019-04-30.adoc history on GitHub">Page history</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Extension Points defined in Branch API Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Extension Points defined in Branch API Plugin" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Extension Points defined in Branch API Plugin" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Extension Points defined in Branch API Plugin" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc/developer/extensions/branch-api/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Extension Points defined in Branch API Plugin" property="og:site_name">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="og:image">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/footer.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-md navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Use Jenkins
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc/developer">
+Extend Jenkins
+</a>
+<span class="dropdown-item">
+<strong>
+Use-cases
+</strong>
+</span>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+&nbsp;-&nbsp;Android
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+&nbsp;-&nbsp;C/C++
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+&nbsp;-&nbsp;Docker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+&nbsp;-&nbsp;Embedded
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+&nbsp;-&nbsp;GitHub
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+&nbsp;-&nbsp;Java
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+&nbsp;-&nbsp;PHP
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+&nbsp;-&nbsp;Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+&nbsp;-&nbsp;Python
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+&nbsp;-&nbsp;Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam/">
+Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/remoting/">
+Jenkins Remoting
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security">
+Security
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/press">
+Press
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .container .row.body {
+    margin-right: 5em;
+    margin-left: 5em;
+  }
+  .toc {
+      float: right;
+  }
+</style>
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-12">
+<h1>
+Extension Points defined in Branch API Plugin
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#branchbuildstrategy">BranchBuildStrategy</a></li>
+<li><a href="#branchprojectfactory">BranchProjectFactory</a></li>
+<li><a href="#branchproperty">BranchProperty</a></li>
+<li><a href="#branchpropertystrategy">BranchPropertyStrategy</a></li>
+<li><a href="#multibranchprojectfactory">MultiBranchProjectFactory</a></li>
+<li><a href="#propertymigration">PropertyMigration</a></li>
+<li><a href="#propertymigration-migrator">PropertyMigration.<wbr/>Migrator</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="branchbuildstrategy"><a class="anchor" href="#branchbuildstrategy"></a>BranchBuildStrategy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="http://javadoc.jenkins.io/plugin/branch-api/jenkins/branch/BranchBuildStrategy.html" title="Javadoc for jenkins.branch.BranchBuildStrategy">jenkins.branch.BranchBuildStrategy in branch-api</a></code></p>
+</div>
+<div class="paragraph">
+<p> An extension point that allows controlling whether a specific <a href="http://javadoc.jenkins.io/byShortName/SCMHead" title="Javadoc for SCMHead">SCMHead</a> should be automatically built when  discovered. 
+<p>  Methods marked as {@code SPI:} are intended to be implemented by implementers of <a href="http://javadoc.jenkins.io/byShortName/BranchBuildStrategy" title="Javadoc for BranchBuildStrategy">BranchBuildStrategy</a> .  Methods marked as {@code API:} are intended to be invoked consumers of <a href="http://javadoc.jenkins.io/byShortName/BranchBuildStrategy" title="Javadoc for BranchBuildStrategy">BranchBuildStrategy</a> .  A consumer invoking a {@code SPI:} method may get a <a href="http://javadoc.jenkins.io/byShortName/UnsupportedOperationException" title="Javadoc for UnsupportedOperationException">UnsupportedOperationException</a> .  Methods marked as {@code SPI:} are only to be invoked through the API methods in order to allow safe evolution.  Changing the API may require updating any SPI implementations that are also API consumers, specifically the Any,  All and None implementations in basic-branch-build-strategies &lt;/p&gt;</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/basic-branch-build-strategies">Basic Branch Build Strategies Plugin</a>: jenkins.<wbr/>branch.<wbr/>buildstrategies.<wbr/>basic.<wbr/><strong>AllBranchBuildStrategyImpl</strong> (<a href="https://github.com/jenkinsci/basic-branch-build-strategies-plugin/search?q=AllBranchBuildStrategyImpl&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/basic-branch-build-strategies">Basic Branch Build Strategies Plugin</a>: jenkins.<wbr/>branch.<wbr/>buildstrategies.<wbr/>basic.<wbr/><strong>AnyBranchBuildStrategyImpl</strong> (<a href="https://github.com/jenkinsci/basic-branch-build-strategies-plugin/search?q=AnyBranchBuildStrategyImpl&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/basic-branch-build-strategies">Basic Branch Build Strategies Plugin</a>: jenkins.<wbr/>branch.<wbr/>buildstrategies.<wbr/>basic.<wbr/><strong>BranchBuildStrategyImpl</strong> (<a href="https://github.com/jenkinsci/basic-branch-build-strategies-plugin/search?q=BranchBuildStrategyImpl&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/basic-branch-build-strategies">Basic Branch Build Strategies Plugin</a>: jenkins.<wbr/>branch.<wbr/>buildstrategies.<wbr/>basic.<wbr/><strong>ChangeRequestBuildStrategyImpl</strong> (<a href="https://github.com/jenkinsci/basic-branch-build-strategies-plugin/search?q=ChangeRequestBuildStrategyImpl&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/basic-branch-build-strategies">Basic Branch Build Strategies Plugin</a>: jenkins.<wbr/>branch.<wbr/>buildstrategies.<wbr/>basic.<wbr/><strong>NamedBranchBuildStrategyImpl</strong> (<a href="https://github.com/jenkinsci/basic-branch-build-strategies-plugin/search?q=NamedBranchBuildStrategyImpl&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/basic-branch-build-strategies">Basic Branch Build Strategies Plugin</a>: jenkins.<wbr/>branch.<wbr/>buildstrategies.<wbr/>basic.<wbr/><strong>NoneBranchBuildStrategyImpl</strong> (<a href="https://github.com/jenkinsci/basic-branch-build-strategies-plugin/search?q=NoneBranchBuildStrategyImpl&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/basic-branch-build-strategies">Basic Branch Build Strategies Plugin</a>: jenkins.<wbr/>branch.<wbr/>buildstrategies.<wbr/>basic.<wbr/><strong>SkipInitialBuildOnFirstBranchIndexing</strong> (<a href="https://github.com/jenkinsci/basic-branch-build-strategies-plugin/search?q=SkipInitialBuildOnFirstBranchIndexing&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/basic-branch-build-strategies">Basic Branch Build Strategies Plugin</a>: jenkins.<wbr/>branch.<wbr/>buildstrategies.<wbr/>basic.<wbr/><strong>TagBuildStrategyImpl</strong> (<a href="https://github.com/jenkinsci/basic-branch-build-strategies-plugin/search?q=TagBuildStrategyImpl&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/github-pullrequest">GitHub Integration Plugin</a>: com.<wbr/>github.<wbr/>kostyasha.<wbr/>github.<wbr/>integration.<wbr/>multibranch.<wbr/><strong>GitHubBranchBuildStrategy</strong> (<a href="https://github.com/jenkinsci/github-integration-plugin/search?q=GitHubBranchBuildStrategy&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/ignore-committer-strategy">Ignore Committer Strategy Plugin</a>: au.<wbr/>com.<wbr/>versent.<wbr/>jenkins.<wbr/>plugins.<wbr/>ignoreCommitterStrategy.<wbr/><strong>IgnoreCommitterStrategy</strong> (<a href="https://github.com/jenkinsci/jenkins-ignore-committer-strategy-plugin/search?q=IgnoreCommitterStrategy&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/multibranch-build-strategy-extension">Pipeline: Multibranch build strategy extension Plugin</a>: com.<wbr/>igalg.<wbr/>jenkins.<wbr/>plugins.<wbr/>multibranch.<wbr/>buildstrategy.<wbr/><strong>ExcludeRegionBranchBuildStrategy</strong> (<a href="https://github.com/jenkinsci/multibranch-build-strategy-extension/search?q=ExcludeRegionBranchBuildStrategy&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/multibranch-build-strategy-extension">Pipeline: Multibranch build strategy extension Plugin</a>: com.<wbr/>igalg.<wbr/>jenkins.<wbr/>plugins.<wbr/>multibranch.<wbr/>buildstrategy.<wbr/><strong>IncludeRegionBranchBuildStrategy</strong> (<a href="https://github.com/jenkinsci/multibranch-build-strategy-extension/search?q=IncludeRegionBranchBuildStrategy&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/multibranch-build-strategy-extension">Pipeline: Multibranch build strategy extension Plugin</a>: com.<wbr/>igalg.<wbr/>jenkins.<wbr/>plugins.<wbr/>multibranch.<wbr/>buildstrategy.<wbr/><strong>RegionBranchBuildStrategy</strong> (<a href="https://github.com/jenkinsci/multibranch-build-strategy-extension/search?q=RegionBranchBuildStrategy&amp;type=Code">view on GitHub</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="branchprojectfactory"><a class="anchor" href="#branchprojectfactory"></a>BranchProjectFactory</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="http://javadoc.jenkins.io/plugin/branch-api/jenkins/branch/BranchProjectFactory.html" title="Javadoc for jenkins.branch.BranchProjectFactory">jenkins.branch.BranchProjectFactory in branch-api</a></code></p>
+</div>
+<div class="paragraph">
+<p> Creates instances of the branch projects for a specific <a href="http://javadoc.jenkins.io/byShortName/Branch" title="Javadoc for Branch">Branch</a> and also provides some utility methods for  updating the branch specific projects.</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/config-driven-pipeline">Config-Driven Pipeline Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>workflow.<wbr/>multibranch.<wbr/>template.<wbr/><strong>ConfigDrivenWorkflowBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/config-driven-pipeline-plugin/search?q=ConfigDrivenWorkflowBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/literate">Literate Plugin</a>: org.<wbr/>cloudbees.<wbr/>literate.<wbr/>jenkins.<wbr/><strong>LiterateMultibranchProject.<wbr/>ProjectFactoryImpl</strong> (<a href="https://github.com/jenkinsci/literate-plugin/search?q=LiterateMultibranchProject.ProjectFactoryImpl&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/multi-branch-project-plugin">Multi-Branch Project Plugin (DEPRECATED) Plugin</a>: com.<wbr/>github.<wbr/>mjdetullio.<wbr/>jenkins.<wbr/>plugins.<wbr/>multibranch.<wbr/><strong>FreeStyleBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/multi-branch-project-plugin/search?q=FreeStyleBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/multi-branch-project-plugin">Multi-Branch Project Plugin (DEPRECATED) Plugin</a>: com.<wbr/>github.<wbr/>mjdetullio.<wbr/>jenkins.<wbr/>plugins.<wbr/>multibranch.<wbr/><strong>IvyBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/multi-branch-project-plugin/search?q=IvyBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/multi-branch-project-plugin">Multi-Branch Project Plugin (DEPRECATED) Plugin</a>: com.<wbr/>github.<wbr/>mjdetullio.<wbr/>jenkins.<wbr/>plugins.<wbr/>multibranch.<wbr/><strong>MatrixBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/multi-branch-project-plugin/search?q=MatrixBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/multi-branch-project-plugin">Multi-Branch Project Plugin (DEPRECATED) Plugin</a>: com.<wbr/>github.<wbr/>mjdetullio.<wbr/>jenkins.<wbr/>plugins.<wbr/>multibranch.<wbr/><strong>MavenBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/multi-branch-project-plugin/search?q=MavenBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/multi-branch-project-plugin">Multi-Branch Project Plugin (DEPRECATED) Plugin</a>: com.<wbr/>github.<wbr/>mjdetullio.<wbr/>jenkins.<wbr/>plugins.<wbr/>multibranch.<wbr/><strong>TemplateDrivenBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/multi-branch-project-plugin/search?q=TemplateDrivenBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/inline-pipeline">Multibranch Pipeline Inline Definition Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>inlinepipeline.<wbr/><strong>InlineDefinitionBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/inline-pipeline-plugin/search?q=InlineDefinitionBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/workflow-multibranch">Pipeline: Multibranch Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>workflow.<wbr/>multibranch.<wbr/><strong>AbstractWorkflowBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/workflow-multibranch-plugin/search?q=AbstractWorkflowBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/workflow-multibranch">Pipeline: Multibranch Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>workflow.<wbr/>multibranch.<wbr/><strong>WorkflowBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/workflow-multibranch-plugin/search?q=WorkflowBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/pipeline-multibranch-defaults">Pipeline: Multibranch with defaults Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>pipeline.<wbr/>multibranch.<wbr/>defaults.<wbr/><strong>PipelineBranchDefaultsProjectFactory</strong> (<a href="https://github.com/jenkinsci/pipeline-multibranch-defaults-plugin/search?q=PipelineBranchDefaultsProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/remote-file">Remote File Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>workflow.<wbr/>multibranch.<wbr/>extended.<wbr/><strong>RemoteJenkinsFileWorkflowBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/remote-file-plugin/search?q=RemoteJenkinsFileWorkflowBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/simple-pull-request-job">Simple Pull Request Job Plugin</a>: io.<wbr/>jenkins.<wbr/>plugins.<wbr/>sprp.<wbr/><strong>YAML_BranchProjectFactory</strong></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/yaml-project">YAML Project support Plugin</a>: com.<wbr/>google.<wbr/>jenkins.<wbr/>plugins.<wbr/>dsl.<wbr/><strong>YamlProjectFactory</strong></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="branchproperty"><a class="anchor" href="#branchproperty"></a>BranchProperty</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="http://javadoc.jenkins.io/plugin/branch-api/jenkins/branch/BranchProperty.html" title="Javadoc for jenkins.branch.BranchProperty">jenkins.branch.BranchProperty in branch-api</a></code></p>
+</div>
+<div class="paragraph">
+<p> Additional information associated with <a href="http://javadoc.jenkins.io/byShortName/Branch" title="Javadoc for Branch">Branch</a> . 
+<p>  <a href="http://javadoc.jenkins.io/jenkins/scm/api/SCMSource.html" title="Javadoc for jenkins.scm.api.SCMSource">jenkins.scm.api.SCMSource</a> s can use properties to convey additional implementation/SCM specific  information that's not captured in the base <a href="http://javadoc.jenkins.io/byShortName/Branch" title="Javadoc for Branch">Branch</a> class. &lt;/p&gt;</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/backlog">Backlog Plugin</a>: hudson.<wbr/>plugins.<wbr/>backlog.<wbr/>pipeline.<wbr/><strong>BacklogPullRequestBranchProperty</strong> (<a href="https://github.com/jenkinsci/backlog-plugin/search?q=BacklogPullRequestBranchProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>BuildRetentionBranchProperty</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=BuildRetentionBranchProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>NoTriggerBranchProperty</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=NoTriggerBranchProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>ParameterDefinitionBranchProperty</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=ParameterDefinitionBranchProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>RateLimitBranchProperty</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=RateLimitBranchProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>UntrustedBranchProperty</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=UntrustedBranchProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/github-pr-comment-build">GitHub PR Comment Build Plugin</a>: com.<wbr/>adobe.<wbr/>jenkins.<wbr/>github_pr_comment_build.<wbr/><strong>TriggerPRCommentBranchProperty</strong> (<a href="https://github.com/jenkinsci/github-pr-comment-build-plugin/search?q=TriggerPRCommentBranchProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/github-pr-comment-build">GitHub PR Comment Build Plugin</a>: com.<wbr/>adobe.<wbr/>jenkins.<wbr/>github_pr_comment_build.<wbr/><strong>TriggerPRReviewBranchProperty</strong> (<a href="https://github.com/jenkinsci/github-pr-comment-build-plugin/search?q=TriggerPRReviewBranchProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/github-pr-comment-build">GitHub PR Comment Build Plugin</a>: com.<wbr/>adobe.<wbr/>jenkins.<wbr/>github_pr_comment_build.<wbr/><strong>TriggerPRUpdateBranchProperty</strong> (<a href="https://github.com/jenkinsci/github-pr-comment-build-plugin/search?q=TriggerPRUpdateBranchProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/literate">Literate Plugin</a>: org.<wbr/>cloudbees.<wbr/>literate.<wbr/>jenkins.<wbr/><strong>LiterateBranchProperty</strong> (<a href="https://github.com/jenkinsci/literate-plugin/search?q=LiterateBranchProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/literate">Literate Plugin</a>: org.<wbr/>cloudbees.<wbr/>literate.<wbr/>jenkins.<wbr/><strong>ParametersDefinitionBranchProperty</strong> (<a href="https://github.com/jenkinsci/literate-plugin/search?q=ParametersDefinitionBranchProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/literate">Literate Plugin</a>: org.<wbr/>cloudbees.<wbr/>literate.<wbr/>jenkins.<wbr/>promotions.<wbr/><strong>PromotionBranchProperty</strong> (<a href="https://github.com/jenkinsci/literate-plugin/search?q=PromotionBranchProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/workflow-multibranch">Pipeline: Multibranch Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>workflow.<wbr/>multibranch.<wbr/><strong>DurabilityHintBranchProperty</strong> (<a href="https://github.com/jenkinsci/workflow-multibranch-plugin/search?q=DurabilityHintBranchProperty&amp;type=Code">view on GitHub</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="branchpropertystrategy"><a class="anchor" href="#branchpropertystrategy"></a>BranchPropertyStrategy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="http://javadoc.jenkins.io/plugin/branch-api/jenkins/branch/BranchPropertyStrategy.html" title="Javadoc for jenkins.branch.BranchPropertyStrategy">jenkins.branch.BranchPropertyStrategy in branch-api</a></code></p>
+</div>
+<div class="paragraph">
+<p> A strategy for determining the properties that apply to a specific <a href="http://javadoc.jenkins.io/byShortName/SCMHead" title="Javadoc for SCMHead">SCMHead</a> .</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>DefaultBranchPropertyStrategy</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=DefaultBranchPropertyStrategy&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>NamedExceptionsBranchPropertyStrategy</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=NamedExceptionsBranchPropertyStrategy&amp;type=Code">view on GitHub</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="multibranchprojectfactory"><a class="anchor" href="#multibranchprojectfactory"></a>MultiBranchProjectFactory</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="http://javadoc.jenkins.io/plugin/branch-api/jenkins/branch/MultiBranchProjectFactory.html" title="Javadoc for jenkins.branch.MultiBranchProjectFactory">jenkins.branch.MultiBranchProjectFactory in branch-api</a></code></p>
+</div>
+<div class="paragraph">
+<p> Creates <a href="http://javadoc.jenkins.io/byShortName/MultiBranchProject" title="Javadoc for MultiBranchProject">MultiBranchProject</a> s for repositories where recognized.</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>MultiBranchProjectFactory.<wbr/>BySCMSourceCriteria</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=MultiBranchProjectFactory.BySCMSourceCriteria&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/config-driven-pipeline">Config-Driven Pipeline Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>workflow.<wbr/>multibranch.<wbr/>template.<wbr/><strong>ConfigDrivenWorkflowMultiBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/config-driven-pipeline-plugin/search?q=ConfigDrivenWorkflowMultiBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/literate">Literate Plugin</a>: org.<wbr/>cloudbees.<wbr/>literate.<wbr/>jenkins.<wbr/><strong>LiterateMultibranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/literate-plugin/search?q=LiterateMultibranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/inline-pipeline">Multibranch Pipeline Inline Definition Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>inlinepipeline.<wbr/><strong>InlineDefinitionMultiBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/inline-pipeline-plugin/search?q=InlineDefinitionMultiBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/workflow-multibranch">Pipeline: Multibranch Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>workflow.<wbr/>multibranch.<wbr/><strong>AbstractWorkflowMultiBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/workflow-multibranch-plugin/search?q=AbstractWorkflowMultiBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/workflow-multibranch">Pipeline: Multibranch Plugin</a>: org.<wbr/>jenkinsci.<wbr/>plugins.<wbr/>workflow.<wbr/>multibranch.<wbr/><strong>WorkflowMultiBranchProjectFactory</strong> (<a href="https://github.com/jenkinsci/workflow-multibranch-plugin/search?q=WorkflowMultiBranchProjectFactory&amp;type=Code">view on GitHub</a>)</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/simple-pull-request-job">Simple Pull Request Job Plugin</a>: io.<wbr/>jenkins.<wbr/>plugins.<wbr/>sprp.<wbr/><strong>YAML_MultiBranchProjectFactory</strong></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="propertymigration"><a class="anchor" href="#propertymigration"></a>PropertyMigration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="http://javadoc.jenkins.io/plugin/branch-api/jenkins/branch/PropertyMigration.html" title="Javadoc for jenkins.branch.PropertyMigration">jenkins.branch.PropertyMigration in branch-api</a></code></p>
+</div>
+<div class="paragraph">
+<p> An extension point that captures the need for a complex migration of a folder property into some other configuration  of the containing folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API Plugin</a>: jenkins.<wbr/>branch.<wbr/><strong>NoTriggerOrganizationFolderProperty.<wbr/>PropertyMigrationImpl</strong> (<a href="https://github.com/jenkinsci/branch-api-plugin/search?q=NoTriggerOrganizationFolderProperty.PropertyMigrationImpl&amp;type=Code">view on GitHub</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="propertymigration-migrator"><a class="anchor" href="#propertymigration-migrator"></a>PropertyMigration.<wbr/>Migrator</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><a href="http://javadoc.jenkins.io/plugin/branch-api/jenkins/branch/PropertyMigration.Migrator.html" title="Javadoc for jenkins.branch.PropertyMigration.Migrator">jenkins.branch.PropertyMigration.Migrator in branch-api</a></code></p>
+</div>
+<div class="paragraph">
+<p><em>This extension point has no Javadoc documentation.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Implementations:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/basic-branch-build-strategies">Basic Branch Build Strategies Plugin</a>: jenkins.<wbr/>branch.<wbr/>buildstrategies.<wbr/>basic.<wbr/><strong>NoTriggerOrganizationFolderMigration</strong> (<a href="https://github.com/jenkinsci/basic-branch-build-strategies-plugin/search?q=NoTriggerOrganizationFolderMigration&amp;type=Code">view on GitHub</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+</body>
+</html>

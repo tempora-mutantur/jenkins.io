@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Configuring a Jenkins Pipeline using a YAML file
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Configuring a Jenkins Pipeline using a YAML file" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Configuring a Jenkins Pipeline using a YAML file" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Configuring a Jenkins Pipeline using a YAML file" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2018/04/25/configuring-jenkins-pipeline-with-yaml-file/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Configuring a Jenkins Pipeline using a YAML file" property="og:site_name">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="og:image">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/footer.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-md navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Use Jenkins
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc/developer">
+Extend Jenkins
+</a>
+<span class="dropdown-item">
+<strong>
+Use-cases
+</strong>
+</span>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+&nbsp;-&nbsp;Android
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+&nbsp;-&nbsp;C/C++
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+&nbsp;-&nbsp;Docker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+&nbsp;-&nbsp;Embedded
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+&nbsp;-&nbsp;GitHub
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+&nbsp;-&nbsp;Java
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+&nbsp;-&nbsp;PHP
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+&nbsp;-&nbsp;Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+&nbsp;-&nbsp;Python
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+&nbsp;-&nbsp;Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam/">
+Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/remoting/">
+Jenkins Remoting
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security">
+Security
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/press">
+Press
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('#content h' + i);
+    }
+  })
+</script>
+<div class="container blog-post">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2018/04/25/configuring-jenkins-pipeline-with-yaml-file/" title="Configuring a Jenkins Pipeline using a YAML file">
+Configuring a Jenkins Pipeline using a YAML file
+</a>
+</h1>
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+<div class="post-attrs">
+<span class="submitted">
+Published on
+2018-04-25
+by
+<a href="/blog/authors/mdesanti">Matias De Santi</a>
+</span>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/jenkins">
+jenkins
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/pipelines">
+pipelines
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/yaml">
+yaml
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/sharedlibrary">
+sharedlibrary
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This guest post was originally published on Wolox&#8217;s Medium account
+<a href="https://medium.com/wolox-driving-innovation/dynamic-jenkins-pipelines-b04066371fbc">here</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A few years ago our CTO wrote about building a
+<a href="https://medium.com/wolox-driving-innovation/ruby-on-rails-continuous-integration-with-jenkins-and-docker-compose-8dfd24c3df57">Continuous Integration server for Ruby On Rails using Jenkins and docker</a>.
+The solution has been our CI pipeline for the past years until we recently decided to
+make an upgrade. Why?</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins version was way out of date and it was getting difficult to
+upgrade</p>
+</li>
+<li>
+<p><a href="https://www.wolox.co">Wolox</a> has grown significantly over the past years
+and we’ve been experiencing scaling issues</p>
+</li>
+<li>
+<p>Very few people knew how to fix any issues with the server</p>
+</li>
+<li>
+<p>Configuring jobs was not an easy task and that made our project
+kickoff process slower</p>
+</li>
+<li>
+<p>Making changes to the commands that each job runs was not easy and not
+many people had permissions to do so. Wolox has a wide range of
+projects, with a wide variety of languages which made this problem even
+bigger.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Taking into account these problems, we started digging into the newest
+version of Jenkins to see how we could improve our CI. We needed to
+build a new CI that could, at least, address the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Projects must be built using Docker. Our projects depend on one or
+multiple docker images to run (app, database, redis, etc)</p>
+</li>
+<li>
+<p>Easy to configure and replicate if necessary</p>
+</li>
+<li>
+<p>Easy to add a new project</p>
+</li>
+<li>
+<p>Easy to change the building steps. Everyone working on the project
+should be able to change if they want to run <em>npm install</em> or <em>yarn
+install</em>.</p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="installing-jenkins-and-docker"><a class="anchor" href="#installing-jenkins-and-docker"></a>Installing Jenkins and Docker</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Installing Jenkins is straightforward. You can visit
+<a href="https://jenkins.io/download/">Jenkins Installation page</a> and choose the
+option that best suits your needs.</p>
+</div>
+<div class="paragraph">
+<p>Here are the steps we followed to install Jenkins in AWS:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">sudo rpm — import https://pkg.jenkins.io/debian/jenkins.io.key
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
+sudo yum install java-1.8.0 -y
+sudo yum remove java-1.7.0-openjdk -y
+sudo yum install jenkins -y
+sudo yum update -y
+sudo yum install -y docker</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="automatically-adding-projects-from-github"><a class="anchor" href="#automatically-adding-projects-from-github"></a>Automatically adding projects from Github</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Adding projects automatically from Github can be achieved using the
+<a href="https://plugins.jenkins.io/github-branch-source">GitHub Branch Source Plugin</a>.
+It allows Jenkins to scan a GitHub organization
+for projects that match certain rules and add them to Jenkins
+automatically. The only constraint that all branches must meet in order
+to be added is that they contain a Jenkinsfile that explains how to
+build the project.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="easy-to-change-configuration"><a class="anchor" href="#easy-to-change-configuration"></a>Easy to change configuration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="not-so-easy-to-change-configuration"><a class="anchor" href="#not-so-easy-to-change-configuration"></a>Not so easy to change configuration</h3>
+<div class="paragraph">
+<p>One of the biggest pains we had with our previous Jenkins was the
+difficulty of changing the steps necessary to build the project. If you
+looked at a project’s build steps, you would find something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">#!/bin/bash +x
+set -e
+
+# Remove unnecessary files
+echo -e &quot;\033[34mRemoving unnecessary files...\033[0m&quot;
+rm -f log/*.log &amp;&gt; /dev/null || true &amp;&gt; /dev/null
+rm -rf public/uploads/* &amp;&gt; /dev/null || true &amp;&gt; /dev/null
+
+# Build Project
+echo -e &quot;\033[34mBuilding Project...\033[0m&quot;
+docker-compose --project-name=${JOB_NAME} build
+
+# Prepare test database
+COMMAND=&quot;bundle exec rake db:drop db:create db:migrate&quot;
+echo -e &quot;\033[34mRunning: $COMMAND\033[0m&quot;
+docker-compose --project-name=${JOB_NAME} run  \
+        -e RAILS_ENV=test web $COMMAND
+
+# Run tests
+COMMAND=&quot;bundle exec rspec spec&quot;
+echo -e &quot;\033[34mRunning: $COMMAND\033[0m&quot;
+unbuffer docker-compose --project-name=${JOB_NAME} run web $COMMAND
+
+# Run rubocop lint
+COMMAND=&quot;bundle exec rubocop app spec -R --format simple&quot;
+echo -e &quot;\033[34mRunning: $COMMAND\033[0m&quot;
+unbuffer docker-compose --project-name=${JOB_NAME} run -e RUBYOPT=&quot;-Ku&quot; web $COMMAND</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And some post build steps that cleaned up the docker:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">#!/bin/bash +x
+docker-compose --project-name=${JOB_NAME} stop &amp;&gt; /dev/null || true &amp;&gt; /dev/null
+docker-compose --project-name=${JOB_NAME} rm --force &amp;&gt; /dev/null || true &amp;&gt; /dev/null
+docker stop `docker ps -a -q -f status=exited` &amp;&gt; /dev/null || true &amp;&gt; /dev/null
+docker rm -v `docker ps -a -q -f status=exited` &amp;&gt; /dev/null || true &amp;&gt; /dev/null
+docker rmi `docker images --filter 'dangling=true' -q --no-trunc` &amp;&gt; /dev/null || true &amp;&gt; /dev/null</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Although these commands are not complex, changing any of them required
+someone with permissions to modify the job and an understanding ofwhat
+needed to be done.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jenkinsfile-to-the-rescue-or-not"><a class="anchor" href="#jenkinsfile-to-the-rescue-or-not"></a>Jenkinsfile to the rescue&#8230;&#8203; or not</h3>
+<div class="paragraph">
+<p>With the current Jenkins version, we can take advantage of
+<a href="https://jenkins.io/doc/book/pipeline/">Jenkins Pipeline</a> and model our build
+flow in a file. This file is checked into the repository and, therefore,
+anyone with access to it can change the build steps. Yay!</p>
+</div>
+<div class="paragraph">
+<p>Jenkins Pipeline even has support for:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://jenkins.io/doc/book/pipeline/docker/">Docker</a> and
+<a href="https://jenkins.io/doc/book/pipeline/docker/#advanced-usage-with-scripted-pipeline">multiple
+images</a> can be used for a build!</p>
+</li>
+<li>
+<p>Setting environment variables with <em>withEnv</em> and many other built -in
+functions that can be found
+<a href="https://jenkins.io/doc/pipeline/steps/workflow-basic-steps/">here</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This makes a perfect case for <a href="https://www.wolox.co">Wolox</a>. We can have
+our build configuration in a file that’s checked into the repository and
+can be changed by anyone with write access to it. However, a Jenkinsfile
+for a simple rails project would look something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#F00;background-color:#FAA">#</span> sample Jenkinsfile. Might not compile
+node {
+    checkout scm
+    withEnv([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">MYTOOL_HOME=/usr/local/mytool</span><span style="color:#710">'</span></span>]) {
+        docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">postgres:9.2</span><span style="color:#710">&quot;</span></span>).withRun() { db -&gt;
+            withEnv([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">DB_USERNAME=postgres</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">DB_PASSWORD=</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">DB_HOST=db</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">DB_PORT=5432</span><span style="color:#710">&quot;</span></span>]) {
+                docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">redis:X</span><span style="color:#710">&quot;</span></span>).withRun() { redis -&gt;
+                    withEnv([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">REDIS_URL=redis://redis</span><span style="color:#710">&quot;</span></span>]) {
+                        docker.build(imageName, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">--file .woloxci/Dockerfile .</span><span style="color:#710">&quot;</span></span>).inside(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">--link </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>db.id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">:postgres --link </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>redis.id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">:redis</span><span style="color:#710">&quot;</span></span>) {
+                            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rake db:create</span><span style="color:#710">&quot;</span></span>
+                            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rake db:migrate</span><span style="color:#710">&quot;</span></span>
+                            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bundle exec rspec spec</span><span style="color:#710">&quot;</span></span>
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This file is not only difficult to read, but also difficult to change.
+It’s quite easy to break things if you’re not familiar with Groovy and
+even easier if you know nothing about how Jenkins’ pipeline works.
+Changing or adding a new Docker image isn’t straightforward and might
+lead to confusion.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-jenkins-pipeline-via-yaml"><a class="anchor" href="#configuring-jenkins-pipeline-via-yaml"></a>Configuring Jenkins Pipeline via YAML</h3>
+<div class="paragraph">
+<p>Personally, I’ve always envied simple configuration files for CIs and
+this time it was our chance to build CI that could be configured using a
+YAML file. After some analysis we concluded that a YAML like this one
+would suffice:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">config</span>:
+  <span style="color:#606">dockerfile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">.woloxci/Dockerfile</span></span>
+  <span style="color:#606">project_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">some-project-name</span></span>
+
+<span style="color:#606">services</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">postgresql</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">redis</span></span>
+
+<span style="color:#606">steps</span>:
+  <span style="color:#606">analysis</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle exec rubocop -R app spec --format simple</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle exec rubycritic --path ./analysis --minimum-score 80 --no-browser</span></span>
+  <span style="color:#606">setup_db</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle exec rails db:create</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle exec rails db:schema:load</span></span>
+  <span style="color:#606">test</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle exec rspec</span></span>
+  <span style="color:#606">security</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle exec brakeman --exit-on-error</span></span>
+  <span style="color:#606">audit</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle audit check --update</span></span>
+
+
+<span style="color:#606">environment</span>:
+  <span style="color:#606">RAILS_ENV</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">test</span></span>
+  <span style="color:#606">GIT_COMMITTER_NAME</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">a</span></span>
+  <span style="color:#606">GIT_COMMITTER_EMAIL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">b</span></span>
+  <span style="color:#606">LANG</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">C.UTF-8</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It outlines some basic configuration for the project, environment
+variables that need to be present during the run, dependentservices, and
+our build steps.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jenkinsfile-shared-libraries-woloxci"><a class="anchor" href="#jenkinsfile-shared-libraries-woloxci"></a>Jenkinsfile + Shared Libraries = WoloxCI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After investigating for a while about Jenkins and the pipeline, we found
+that we could extend it with
+<a href="https://jenkins.io/doc/book/pipeline/shared-libraries/">shared libraries</a>.
+Shared libraries are written in groovy and can be imported
+into the pipeline and executed when necessary.</p>
+</div>
+<div class="paragraph">
+<p>If you look carefully at this Jenkinsfile,
+we see that the code is a chain of methods calls that receive a
+closure, where we execute another method passing a new closure to it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#F00;background-color:#FAA">#</span> sample Jenkinsfile. Might not compile
+node {
+    checkout scm
+    withEnv([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">MYTOOL_HOME=/usr/local/mytool</span><span style="color:#710">'</span></span>]) {
+        docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">postgres:9.2</span><span style="color:#710">&quot;</span></span>).withRun() { db -&gt;
+            withEnv([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">DB_USERNAME=postgres</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">DB_PASSWORD=</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">DB_HOST=db</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">DB_PORT=5432</span><span style="color:#710">&quot;</span></span>]) {
+                docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">redis:X</span><span style="color:#710">&quot;</span></span>).withRun() { redis -&gt;
+                    withEnv([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">REDIS_URL=redis://redis</span><span style="color:#710">&quot;</span></span>]) {
+                        docker.build(imageName, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">--file .woloxci/Dockerfile .</span><span style="color:#710">&quot;</span></span>).inside(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">--link </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>db.id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">:postgres --link </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>redis.id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">:redis</span><span style="color:#710">&quot;</span></span>) {
+                            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rake db:create</span><span style="color:#710">&quot;</span></span>
+                            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rake db:migrate</span><span style="color:#710">&quot;</span></span>
+                            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bundle exec rspec spec</span><span style="color:#710">&quot;</span></span>
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Groovy is flexible enough to allow this same declarative code to be
+created at runtime, making our dream of using a YAML to configure our
+job come true!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introducing-wolox-ci"><a class="anchor" href="#introducing-wolox-ci"></a>Introducing Wolox-CI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>That’s how <a href="https://github.com/Wolox/wolox-ci">wolox-ci</a> was born- our
+shared library for Jenkins!</p>
+</div>
+<div class="paragraph">
+<p>With <a href="https://github.com/Wolox/wolox-ci">wolox-ci</a>, our Jenkinsfile is now
+reduced to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">wolox-ci</span><span style="color:#710">'</span></span>) _
+
+node {
+
+  checkout scm
+
+  woloxCi(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">.woloxci/config.yml</span><span style="color:#710">'</span></span>);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now it simply checks out the code and then calls wolox-ci. The library
+reads yaml file like this one</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">config</span>:
+  <span style="color:#606">dockerfile</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">.woloxci/Dockerfile</span></span>
+  <span style="color:#606">project_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">some-project-name</span></span>
+
+<span style="color:#606">services</span>:
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">postgresql</span></span>
+  - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">redis</span></span>
+
+<span style="color:#606">steps</span>:
+  <span style="color:#606">analysis</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle exec rubocop -R app spec --format simple</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle exec rubycritic --path ./analysis --minimum-score 80 --no-browser</span></span>
+  <span style="color:#606">setup_db</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle exec rails db:create</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle exec rails db:schema:load</span></span>
+  <span style="color:#606">test</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle exec rspec</span></span>
+  <span style="color:#606">security</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle exec brakeman --exit-on-error</span></span>
+  <span style="color:#606">audit</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">bundle audit check --update</span></span>
+
+
+<span style="color:#606">environment</span>:
+  <span style="color:#606">RAILS_ENV</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">test</span></span>
+  <span style="color:#606">GIT_COMMITTER_NAME</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">a</span></span>
+  <span style="color:#606">GIT_COMMITTER_EMAIL</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">b</span></span>
+  <span style="color:#606">LANG</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">C.UTF-8</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and builds the Jenkinsfile to get your job running on the fly.</p>
+</div>
+<div class="paragraph">
+<p>The nice part about having a shared library is that we can extend and
+fix our library in a centralized way. Once we add new code, the library
+is automatically updated in Jenkins which will notify all of our jobs
+with the update.</p>
+</div>
+<div class="paragraph">
+<p>Since we have projects in different languages we use Docker to build the
+testing environment. WoloxCI assumes there is a Dockerfile to build and
+will run all the specified commands inside the container.</p>
+</div>
+<div class="sect2">
+<h3 id="woloxci-config-yml"><a class="anchor" href="#woloxci-config-yml"></a>Woloxci config.yml</h3>
+<div class="sect3">
+<h4 id="config"><a class="anchor" href="#config"></a>Config</h4>
+<div class="paragraph">
+<p>The first part of the config.yml file specifies some basic
+configuration: project’s name and Dockerfile location. The Dockerfile is
+used to build the image where the commands will be run.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="services"><a class="anchor" href="#services"></a>Services</h4>
+<div class="paragraph">
+<p>This section describes which services will be exposed to the container.
+Out of the box, WoloxCI has support for <em>postgresql</em>, <em>mssql</em> and
+<em>redis</em>. You can also specify the docker image version you want! It is
+not hard to add a new service. You just need to add the corresponding
+file at</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/Wolox/wolox-ci/tree/development/vars" class="bare">https://github.com/Wolox/wolox-ci/tree/development/vars</a></p>
+</div>
+<div class="paragraph">
+<p>and modify how the services are parsed</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/Wolox/wolox-ci/blob/development/src/com/wolox/parser/ConfigParser.groovy#L76" class="bare">https://github.com/Wolox/wolox-ci/blob/development/src/com/wolox/parser/ConfigParser.groovy#L76</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="steps"><a class="anchor" href="#steps"></a>Steps</h4>
+<div class="paragraph">
+<p>The listed commands in this section will run inside the Docker
+container. As a result, you’ll see each of the steps on the Jenkins UI.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://cdn-images-1.medium.com/max/2000/0*SlHf1JHAAvEvZQ74." alt="image"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="environment"><a class="anchor" href="#environment"></a>Environment</h4>
+<div class="paragraph">
+<p>If you need some environment variables during your build, you can
+specify them here. Whatever variable you set will be available inside
+the Docker container when your commands listed in the <strong>steps</strong> section
+described above.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wrapping-up"><a class="anchor" href="#wrapping-up"></a>Wrapping up</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>WoloxCI is still being tested with a not-so-small sample of our
+projects. The possibility of changing the build steps through a YAML
+file makes it accessible for everyone and that is a great improvement in
+our CI workflow.</p>
+</div>
+<div class="paragraph">
+<p>Docker gives us the possibility of easily changing the programming
+language without making any changes to our Jenkins installation and
+Jenkins’ Github Organization feature automatically adds new projects
+when a new repository with a Jenkinsfile is detected.</p>
+</div>
+<div class="paragraph">
+<p>All of these improvements have reduced the time we spend maintaining
+Jenkins significantly and give us the possibility of easily scaling
+without any extra configuration.</p>
+</div>
+<div class="paragraph">
+<p>This library is working in our CI but it still can be improved.
+If you would like to add features, feel free to
+<a href="https://github.com/Wolox/wolox-ci">contribute</a>!</p>
+</div>
+</div>
+</div>
+<!-- starting partial author.html.haml -->
+<div id="about-the-author">
+<b class="author about-header">
+About the Author
+</b>
+<table class="author box">
+<tr>
+<td>
+<!-- starting partial avatar.html.haml -->
+<img alt="Matias De Santi" class="author logo" src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logos/transparent/transparent.svg">
+
+<!-- ending partial avatar.html.haml -->
+</td>
+<td>
+<b class="author name">
+<a href="/blog/authors/mdesanti">
+Matias De Santi
+</a>
+</b>
+<p>
+<div class="paragraph">
+<p>Head of Infrastructure &amp; Cloud at <a href="https://www.wolox.com.ar">Wolox</a></p>
+</div>
+</p>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="author social-media-buttons">
+<li class="author">
+<a href="https://github.com/mdesanti" target="_blank">
+GitHub
+</a>
+</li>
+<li class="author">
+<a href="https://twitter.com/mdsanti" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</td>
+</tr>
+</table>
+</div>
+
+<!-- ending partial author.html.haml -->
+</div>
+</div>
+</div>
+
+
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2018/04/2018-04-25-configuring-jenkins-pipeline-with-yaml-file.adoc" title="Edit /blog/2018/04/2018-04-25-configuring-jenkins-pipeline-with-yaml-file.adoc on GitHub">Improve this page</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2018/04/2018-04-25-configuring-jenkins-pipeline-with-yaml-file.adoc" title="View /blog/2018/04/2018-04-25-configuring-jenkins-pipeline-with-yaml-file.adoc history on GitHub">Page history</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+</body>
+</html>

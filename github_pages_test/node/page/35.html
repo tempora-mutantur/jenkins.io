@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins Community Blog
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Jenkins Community Blog" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins Community Blog" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins Community Blog" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/page/35.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins Community Blog" property="og:site_name">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="og:image">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/footer.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-md navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Use Jenkins
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc/developer">
+Extend Jenkins
+</a>
+<span class="dropdown-item">
+<strong>
+Use-cases
+</strong>
+</span>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+&nbsp;-&nbsp;Android
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+&nbsp;-&nbsp;C/C++
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+&nbsp;-&nbsp;Docker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+&nbsp;-&nbsp;Embedded
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+&nbsp;-&nbsp;GitHub
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+&nbsp;-&nbsp;Java
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+&nbsp;-&nbsp;PHP
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+&nbsp;-&nbsp;Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+&nbsp;-&nbsp;Python
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+&nbsp;-&nbsp;Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam/">
+Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/remoting/">
+Jenkins Remoting
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security">
+Security
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/press">
+Press
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post">
+<div class="row body">
+<div class="col-md-8 main-content with-sidebar" id="content">
+<div id="content-top">
+<h2>
+Jenkins Community Blog
+</h2>
+</div>
+<div class="blogintro">
+The Jenkins project has a lot going on between core/plugin development,
+events and other open source automation related activities. To keep up with
+it subscribe to our
+<a href="https://feeds.feedburner.com/ContinuousBlog/">
+RSS feed
+</a>
+or
+<a href="https://twitter.com/jenkinsci">
+follow us on Twitter
+</a>
+</div>
+<!-- starting partial blogcardlist.html.haml -->
+<div class="content blog-posts">
+<div class="item-list">
+<ul class="ji-blog-list ji-item-list">
+<li class="post">
+<a class="body" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2016/06/01/gsoc-automatic-plugin-documentation/">
+<div class="header">
+<div class="date">
+<div class="month">
+Jun
+</div>
+<div class="day">
+01
+</div>
+</div>
+<h5 class="title">
+GSOC Project Intro: Automatic Plugin Documentation
+</h5>
+</div>
+<p class="teaser">
+About me
+
+I am Cynthia Anyango from Nairobi, Kenya. I am a second year student at Maseno
+University. I am currently specializing on Ruby on Rails and trying to learn
+Python. I recently started contributing to Open source projects.My major
+contribution was at Mozilla, where I worked with the QA for Cloud services. I did
+manual and automated tests for various cloud services. I wrote documentation
+too. Above that, I...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="/blog/authors/cynthia">Cynthia Anyango</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/gsoc">
+gsoc
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/plugins">
+plugins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2016/05/31/pipeline-snippetizer/">
+<div class="header">
+<div class="date">
+<div class="month">
+May
+</div>
+<div class="day">
+31
+</div>
+</div>
+<h5 class="title">
+New display of Pipeline’s "snippet generator"
+</h5>
+</div>
+<p class="teaser">
+Those of you updating the Pipeline Groovy plugin
+to 2.3 or later will notice a change to the appearance of the configuration form.
+The Snippet Generator tool is no longer a checkbox enabled inside the configuration page.
+Rather, there is a link Pipeline Syntax which opens a separate page with several options.
+(The link appears in the project’s sidebar; Jenkins 2 users will not see the sidebar from...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="/blog/authors/jglick">Jesse Glick</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/pipeline">
+pipeline
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2016/05/26/introducing-blue-ocean/">
+<div class="header">
+<div class="date">
+<div class="month">
+May
+</div>
+<div class="day">
+26
+</div>
+</div>
+<h5 class="title">
+Introducing Blue Ocean: a new user experience for Jenkins
+</h5>
+</div>
+<p class="teaser">
+In recent years developers have become rapidly attracted to tools that are not
+only functional but are designed to fit into their workflow seamlessly and are
+a joy to use. This shift represents a higher standard of design and user
+experience that Jenkins needs to rise to meet.
+
+
+We are excited to share and invite the community to join us on a project we’ve
+been thinking about over the...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="/blog/authors/i386">James Dumay</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/blueocean">
+blueocean
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/ux">
+ux
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/pipeline">
+pipeline
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2016/05/26/gsoc-jenkins-web-ui-project/">
+<div class="header">
+<div class="date">
+<div class="month">
+May
+</div>
+<div class="day">
+26
+</div>
+</div>
+<h5 class="title">
+GSoC Project Intro: Improving Job Creation/Configuration
+</h5>
+</div>
+<p class="teaser">
+About me
+
+My name is Samat Davletshin and I am from HSE University from Moscow, Russia. I
+interned at Intel and Yandex, and cofounded a startup
+project where I personally developed front-end and back-end of the website.
+
+
+I am excited to participate in GSoC with Jenkins this summer as a chanсe to make
+a positive change for thousands of users as well as to learn from great mentors.
+
+
+
+Abstract
+
+Although powerful,...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="/blog/authors/samatdav">Samat Davletshin</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/core">
+core
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/gsoc">
+gsoc
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2016/05/25/update-plugin-for-pipeline/">
+<div class="header">
+<div class="date">
+<div class="month">
+May
+</div>
+<div class="day">
+25
+</div>
+</div>
+<h5 class="title">
+Refactoring a Jenkins plugin for compatibility with Pipeline jobs
+</h5>
+</div>
+<p class="teaser">
+This is a guest post by Chris Price.
+Chris is a software engineer at Puppet, and has been
+spending some time lately on automating performance testing using the latest
+Jenkins features.
+
+
+
+
+
+In this blog post, I&#8217;m going to attempt to provide some step-by-step notes on
+how to refactor an existing Jenkins plugin to make it compatible with the new
+Jenkins Pipeline jobs.  Before we get to the fun stuff,...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="/blog/authors/cprice404">Chris Price</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/core">
+core
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/pipeline">
+pipeline
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/plugins">
+plugins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2016/05/23/external-workspace-manager-plugin/">
+<div class="header">
+<div class="date">
+<div class="month">
+May
+</div>
+<div class="day">
+23
+</div>
+</div>
+<h5 class="title">
+GSoC Project Intro: External Workspace Manager Plugin
+</h5>
+</div>
+<p class="teaser">
+About myself
+
+My name is Alexandru Somai.
+I&#8217;m following a major in Software Engineering at the Babes-Bolyai University of Cluj-Napoca, Romania.
+I have more than two years hands-on experience working in Software Development.
+
+
+I enjoy writing code in Java, Groovy and JavaScript.
+The technologies and frameworks that I&#8217;m most familiar with are: Spring Framework, Spring Security, Hibernate,
+JMS, Web Services, JUnit, TestNG, Mockito.
+As build tools and continuous integration, I&#8217;m using...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="/blog/authors/alexsomai">Alexandru Somai</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/pipeline">
+pipeline
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/plugins">
+plugins
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/gsoc">
+gsoc
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2016/05/18/announcing-azure-partnership/">
+<div class="header">
+<div class="date">
+<div class="month">
+May
+</div>
+<div class="day">
+18
+</div>
+</div>
+<h5 class="title">
+Partnering with Microsoft to run Jenkins infrastructure on Azure
+</h5>
+</div>
+<p class="teaser">
+I am pleased to announce that we have partnered with Microsoft to migrate and
+power the Jenkins project&#8217;s infrastructure with
+Microsoft Azure. The partnership comes
+at an important time, after the recent launch of Jenkins 2.0,
+Jenkins users are more readily adopting Pipeline as
+Code and many other plugins at an increasing rate, elevating the importance of
+Jenkins infrastructure to the overall success of the project. That strong and
+continued growth...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="/blog/authors/rtyler">R. Tyler Croy</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/azure">
+azure
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/infra">
+infra
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/infrastructure">
+infrastructure
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="post">
+<a class="body" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2016/05/17/state-of-jam/">
+<div class="header">
+<div class="date">
+<div class="month">
+May
+</div>
+<div class="day">
+17
+</div>
+</div>
+<h5 class="title">
+The State of Jenkins Area Meetups (JAM)
+</h5>
+</div>
+<p class="teaser">
+Recently, the Jenkins project announced the release of
+Jenkins 2.0, a first major release
+after 10 years and 655 weekly releases. This has been a major milestone for
+Jenkins and its growing community of developers, testers, designers and other
+users in the software delivery process.
+
+
+With its rising popularity and wide adoption, the Jenkins community continues to
+grow and evolve into the millions. Jenkins community meetup activity has risen
+to an...
+<span class="more"></span>
+</p>
+</a>
+<div class="attrs">
+<a href="/blog/authors/alyssat">Alyssa Tong</a>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/meetup">
+meetup
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/JAM">
+JAM
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/event">
+event
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<!-- ending partial blogcardlist.html.haml -->
+<!-- starting partial pagination.html.haml -->
+<div>
+<nav>
+<ul class="pagination">
+<li class='47027698432120: 47027704597100: 47027705611920: 47027706470980: 47027707996480: 47027708675640: 47027709421000: 47027710036040: :change_frequency=&gt;"never", :lastmod=&gt;"2019-07-21", :layout=&gt;"default", :paginate_generated=&gt;true, :posts=&gt;[Awestruct::Page{ :priority=&gt;0.1, :section=&gt;"blog", :selected_tag=&gt;nil, :title=&gt;"Jenkins :url=&gt;"/node/page/34.html"} Awestruct::Page{ Blog", Community layout=&gt;post output_path=&gt;/blog/2016/06/10/save-costs-with-ec2-spot-fleet/index.html, output_path=&gt;/blog/2016/06/13/gsoc-usage-stats-analysis/index.html, output_path=&gt;/blog/2016/06/13/june-jenkins-events/index.html, output_path=&gt;/blog/2016/06/14/gsoc-jenkins-support-core-plugin-improvements/index.html, output_path=&gt;/blog/2016/06/14/jenkins-world-agenda/index.html, output_path=&gt;/blog/2016/06/15/jenkins-pipeline-scalability/index.html, output_path=&gt;/blog/2016/06/16/parallel-test-executor-plugin/index.html, output_path=&gt;/blog/2016/06/21/gsoc-midterm-presentations-ann/index.html, page-item source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-06-10-save-costs-with-ec2-spot-fleet.adoc, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-06-13-gsoc-usage-stats-analysis.adoc, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-06-13-june-jenkins-events.adoc, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-06-14-gsoc-jenkins-support-core-plugin-improvements.adoc, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-06-14-jenkins-world-agenda.adoc, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-06-15-jenkins-pipeline-scalability.adoc, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-06-16-parallel-test-executor-plugin.adoc, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-06-21-gsoc-midterm-presentations-ann.adoc, {:__is_layout=&gt;false, }, }],'>
+<a class="page-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/page/34.html">
+&laquo;
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="..">
+1
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/2.html">
+2
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/3.html">
+3
+</a>
+</li>
+<li class="page-item disabled">
+<a class="page-link" href="#">
+...
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/33.html">
+33
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/34.html">
+34
+</a>
+</li>
+<li class="active page-item">
+<a class="page-link" href="../page/35.html">
+35
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/36.html">
+36
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/37.html">
+37
+</a>
+</li>
+<li class="page-item disabled">
+<a class="page-link" href="#">
+...
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/82.html">
+82
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/83.html">
+83
+</a>
+</li>
+<li class="page-item">
+<a class="page-link" href="../page/84.html">
+84
+</a>
+</li>
+<li class='47027702029460: 47027707138200: 47027708204240: 47027708843380: 47027709527300: 47027710190860: 47027710681760: 47027711815520: :change_frequency=&gt;"never", :lastmod=&gt;"2019-07-21", :layout=&gt;"default", :paginate_generated=&gt;true, :posts=&gt;[Awestruct::Page{ :priority=&gt;0.1, :section=&gt;"blog", :selected_tag=&gt;nil, :title=&gt;"Jenkins :url=&gt;"/node/page/36.html"} Awestruct::Page{ Blog", Community layout=&gt;post output_path=&gt;/blog/2016/04/15/the-need-for-pipeline/index.html, output_path=&gt;/blog/2016/04/21/dsl-plugins/index.html, output_path=&gt;/blog/2016/04/22/pipeline-2/index.html, output_path=&gt;/blog/2016/04/22/possible-infra-compromise/index.html, output_path=&gt;/blog/2016/04/26/jenkins-20-is-here/index.html, output_path=&gt;/blog/2016/05/10/jenkins-20-vjam/index.html, output_path=&gt;/blog/2016/05/11/security-update/index.html, output_path=&gt;/blog/2016/05/12/sf-jam-jenkins-and-azure/index.html, page-item source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-04-15-the-need-for-pipeline.adoc, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-04-21-dsl-plugins.adoc, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-04-22-pipeline-2.x.adoc, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-04-22-possible-infra-compromise.adoc, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-04-26-jenkins-20-is-here.adoc, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-05-10-jenkins-20-vjam.adoc, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-05-11-security-update.md, source_path=&gt;/Users/savanchuk/Development/jenkins.io/content/blog/2016/2016-05-12-sf-jam-jenkins-and-azure.adoc, {:__is_layout=&gt;false, }, }],'>
+<a class="page-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/page/36.html">
+&raquo;
+</a>
+</li>
+</ul>
+</nav>
+</div>
+
+<!-- ending partial pagination.html.haml -->
+</div>
+<div class="col-md-4 events vertical">
+<div class="content">
+<!-- starting partial events.html.haml -->
+<div class="item-list">
+<ul class="ji-date-list ji-item-list">
+<li class="post event">
+<a class="body" href="https://www.cloudbees.com/devops-world" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Aug
+</div>
+<div class="day">
+12
+</div>
+<div class="dow">
+Mon
+</div>
+</div>
+<div class="time">
+ 9:00 am
+</div>
+</div>
+<h5 class="title">
+DW|JW 2019 San Francisco
+</h5>
+</div>
+<p class="teaser">
+DevOps World | Jenkins World 2019 San Francisco
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+<li class="post event">
+<a class="body" href="https://www.cloudbees.com/devops-world" target="_blank">
+<div class="header time">
+<div class="date-time">
+<div class="date">
+<div class="month">
+Dec
+</div>
+<div class="day">
+2
+</div>
+<div class="dow">
+Mon
+</div>
+</div>
+<div class="time">
+ 9:00 am
+</div>
+</div>
+<h5 class="title">
+DW|JW Lisbon
+</h5>
+</div>
+<p class="teaser">
+DevOps World | Jenkins World 2019 Lisbon
+
+<div class="more"></div>
+</p>
+</a>
+<div class="attrs"></div>
+</li>
+</ul>
+</div>
+
+<!-- ending partial events.html.haml -->
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//node/index.html.haml" title="Edit /node/index.html.haml on GitHub">Improve this page</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//node/index.html.haml" title="View /node/index.html.haml history on GitHub">Page history</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+</body>
+</html>

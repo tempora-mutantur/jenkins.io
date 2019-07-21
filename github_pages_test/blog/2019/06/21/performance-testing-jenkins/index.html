@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Micro-benchmarking Framework for Jenkins Plugins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Micro-benchmarking Framework for Jenkins Plugins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Micro-benchmarking Framework for Jenkins Plugins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Micro-benchmarking Framework for Jenkins Plugins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2019/06/21/performance-testing-jenkins/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Micro-benchmarking Framework for Jenkins Plugins" property="og:site_name">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="og:image">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/footer.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-md navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Use Jenkins
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc/developer">
+Extend Jenkins
+</a>
+<span class="dropdown-item">
+<strong>
+Use-cases
+</strong>
+</span>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+&nbsp;-&nbsp;Android
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+&nbsp;-&nbsp;C/C++
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+&nbsp;-&nbsp;Docker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+&nbsp;-&nbsp;Embedded
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+&nbsp;-&nbsp;GitHub
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+&nbsp;-&nbsp;Java
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+&nbsp;-&nbsp;PHP
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+&nbsp;-&nbsp;Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+&nbsp;-&nbsp;Python
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+&nbsp;-&nbsp;Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam/">
+Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/remoting/">
+Jenkins Remoting
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security">
+Security
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/press">
+Press
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('#content h' + i);
+    }
+  })
+</script>
+<div class="container blog-post">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2019/06/21/performance-testing-jenkins/" title="Micro-benchmarking Framework for Jenkins Plugins">
+Micro-benchmarking Framework for Jenkins Plugins
+</a>
+</h1>
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+<div class="post-attrs">
+<span class="submitted">
+Published on
+2019-06-21
+by
+<a href="/blog/authors/abhyudayasharma">Abhyudaya Sharma</a>
+</span>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/jmh">
+jmh
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/plugins">
+plugins
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/benchmark">
+benchmark
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/performance">
+performance
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/developer">
+developer
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/gsoc">
+gsoc
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/gsoc2019">
+gsoc2019
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>I have been working on improving the performance of the Role Strategy Plugin as a part of my <a href="/projects/gsoc/2019/role-strategy-performance/">Google Summer of Code project</a>.
+Since there was no existing way to measure performance and do benchmarks on Jenkins Plugins,
+my work for the first phase of the project was to create a framework for running
+benchmarks in Jenkins plugins with a Jenkins instance available. To make our job a bit easier,
+we chose <a href="http://openjdk.java.net/jeps/230">Java Microbenchmark Harness</a> for running these benchmarks. This
+allows us to reliably measure performance of our time-critical functions and will help make Jenkins perform faster
+for everyone.</p>
+</div>
+<div class="paragraph">
+<p>The micro-benchmarking framework was recently released in the Jenkins Unit Test Harness <a href="https://github.com/jenkinsci/jenkins-test-harness/releases/tag/jenkins-test-harness-2.50">2.50</a>.
+The blog post below shows how to run benchmarks in your plugins.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The framework runs works by starting a temporary Jenkins instance for each fork of the JMH benchmark,
+just like <code>JenkinsRule</code> from Jenkins Test Harness. Benchmarks are run directly from your JUnit Tests which allows
+you to fail builds on the fly and easily run benchmarks from your IDE, just like unit tests. You can easily
+configure your benchmarks by either using your Java methods, or by using Jenkins <a href="https://plugins.jenkins.io/configuration-as-code">Configuration-as-Code plugin</a>
+and passing the path to your YAML file.</p>
+</div>
+<div class="paragraph">
+<p>To run benchmarks from your plugins, you need to do the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>bump up the minimum required Jenkins version to 2.60.3 or above</p>
+</li>
+<li>
+<p>bump Plugin-POM to a version ≥ 3.46 or manually upgrade to Jenkins Test Harness ≥ 2.51.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now, to run the benchmarks, you need to have a benchmark runner that contains a <code>@Test</code> so it can run
+like a JUnit test. From inside a test method, you can use the <code>OptionsBuilder</code> provided by JMH to
+configure your benchmarks. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">BenchmarkRunner</span> {
+    <span style="color:#007">@Test</span>
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">void</span> runJmhBenchmarks() <span style="color:#088;font-weight:bold">throws</span> <span style="color:#C00;font-weight:bold">Exception</span> {
+        ChainedOptionsBuilder options = <span style="color:#080;font-weight:bold">new</span> OptionsBuilder()
+                .mode(Mode.AverageTime)
+                .forks(<span style="color:#00D">2</span>)
+                .result(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">jmh-report.json</span><span style="color:#710">&quot;</span></span>);
+
+        <span style="color:#777">// Automatically detect benchmark classes annotated with @JmhBenchmark</span>
+        <span style="color:#080;font-weight:bold">new</span> BenchmarkFinder(getClass()).findBenchmarks(options);
+        <span style="color:#080;font-weight:bold">new</span> Runner(options.build()).run();
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sample-benchmarks"><a class="anchor" href="#sample-benchmarks"></a>Sample benchmarks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now, you can write your first benchmark:</p>
+</div>
+<div class="paragraph">
+<p><strong>Without any special setup</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#007">@JmhBenchmark</span>
+<span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">JmhStateBenchmark</span> {
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">MyState</span> <span style="color:#088;font-weight:bold">extends</span> JmhBenchmarkState {
+    }
+
+    <span style="color:#007">@Benchmark</span>
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">void</span> benchmark(MyState state) {
+        <span style="color:#777">// benchmark code goes here</span>
+        state.getJenkins().setSystemMessage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello world</span><span style="color:#710">&quot;</span></span>);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Using Configuration as Code</strong></p>
+</div>
+<div class="paragraph">
+<p>To use configuration as code, apart from the dependencies above you also need to add the following
+to your <code>pom.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span style="color:#070;font-weight:bold">&lt;dependency&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;groupId&gt;</span>io.jenkins<span style="color:#070;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;artifactId&gt;</span>configuration-as-code<span style="color:#070;font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;version&gt;</span>1.21<span style="color:#070;font-weight:bold">&lt;/version&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;optional&gt;</span>true<span style="color:#070;font-weight:bold">&lt;/optional&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/dependency&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;dependency&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;groupId&gt;</span>io.jenkins<span style="color:#070;font-weight:bold">&lt;/groupId&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;artifactId&gt;</span>configuration-as-code<span style="color:#070;font-weight:bold">&lt;/artifactId&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;version&gt;</span>1.21<span style="color:#070;font-weight:bold">&lt;/version&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;classifier&gt;</span>tests<span style="color:#070;font-weight:bold">&lt;/classifier&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;scope&gt;</span>test<span style="color:#070;font-weight:bold">&lt;/scope&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now configuring a benchmark is as simple as providing path to your YAML file and specifying the class
+containing the benchmark state.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#007">@JmhBenchmark</span>
+<span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">SampleBenchmark</span> {
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">MyState</span> <span style="color:#088;font-weight:bold">extends</span> CascJmhBenchmarkState {
+        <span style="color:#007">@Nonnull</span>
+        <span style="color:#007">@Override</span>
+        <span style="color:#088;font-weight:bold">protected</span> <span style="color:#0a8;font-weight:bold">String</span> getResourcePath() {
+            <span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">config.yml</span><span style="color:#710">&quot;</span></span>;
+        }
+
+        <span style="color:#007">@Nonnull</span>
+        <span style="color:#007">@Override</span>
+        <span style="color:#088;font-weight:bold">protected</span> <span style="color:#0a8;font-weight:bold">Class</span>&lt;?&gt; getEnclosingClass() {
+            <span style="color:#080;font-weight:bold">return</span> SampleBenchmark.class;
+        }
+    }
+
+    <span style="color:#007">@Benchmark</span>
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">void</span> benchmark(MyState state) {
+        Jenkins jenkins = state.getJenkins(); <span style="color:#777">// jenkins is configured and ready to be benchmarked.</span>
+        <span style="color:#777">// your benchmark code goes here...</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>More Samples</strong></p>
+</div>
+<div class="paragraph">
+<p>As a part of this project, a few benchmarks have been created in the Role Strategy Plugin which show
+configuring the instances for various situations. You can find them
+<a href="https://github.com/jenkinsci/role-strategy-plugin/tree/master/src/test/java/jmh/benchmarks">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="running-benchmarks"><a class="anchor" href="#running-benchmarks"></a>Running Benchmarks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Running benchmarks from Maven</strong></p>
+</div>
+<div class="paragraph">
+<p>To easily run benchmarks from Maven, a Maven profile to run the benchmarks has been created
+and is available starting Plugin-POM version 3.45. You can then run your benchmarks from the
+command line using <code>mvn test -Dbenchmark</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Running benchmarks on ci.jenkins.io</strong></p>
+</div>
+<div class="paragraph">
+<p>If you have your plugins hosted on ci.jenkins.io, you can easily run benchmarks directly from your Jenkinsfile
+by using the <code>runBenchmarks()</code> method after the <code>buildPlugin()</code> step in your which is now available in
+<a href="https://github.com/jenkins-infra/pipeline-library">Jenkins Pipeline library</a>.
+This function also accepts the path to your generated JMH benchmark reports as an optional
+parameter and archives the benchmark results. Running benchmarks in pull request builds allows you to constantly
+monitor the performance implications of a given change. For example, the Jenkinsfile from Role Strategy Plugin:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">buildPlugin()
+runBenchmarks(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">jmh-report.json</span><span style="color:#710">'</span></span>)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="visualizing-benchmark-results"><a class="anchor" href="#visualizing-benchmark-results"></a>Visualizing benchmark results</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Benchmark reports generated (in JSON) can be visualized using the either the <a href="https://plugins.jenkins.io/jmh-report">JMH Report Plugin</a>
+or by passing the benchmark reports to the <a href="https://jmh.morethan.io">JMH visualizer</a> web service. As an example, here is
+a visualized report of some benchmarks from the Role Strategy Plugin:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/post-images/jmh-microbenchmark-framework/jmh-visualizer.png" alt="Role Strategy Plugin benchmarks visualized by JMH Visualizer">
+</div>
+</div>
+<div class="paragraph">
+<p>These improvements seen above were obtained through a small <a href="https://github.com/jenkinsci/role-strategy-plugin/pull/81">pull request</a>
+to the plugin and shows how even seemingly small changes can bring major performance improvements. Microbenchmarks
+help to find these hot-spots and estimate the impact of changes.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="some-tips-and-tricks"><a class="anchor" href="#some-tips-and-tricks"></a>Some tips and tricks</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Since <code>BenchmarkRunner</code> class name in the example above does not qualify as a test according to Maven surefire plugin&#8217;s
+naming conventions, the benchmarks will not interfere with your JUnit tests.</p>
+</li>
+<li>
+<p>Benchmark methods need to be annotated by <code>@Benchmark</code> for JMH to detect them.</p>
+</li>
+<li>
+<p>Classes containing benchmarks are found automatically by the <code>BenchmarkFinder</code>
+when annotated with <code>@JmhBenchmark</code>.</p>
+</li>
+<li>
+<p>A reference to the Jenkins instance is available through either <code>JmhBenchmarkState#getJenkins()</code> or through
+<code>Jenkins.getInstance()</code> like you would otherwise do.</p>
+</li>
+<li>
+<p><code>JmhBenchmarkState</code> provides <code>setup()</code> and <code>tearDown()</code> methods which can be overridden to configure the
+Jenkins instance according to your benchmark&#8217;s requirements.</p>
+</li>
+<li>
+<p>The benchmark builds on ci.jenkins.io are currently throttled because of the limited availability of <code>highmem</code> nodes.</p>
+</li>
+<li>
+<p>The benchmark framework was made available in Jenkins Test Harness 2.50, it is recommended to use version <a href="https://github.com/jenkinsci/jenkins-test-harness/releases/tag/jenkins-test-harness-2.51">2.51</a> as it includes some bug fixes.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="links-and-feedback"><a class="anchor" href="#links-and-feedback"></a>Links and Feedback</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you have any feedback, comments or questions, please feel free to reach out to me through either
+the <a href="https://gitter.im/jenkinsci/role-strategy-plugin">Role Strategy Plugin Gitter chat</a> or through
+the <a href="mailto:jenkinsci-dev@googlegroups.com">Jenkins Developer Mailing list</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://drive.google.com/file/d/1gig6u64rzvSzGKjN_PTTXTkSXQ9Ah7E5/view?usp=sharing">Presentation slides</a></p>
+</li>
+<li>
+<p><a href="https://youtu.be/lyfbmhQd0Ag?t=847">Demo at Platform SIG meeting</a></p>
+</li>
+<li>
+<p>Documentation for the micro-benchmark framework:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/jenkins-test-harness/blob/master/docs/jmh-benchmarks.adoc">Writing benchmarks (Jenkins Test Harness)</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/benchmarks/jmh-benchmarks.md">Preconfiguring benchmarks using JCasC</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/plugin-pom#running-benchmarks">Running benchmarks using Plugin POM profile</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra/pipeline-library#runbenchmarks">Build Step for running benchmarks on ci.jenkins.io</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- starting partial author.html.haml -->
+<div id="about-the-author">
+<b class="author about-header">
+About the Author
+</b>
+<table class="author box">
+<tr>
+<td>
+<!-- starting partial avatar.html.haml -->
+<img alt="Abhyudaya Sharma" class="author logo" src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/avatars/abhyudayasharma.jpg">
+
+<!-- ending partial avatar.html.haml -->
+</td>
+<td>
+<b class="author name">
+<a href="/blog/authors/abhyudayasharma">
+Abhyudaya Sharma
+</a>
+</b>
+<p>
+<div class="paragraph">
+<p>Abhyudaya is a Computer Science student at Shiv Nadar University, India.
+He is participating in Google Summer of Code 2019 to improve the performance
+of the <a href="https://github.com/jenkinsci/role-strategy-plugin">Role Strategy Plugin</a>.</p>
+</div>
+</p>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="author social-media-buttons">
+<li class="author">
+<a href="https://github.com/AbhyudayaSharma" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</td>
+</tr>
+</table>
+</div>
+
+<!-- ending partial author.html.haml -->
+</div>
+</div>
+</div>
+
+
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2019/06/2019-06-21-performance-testing-jenkins.adoc" title="Edit /blog/2019/06/2019-06-21-performance-testing-jenkins.adoc on GitHub">Improve this page</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2019/06/2019-06-21-performance-testing-jenkins.adoc" title="View /blog/2019/06/2019-06-21-performance-testing-jenkins.adoc history on GitHub">Page history</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+</body>
+</html>

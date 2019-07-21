@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Jenkins GSoC application draft, 2019
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Jenkins GSoC application draft, 2019" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Jenkins GSoC application draft, 2019" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Jenkins GSoC application draft, 2019" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/gsoc/2019/application/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Jenkins GSoC application draft, 2019" property="og:site_name">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="og:image">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/footer.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-md navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Use Jenkins
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc/developer">
+Extend Jenkins
+</a>
+<span class="dropdown-item">
+<strong>
+Use-cases
+</strong>
+</span>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+&nbsp;-&nbsp;Android
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+&nbsp;-&nbsp;C/C++
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+&nbsp;-&nbsp;Docker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+&nbsp;-&nbsp;Embedded
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+&nbsp;-&nbsp;GitHub
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+&nbsp;-&nbsp;Java
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+&nbsp;-&nbsp;PHP
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+&nbsp;-&nbsp;Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+&nbsp;-&nbsp;Python
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+&nbsp;-&nbsp;Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam/">
+Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/remoting/">
+Jenkins Remoting
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security">
+Security
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/press">
+Press
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<h1>
+Jenkins GSoC application draft, 2019
+</h1>
+
+<!-- This file uses Markdown intentionally.
+     Google's GSoC site uses Markdown as an engine, using Markdown here allows copy-pasting
+ -->
+
+<p>The data below represents the 2019 GSoC application draft.
+Please feel free to contribute to it by proposing pull requests against the page.</p>
+
+<h3 id="organization-profile">Organization Profile</h3>
+
+<ul>
+  <li>Tagline (up to 80 symbols): Open-source automation server for building great things at any scale</li>
+  <li>Technology tags (max 5):
+    <ul>
+      <li>java</li>
+      <li>groovy</li>
+      <li>javascript</li>
+      <li>docker</li>
+      <li>kubernetes</li>
+    </ul>
+  </li>
+  <li>Topic Tags (max 5)
+    <ul>
+      <li>continuous integration</li>
+      <li>continuous delivery</li>
+      <li>developer tools</li>
+      <li>devops</li>
+      <li>automation</li>
+    </ul>
+  </li>
+  <li>Ideas list: https://jenkins.io/projects/gsoc/2019/project-ideas/</li>
+  <li>Primary open-source license: MIT License</li>
+  <li>Category: Programming Languages and Development tools</li>
+  <li>Logo: https://wiki.jenkins.io/download/attachments/2916393/logo-title.png</li>
+</ul>
+
+<h4 id="short-description">Short description</h4>
+
+<p>Jenkins is an open source automation server. 
+Built primarily in Java, it provides hundreds of plugins to support building, testing, deploying and automating virtually any project.</p>
+
+<h4 id="long-description-markdown">Long description (Markdown)</h4>
+
+<p><a href="https://jenkins.io/">Jenkins</a>, originally founded in 2006 as "Hudson", is one of the leading automation servers. 
+Jenkins' motto is "Build great things at any scale".
+Using an extensible, plugin-based architecture developers have created hundreds of plugins to adapt Jenkins to a multitude of build, test, and deployment automation workloads. 
+Jenkins core is open-source (<a href="https://www.opensource.org/licenses/mit-license.php">MIT License</a>)</p>
+
+<p>The project has about 400 active contributors working on Jenkins core, plugins, website, project infrastructure, localization activities, etc. 
+In total we have more than 2000 components including plugins, libraries, and various utilities. 
+The main languages in the project are Java, Groovy and JavaScript, 
+but we also have components written in other languages (Go, C/C++, C#, etc.).
+Jenkins project also includes multiple 
+<a href="https://jenkins.io/projects/">sub-projects</a> (including <a href="https://jenkins-x.io/">Jenkins X</a>, 
+<a href="https://jenkins.io/projects/jcasc/">Configuration-as-Code</a> 
+and <a href="https://jenkins.io/projects/remoting/">Remoting</a>) and 
+<a href="https://jenkins.io/sigs/">special interest groups</a>.
+These projects and SIGs participate in GSoC as a part of the Jenkins project.</p>
+
+<p>This year we invite students to join the Jenkins community and to work together on Jenkins plugins in order to improve Jenkins user experience and reliability.</p>
+
+<h4 id="proposal-process">Proposal process:</h4>
+
+<p>In order to apply to the organization, please follow the <a href="https://jenkins.io/projects/gsoc/students/#student-application-process">guidelines posted on our website</a>.</p>
+
+<p>Before submitting please go through the page (including the expectations section) and through the <a href="https://google.github.io/gsocguides/student/">Student guide</a>. 
+Participating in Google Summer of Code is a serious commitment requiring an almost full-time dedication over several months. 
+If it may overlap with your study and other commitments, we recommend to think twice before applying.</p>
+
+<p>If you have any questions about the application process, 
+please feel free to contact us via the mailing list or the chat.</p>
+
+<h4 id="proposal-tags-max---10">Proposal tags (max - 10)</h4>
+
+<ul>
+  <li>user experience</li>
+  <li>plugins</li>
+  <li>performance</li>
+  <li>developer tools</li>
+  <li>electronic design automation</li>
+  <li>web interfaces</li>
+  <li>REST API</li>
+  <li>cloud technologies</li>
+  <li>containers</li>
+  <li>configuration-as-code</li>
+</ul>
+
+<h4 id="contents">Contents</h4>
+
+<ul>
+  <li>Chat page URL: https://gitter.im/jenkinsci/gsoc-sig</li>
+  <li>Mailing list page URL: https://jenkins.io/projects/gsoc/#contacts</li>
+  <li>General-purpose e-mail: jenkinsci-gsoc-all-public@googlegroups.com</li>
+</ul>
+
+<h3 id="application">Application</h3>
+
+<h4 id="why-does-your-org-want-to-participate-in-google-summer-of-code">Why does your org want to participate in Google Summer of Code?</h4>
+
+<p>In our community we are interested in more contributors in both Jenkins core and more than 1,000 of existing plugins. 
+We consider Google Summer of Code as an opportunity to find new contributors and students interested in software development automation (continuous integration and continuous delivery). 
+For us it is also a great opportunity to get existing contributors more involved into the community work. 
+We have previously participated in GSoC 2016/2018 and got much experience from it, especially regarding the student selection process. 
+We hope this will help us to improve student/mentor experience and overall results this year.</p>
+
+<h4 id="how-many-potential-mentors-have-agreed-to-participate">How many potential mentors have agreed to participate?</h4>
+
+<p>20+</p>
+
+<h4 id="how-will-you-keep-mentors-engaged-with-their-students">How will you keep mentors engaged with their students?</h4>
+
+<ul>
+  <li>Each student project will have at least 2+ mentors AND an org admin advisor assigned to the project.</li>
+  <li>Mentors are expected to be accomplished Jenkins contributors, who are passionate about the community/mentorship work.</li>
+  <li>Mentors bring their own project, and they are expected to have a high interest in it</li>
+  <li>Mentors will be directly involved into student selection and interview processes so they will establish connection with successful students early</li>
+  <li>We do not require mentors to be experts in the code base, because we expect students to work with other community members.</li>
+  <li>Starting from Dec 2018 we conduct <a href="https://jenkins.io//projects/gsoc/#office-hours">weekly meetings</a> between mentors and org admins to sync-up on progress and any issues:</li>
+  <li>As org admins we will be monitoring mentor/student interaction starting from the application phase. If something goes wrong, as org admins we will jump in and/or find additional mentors</li>
+</ul>
+
+<!-- DOES NOT FIT the form size
+* There will be a private communication channel between org admins and mentors. 
+-->
+
+<h4 id="how-will-you-help-your-students-stay-on-schedule-to-complete-their-projects">How will you help your students stay on schedule to complete their projects?</h4>
+
+<ul>
+  <li>During the Community Bonding phase mentors will share their expertise in order to define realistic project plans, design document, and effort estimations.</li>
+  <li>The student project milestones will be discussed and confirmed between mentors and students. 
+Milestones will be aligned with student evaluations and will have clear expectations set up.</li>
+  <li>Mentors will set up regular meetings with students (at least twice per week) in order to sync-up on projects. 
+We will also recommend having retrospectives with students after evaluations.</li>
+  <li>Mentors should be available for questions. 
+They should also provide a periodic feedback on the progress of the project and on the performance of particular students (1x1).</li>
+  <li>We will set up weekly public office-hours with students (or two meetings if time-zones require it) and private ones between mentors and org admins to sync-up</li>
+  <li>We will be requiring a daily push to branches so that the students always show the progress and keep changes atomic.</li>
+</ul>
+
+<!-- DOES NOT FIT form size 
+* During the coding period, mentors will participate in the code reviews of their student and report to org admins if the project stalls.
+-->
+
+<h4 id="how-will-you-get-your-students-involved-in-your-community-during-gsoc">How will you get your students involved in your community during GSoC?</h4>
+
+<ul>
+  <li>Students will cooperate with Jenkins community during the project. 
+Org Admins will provide an introductory training (community overview, code-of-conduct, etc.), 
+then mentors will help students to establish contacts with experts from the community</li>
+  <li>We will ensure that students are around in public chats and other communication channels during the “working days”</li>
+  <li>Projects will handled under an umbrella of
+<a href="https://jenkins.io/sigs">SIGs</a> or <a href="https://jenkins.io/projects">sub-projects</a>
+so that there is a number of non-mentor stakeholders and early adopters</li>
+  <li>Students will be involved into all standard processes in our community (including pull requests, code reviews, IRC/Gitter discussions, test automation for their projects, documentation development, etc.).</li>
+  <li>Students will be participating in sub-project/SIG meetings and presenting their work there on a regular basis</li>
+  <li>Students will be encouraged to give updates to the wider community in the Jenkins blog</li>
+</ul>
+
+<h4 id="how-will-you-keep-students-involved-with-your-community-after-gsoc">How will you keep students involved with your community after GSoC?</h4>
+
+<ul>
+  <li>There will be a <a href="https://www.cloudbees.com/jenkinsworld/home">DevOps World - Jenkins World conference</a> in USA in August 2019 and then in Europe in Dec 2019. 
+We plan sponsoring successful students to go to this or other Jenkins-focused conference &amp; contributor summit.
+The projects will be also presented at the <a href="https://www.meetup.com/Jenkins-online-meetup/">Jenkins Online Meetup</a>.</li>
+  <li>Students will be developing their own modules for Jenkins and effectively they will retain ownership of these modules after GSoC (they can opt-out, of course). 
+Public presentations will attract attention, and the students will be periodically contacted by users.</li>
+  <li>Students will be also advised to present their projects at local Jenkins Area Meetups (https://jenkins.io/projects/jam)</li>
+  <li>Each project will have a strict Definition Of Done: public availability, Q&amp;A chats, <a href="https://jenkins.io/node/">blog posts on the project website</a>. 
+The students will be visible in the community even after GSoC</li>
+</ul>
+
+<h4 id="has-your-org-been-accepted-as-a-mentoring-org-in-google-summer-of-code-before">Has your org been accepted as a mentoring org in Google Summer of Code before?</h4>
+<p>Yes, in 2016 and 2018</p>
+
+<p>2018: 2/3 (+1 cancelled project during community bonding)
+2016: 1/5 (3 students have been failed due to major undisclosed time commitments, which impacted the project quality at the first coding phase)</p>
+
+<h4 id="if-your-org-has-applied-for-gsoc-before-but-not-been-accepted-select-the-years">If your org has applied for GSoC before but not been accepted, select the years</h4>
+<p>2009, 2017</p>
+
+<h4 id="if-you-are-a-new-organization-to-gsoc-is-there-a-google-employee-or-previously-participating-organization-who-will-vouch-for-you-if-so-please-enter-their-name-contact-email-and-relationship-to-your-organization-optional">If you are a new organization to GSoC, is there a Google employee or previously participating organization who will vouch for you? If so, please enter their name, contact email, and relationship to your organization. (optional)</h4>
+
+<p>EMPTY</p>
+
+<h4 id="what-year-was-your-project-started">What year was your project started?</h4>
+
+<p>2006</p>
+
+<h4 id="where-does-your-source-code-live">Where does your source code live</h4>
+
+<p>https://github.com/jenkinsci/ ,
+https://github.com/jenkins-x/ ,
+https://github.com/jenkins-infra/</p>
+
+<h4 id="are-you-part-of-a-foundationumbrella-organization">Are you part of a foundation/umbrella organization?</h4>
+<p>Yes, Software in the Public Interest, Inc. (https://spi-inc.org) a 501 (c) (3) non-profit organization</p>
+
+<h4 id="anything-else-we-should-know-optional">Anything else we should know (optional)?</h4>
+
+<p>There is a probability that Jenkins project migrates from SPI to Linux Foundation this year
+<a href="https://groups.google.com/d/msg/jenkinsci-dev/1w57jl3K4S4/OFDYSEfXEwAJ">ongoing discussion</a>. 
+GSoC org admins closely monitor this topic, 
+and we will make sure to notify GSoC Support team if this migration impacts the organization payment process.</p>
+
+
+</div>
+</div>
+</div>
+
+
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//projects/gsoc/2019/application.md" title="Edit /projects/gsoc/2019/application.md on GitHub">Improve this page</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//projects/gsoc/2019/application.md" title="View /projects/gsoc/2019/application.md history on GitHub">Page history</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+</body>
+</html>

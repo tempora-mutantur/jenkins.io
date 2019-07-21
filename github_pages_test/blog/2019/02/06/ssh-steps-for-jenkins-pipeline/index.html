@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+SSH Steps for Jenkins Pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="SSH Steps for Jenkins Pipeline" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="SSH Steps for Jenkins Pipeline" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="SSH Steps for Jenkins Pipeline" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2019/02/06/ssh-steps-for-jenkins-pipeline/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="SSH Steps for Jenkins Pipeline" property="og:site_name">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="og:image">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/footer.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-md navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Use Jenkins
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc/developer">
+Extend Jenkins
+</a>
+<span class="dropdown-item">
+<strong>
+Use-cases
+</strong>
+</span>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+&nbsp;-&nbsp;Android
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+&nbsp;-&nbsp;C/C++
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+&nbsp;-&nbsp;Docker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+&nbsp;-&nbsp;Embedded
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+&nbsp;-&nbsp;GitHub
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+&nbsp;-&nbsp;Java
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+&nbsp;-&nbsp;PHP
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+&nbsp;-&nbsp;Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+&nbsp;-&nbsp;Python
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+&nbsp;-&nbsp;Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam/">
+Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/remoting/">
+Jenkins Remoting
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security">
+Security
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/press">
+Press
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('#content h' + i);
+    }
+  })
+</script>
+<div class="container blog-post">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2019/02/06/ssh-steps-for-jenkins-pipeline/" title="SSH Steps for Jenkins Pipeline">
+SSH Steps for Jenkins Pipeline
+</a>
+</h1>
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+<div class="post-attrs">
+<span class="submitted">
+Published on
+2019-02-06
+by
+<a href="/blog/authors/nrayapati">Naresh Rayapati</a>
+</span>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/pipeline">
+pipeline
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/plugins">
+plugins
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/ssh">
+ssh
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/steps">
+steps
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This guest post was originally published on Cerner&#8217;s Engineering blog
+<a href="https://engineering.cerner.com/blog/ssh-steps-for-jenkins-pipeline/">here</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Pipeline-as-code</strong> or defining the deployment pipeline through code rather than manual job creation through UI, provides tremendous benefits for teams automating builds and deployment infrastructure across their environments.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/pipeline/realworld-pipeline-flow.png" alt="Pipeline Flow" width="100%"></span></p>
+</div>
+<div class="paragraph">
+<p><em>Source of image: <a href="/doc/book/pipeline/"><a href="https://jenkins.io/doc/book/pipeline/" class="bare">https://jenkins.io/doc/book/pipeline/</a></a></em></p>
+</div>
+<div class="sect1">
+<h2 id="jenkins-pipelines"><a class="anchor" href="#jenkins-pipelines"></a>Jenkins Pipelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://jenkins.io/">Jenkins</a> is a well-known open source continuous integration and continuous deployment automation tool. With the latest 2.0 release, Jenkins introduced the Pipeline plugin that implements Pipeline-as-code. This plugin lets you define delivery pipelines using concise scripts which deal elegantly with jobs involving persistence and asynchrony.</p>
+</div>
+<div class="paragraph">
+<p>The Pipeline-as-code&#8217;s script is also known as a <em>Jenkinsfile</em>.</p>
+</div>
+<div class="paragraph">
+<p>Jenkinsfiles uses a domain specific language syntax based on the <a href="http://groovy-lang.org/">Groovy</a> programming language. They are persistent files which can be checked in and version-controlled along with the rest of their project source code. This file can contain the complete set of encoded steps (steps, nodes, and stages) necessary to define the entire application life-cycle, becoming the intersecting point between development and operations.</p>
+</div>
+<div class="sect2">
+<h3 id="missing-piece-of-the-puzzle"><a class="anchor" href="#missing-piece-of-the-puzzle"></a>Missing piece of the puzzle</h3>
+<div class="paragraph">
+<p>One of the most common steps defined in a basic pipeline job is the <em>Deploy</em> step. The deployment stage encompasses everything from publishing build artifacts to pushing code into pre-production and production environments. This deployment stage usually involves both development and operations teams logging onto various remote nodes to run commands and/or scripts to deploy code and configuration. While there are a couple of existing ssh plugins for Jenkins, they currently don&#8217;t support the functionality such as logging into nodes for pipelines. Thus, there was a need for a plugin that supports these steps.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introducing-ssh-steps"><a class="anchor" href="#introducing-ssh-steps"></a>Introducing SSH Steps</h2>
+<div class="sectionbody">
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2019-02-06-ssh-steps/JenkinsPlusSSH.png" alt="SSH Steps">
+</div>
+</div>
+<div class="paragraph">
+<p>Recently, our team at Cerner started working on a project to automate deployments through Jenkins pipelines to help facilitate running commands on over one thousand nodes. We looked at several options including existing plugins, internal shared Jenkins libraries, and others. In the end, we felt it was best to create and open source a plugin to fill this gap so that it can be used across Cerner and beyond.</p>
+</div>
+<div class="paragraph">
+<p>The initial version of this new plugin SSH Steps supports the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sshCommand</code>: Executes the given command on a remote node.</p>
+</li>
+<li>
+<p><code>sshScript</code>: Executes the given shell script on a remote node.</p>
+</li>
+<li>
+<p><code>sshGet</code>: Gets a file/directory from the remote node to current workspace.</p>
+</li>
+<li>
+<p><code>sshPut</code>: Puts a file/directory from the current workspace to remote node.</p>
+</li>
+<li>
+<p><code>sshRemove</code>: Removes a file/directory from the remote node.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="usage"><a class="anchor" href="#usage"></a>Usage</h3>
+<div class="paragraph">
+<p>Below is a simple demonstration on how to use above steps. More documentation can be found on <a href="https://github.com/jenkinsci/ssh-steps-plugin/blob/master/README.adoc">GitHub</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">def</span> remote = [:]
+remote.name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">node</span><span style="color:#710">&quot;</span></span>
+remote.host = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">node.abc.com</span><span style="color:#710">&quot;</span></span>
+remote.allowAnyHosts = <span style="color:#069">true</span>
+
+node {
+    withCredentials([usernamePassword(<span style="color:#606">credentialsId</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sshUserAcct</span><span style="color:#710">'</span></span>, <span style="color:#606">passwordVariable</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">password</span><span style="color:#710">'</span></span>, <span style="color:#606">usernameVariable</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">userName</span><span style="color:#710">'</span></span>)]) {
+        remote.user = userName
+        remote.password = password
+
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SSH Steps Rocks!</span><span style="color:#710">&quot;</span></span>) {
+            writeFile <span style="color:#606">file</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test.sh</span><span style="color:#710">'</span></span>, <span style="color:#606">text</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ls</span><span style="color:#710">'</span></span>
+            sshCommand <span style="color:#606">remote</span>: remote, <span style="color:#606">command</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">for i in {1..5}; do echo -n \&quot;Loop \$i \&quot;; date ; sleep 1; done</span><span style="color:#710">'</span></span>
+            sshScript <span style="color:#606">remote</span>: remote, <span style="color:#606">script</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test.sh</span><span style="color:#710">'</span></span>
+            sshPut <span style="color:#606">remote</span>: remote, <span style="color:#606">from</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test.sh</span><span style="color:#710">'</span></span>, <span style="color:#606">into</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">.</span><span style="color:#710">'</span></span>
+            sshGet <span style="color:#606">remote</span>: remote, <span style="color:#606">from</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test.sh</span><span style="color:#710">'</span></span>, <span style="color:#606">into</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test_new.sh</span><span style="color:#710">'</span></span>, <span style="color:#606">override</span>: <span style="color:#069">true</span>
+            sshRemove <span style="color:#606">remote</span>: remote, <span style="color:#606">path</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test.sh</span><span style="color:#710">'</span></span>
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-via-yaml"><a class="anchor" href="#configuring-via-yaml"></a>Configuring via YAML</h3>
+<div class="paragraph">
+<p>At Cerner, we always strive to have simple configuration files for CI/CD pipelines whenever possible. With that in mind, my team built a wrapper on top of these steps from this plugin. After some design and analysis, we came up with the following YAML structure to run commands across various remote groups:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">config</span>:
+  <span style="color:#606">credentials_id</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sshUserAcct</span></span>
+
+<span style="color:#606">remote_groups</span>:
+  <span style="color:#606">r_group_1</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: node01</span></span>
+      <span style="color:#606">host</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">node01.abc.net</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: node02</span></span>
+      <span style="color:#606">host</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">node02.abc.net</span></span>
+  <span style="color:#606">r_group_2</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: node03</span></span>
+      <span style="color:#606">host</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">node03.abc.net</span></span>
+
+<span style="color:#606">command_groups</span>:
+  <span style="color:#606">c_group_1</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">commands:</span><span style="color:#D20">
+        - 'ls -lrt'
+        - 'whoami'</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">scripts:</span><span style="color:#D20">
+        - 'test.sh'</span></span>
+  <span style="color:#606">c_group_2</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">gets:</span><span style="color:#D20">
+        - from: 'test.sh'
+          to: 'test_new.sh'</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">puts:</span><span style="color:#D20">
+        - from: 'test.sh'
+          to: '.'</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">removes:</span><span style="color:#D20">
+        - 'test.sh'</span></span>
+
+<span style="color:#606">steps</span>:
+  <span style="color:#606">deploy</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">remote_groups:</span><span style="color:#D20">
+        - r_group_1</span></span>
+      <span style="color:#606">command_groups</span>:
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">c_group_1</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">remote_groups:</span><span style="color:#D20">
+        - r_group_2</span></span>
+      <span style="color:#606">command_groups</span>:
+        - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">c_group_2</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above example runs commands from <code>c_group_1</code> on remote nodes within <code>r_group_1</code> in parallel before it moves on to the next group using <code>sshUserAcct</code> (from the <a href="https://jenkins.io/doc/book/using/using-credentials/">Jenkins Credentials</a> store) to logon to nodes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="shared-pipeline-library"><a class="anchor" href="#shared-pipeline-library"></a>Shared Pipeline Library</h3>
+<div class="paragraph">
+<p>We have created a shared pipeline library that contains a <code>sshDeploy</code> step to support the above mentioned YAML syntax. Below is the code snippet for the sshDeploy step from the library. The full version can be found <a href="https://github.com/nrayapati/ssh-deploy-library">here</a> on Github.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#34b">#!/usr/bin/groovy</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(<span style="color:#0a8;font-weight:bold">String</span> yamlName) {
+    <span style="color:#080;font-weight:bold">def</span> yaml = readYaml <span style="color:#606">file</span>: yamlName
+    withCredentials([usernamePassword(<span style="color:#606">credentialsId</span>: yaml.config.credentials_id, <span style="color:#606">passwordVariable</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">password</span><span style="color:#710">'</span></span>, <span style="color:#606">usernameVariable</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">userName</span><span style="color:#710">'</span></span>)]) {
+        yaml.steps.each { stageName, step -&gt;
+            step.each {
+                <span style="color:#080;font-weight:bold">def</span> remoteGroups = [:]
+                <span style="color:#080;font-weight:bold">def</span> allRemotes = <span style="color:#339;font-weight:bold">[]</span>
+                <span style="color:#950">it</span>.remote_groups.each {
+                    remoteGroups[<span style="color:#950">it</span>] = yaml.remotes.<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">$</span><span style="color:#950">it</span></span><span style="color:#710">&quot;</span></span>
+                }
+
+                <span style="color:#080;font-weight:bold">def</span> commandGroups = [:]
+                <span style="color:#950">it</span>.command_groups.each {
+                    commandGroups[<span style="color:#950">it</span>] = yaml.commands.<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">$</span><span style="color:#950">it</span></span><span style="color:#710">&quot;</span></span>
+                }
+                <span style="color:#080;font-weight:bold">def</span> isSudo = <span style="color:#069">false</span>
+                remoteGroups.each { remoteGroupName, remotes -&gt;
+                    allRemotes += remotes.collect { remote -&gt;
+                        <span style="color:#080;font-weight:bold">if</span>(!remote.name)
+                            remote.name = remote.host
+                        remote.user = userName
+                        remote.password = password
+                        remote.allowAnyHosts = <span style="color:#069">true</span>
+                        remote.groupName = remoteGroupName
+                        remote
+                    }
+                }
+                <span style="color:#080;font-weight:bold">if</span>(allRemotes) {
+                    <span style="color:#080;font-weight:bold">if</span>(allRemotes.size() &gt; <span style="color:#00D">1</span>) {
+                        <span style="color:#080;font-weight:bold">def</span> stepsForParallel = allRemotes.collectEntries { remote -&gt;
+                            [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>remote.groupName<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">-</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>remote.name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> : transformIntoStep(stageName, remote.groupName, remote, commandGroups)]
+                        }
+                        stage(stageName) {
+                            parallel stepsForParallel
+                        }
+                    } <span style="color:#080;font-weight:bold">else</span> {
+                        <span style="color:#080;font-weight:bold">def</span> remote = allRemotes.first()
+                        stage(stageName + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> + remote.groupName + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">-</span><span style="color:#710">&quot;</span></span> + remote.name) {
+                            transformIntoStep(stageName, remote.groupName, remote, commandGroups).call()
+                        }
+                    }
+                }
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By using the step (as described in the snippet above) from this shared pipeline library, a Jenkinsfile can be reduced to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#007">@Library</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ssh_deploy</span><span style="color:#710">'</span></span>) _
+
+node {
+  checkout scm
+  sshDeploy(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">dev/deploy.yml</span><span style="color:#710">'</span></span>);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An example execution of the above pipeline code in Blue Ocean looks like this:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2019-02-06-ssh-steps/jenkins-ssh-deploy.png" alt="SSH Deploy BlueOcean View" width="80%">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="wrapping-up"><a class="anchor" href="#wrapping-up"></a>Wrapping up</h3>
+<div class="paragraph">
+<p>Steps from the <a href="https://github.com/jenkinsci/ssh-steps-plugin">SSH Steps Plugin</a> are deliberately generic enough that they can be used for various other use-cases as well, not just for deploying code. Using SSH Steps has significantly reduced the time we spend on deployments and has given us the possibility of easily scaling our deployment workflows to various environments.</p>
+</div>
+<div class="paragraph">
+<p>Help us make this <a href="https://github.com/jenkinsci/ssh-steps-plugin">plugin</a> better by contributing. Whether it is adding or suggesting a new feature, bug fixes, or simply improving documentation, contributions are always welcome.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- starting partial author.html.haml -->
+<div id="about-the-author">
+<b class="author about-header">
+About the Author
+</b>
+<table class="author box">
+<tr>
+<td>
+<!-- starting partial avatar.html.haml -->
+<img alt="Naresh Rayapati" class="author logo" src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/avatars/nrayapati.jpeg">
+
+<!-- ending partial avatar.html.haml -->
+</td>
+<td>
+<b class="author name">
+<a href="/blog/authors/nrayapati">
+Naresh Rayapati
+</a>
+</b>
+<p>
+<div class="paragraph">
+<p>Software Architect at <a href="https://www.cerner.com/">Cerner Corporation</a>. Passionate about Agile, DevOps &amp; Continuous Delivery, and all things Automation.
+OSS Contributor, he is maintaining couple of Jenkins plugins since past several years. <a href="https://plugins.jenkins.io/ssh-steps">SSH Steps</a> - <a href="https://plugins.jenkins.io/jira-steps">JIRA Steps</a> - <a href="https://plugins.jenkins.io/hubot-steps">Hubot Steps</a></p>
+</div>
+</p>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="author social-media-buttons">
+<li class="author">
+<a href="https://github.com/nrayapati" target="_blank">
+GitHub
+</a>
+</li>
+<li class="author">
+<a href="https://twitter.com/nrayapati" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</td>
+</tr>
+</table>
+</div>
+
+<!-- ending partial author.html.haml -->
+</div>
+</div>
+</div>
+
+
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2019/02/2019-02-06-ssh-steps-for-jenkins-pipeline.adoc" title="Edit /blog/2019/02/2019-02-06-ssh-steps-for-jenkins-pipeline.adoc on GitHub">Improve this page</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2019/02/2019-02-06-ssh-steps-for-jenkins-pipeline.adoc" title="View /blog/2019/02/2019-02-06-ssh-steps-for-jenkins-pipeline.adoc history on GitHub">Page history</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+</body>
+</html>

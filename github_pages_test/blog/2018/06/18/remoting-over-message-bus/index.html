@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GSoC Project Intro: Jenkins Remoting over Message Bus/Queue
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="GSoC Project Intro: Jenkins Remoting over Message Bus/Queue" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GSoC Project Intro: Jenkins Remoting over Message Bus/Queue" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GSoC Project Intro: Jenkins Remoting over Message Bus/Queue" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2018/06/18/remoting-over-message-bus/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="GSoC Project Intro: Jenkins Remoting over Message Bus/Queue" property="og:site_name">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="og:image">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/footer.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-md navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Use Jenkins
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc/developer">
+Extend Jenkins
+</a>
+<span class="dropdown-item">
+<strong>
+Use-cases
+</strong>
+</span>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+&nbsp;-&nbsp;Android
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+&nbsp;-&nbsp;C/C++
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+&nbsp;-&nbsp;Docker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+&nbsp;-&nbsp;Embedded
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+&nbsp;-&nbsp;GitHub
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+&nbsp;-&nbsp;Java
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+&nbsp;-&nbsp;PHP
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+&nbsp;-&nbsp;Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+&nbsp;-&nbsp;Python
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+&nbsp;-&nbsp;Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam/">
+Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/remoting/">
+Jenkins Remoting
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security">
+Security
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/press">
+Press
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('#content h' + i);
+    }
+  })
+</script>
+<div class="container blog-post">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2018/06/18/remoting-over-message-bus/" title="GSoC Project Intro: Jenkins Remoting over Message Bus/Queue">
+GSoC Project Intro: Jenkins Remoting over Message Bus/Queue
+</a>
+</h1>
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+<div class="post-attrs">
+<span class="submitted">
+Published on
+2018-06-18
+by
+<a href="/blog/authors/pvtuan10">Pham Vu Tuan</a>
+</span>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/plugins">
+plugins
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/gsoc">
+gsoc
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/gsoc2018">
+gsoc2018
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/remoting">
+remoting
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="about-me"><a class="anchor" href="#about-me"></a>About me</h3>
+<div class="paragraph">
+<p>My name is Pham Vu Tuan, I am a final year undergraduate student from Singapore. This is the first time I participate in Google Summer of Code and contribute to an open-source organization. I am very excited to contribute this summer.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mentors"><a class="anchor" href="#mentors"></a>Mentors</h3>
+<div class="paragraph">
+<p>I have GSoC mentors who help me in this project <a href="https://github.com/oleg-nenashev">Oleg Nenashev</a> and <a href="https://github.com/Supun94">Supun Wanniarachchi</a>. Besides that, I also receive great support from developers in remoting project <a href="https://github.com/dwnusbaum">Devin Nusbaum</a> and <a href="https://github.com/jeffret-b">Jeff Thompson</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="overview"><a class="anchor" href="#overview"></a>Overview</h3>
+<div class="paragraph">
+<p>Current versions of Jenkins Remoting are based on the TCP protocol. If it fails, the agent connection and the build fails as well. There are also issues with traffic prioritization and multi-agent communications, which impact Jenkins stability and scalability.</p>
+</div>
+<div class="paragraph">
+<p>This project aims to develop a plugin in order to add support of a popular message queue/bus technology (Kafka) as a fault-tolerant communication layer in Jenkins.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="why-kafka"><a class="anchor" href="#why-kafka"></a>Why Kafka?</h3>
+<div class="paragraph">
+<p>When planning for this project, we want to use traditional message queue system such as <a href="https://github.com/oleg-nenashev">ActiveMQ</a> or <a href="https://github.com/oleg-nenashev">RabbitMQ</a>. However, after some discussion, we decided to have a try with <a href="https://kafka.apache.org/">Kafka</a> with more suitable features with this project:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Kafka itself is not a queue like ActiveMQ or RabbitMQ, it is a distributed, replicated commit log. This helps to remove message delivery complexity we have in traditional queue system.</p>
+</li>
+<li>
+<p>We need to support data streaming as a requirement, and Kafka is good at this aspect, which RabbitMQ is lack of.</p>
+</li>
+<li>
+<p>Kafka is said to have a better scalability and good support from the development community.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="current-state"><a class="anchor" href="#current-state"></a>Current State</h3>
+<div class="paragraph">
+<p>The project is reaching the end of the first phase and here are things we have achieved so far:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Setup project as a set of Docker Compose components: Kafka cluster, Jenkins master (with plugin) and a custom agent (JAR).</p>
+</li>
+<li>
+<p>Create a PoC with new command transport implementation to support Kafka, which involves of command invocation, RMI, classloading and data streaming.</p>
+</li>
+<li>
+<p>Make neccessary changes in Remoting and Jenkins core to make them extensible for the use of this project.</p>
+</li>
+<li>
+<p>Decide to use Kafka as a suitable final implementation.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We planned to release an alpha version of this plugin by the end of this phase, but decided to move this release to the second phase because we need to wait for remoting and core patches to be released.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="architecture-overview"><a class="anchor" href="#architecture-overview"></a>Architecture Overview</h3>
+<div class="paragraph">
+<p>The project consists of multiple components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Kafka Client Library - new command transport implementation, producer and consumer client logic.</p>
+</li>
+<li>
+<p>Remoting Kafka Plugin - plugin implementation with KafkaGlobalConfiguration and KafkaComputerLauncher.</p>
+</li>
+<li>
+<p>Remoting Kafka Agent - A custom JAR agent with remoting JAR packaged together with a custom Engine implementation to setup a communication channel with Kafka.</p>
+</li>
+<li>
+<p>All the components are packaged together with Docker Compose.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The below diagram is the overview of the current architecture:
+<span class="image center"><img src="/images/post-images/remoting-kafka-intro/remoting-kafka-architecture.png" alt="remoting kafka architecture" title="Remoting Kafka Plugin Current Architecture"></span></p>
+</div>
+<div class="paragraph">
+<p>With this design, master is not communicating with agent using direct TCP communication anymore, all the communication commands are transfered with Kafka.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="features"><a class="anchor" href="#features"></a>Features</h3>
+<div class="sect3">
+<h4 id="1-kafka-global-configuration"><a class="anchor" href="#1-kafka-global-configuration"></a>1. Kafka Global Configuration</h4>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/remoting-kafka-intro/kafka-global-config.png" alt="kafka global config" title="Remoting Kafka Global Configuration"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="2-custom-agent-start-up-as-a-jar"><a class="anchor" href="#2-custom-agent-start-up-as-a-jar"></a>2. Custom agent start up as a JAR</h4>
+<div class="paragraph">
+<p>User can start running an agent with the following command:
+<span class="image center"><img src="/images/post-images/remoting-kafka-intro/start-agent.png" alt="start agent" title="Command to start an agent"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="3-launch-agents-with-kafka"><a class="anchor" href="#3-launch-agents-with-kafka"></a>3. Launch agents with Kafka</h4>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/remoting-kafka-intro/launch-agent-kafka.png" alt="launch agent kafka" title="Launch agent with Kafka"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="4-commands-transferred-between-master-and-agent-over-kafka"><a class="anchor" href="#4-commands-transferred-between-master-and-agent-over-kafka"></a>4. Commands transferred between master and agent over Kafka</h4>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/remoting-kafka-intro/kafka-commands.png" alt="kafka commands" title="Master-agent communication with Kafka"></span></p>
+</div>
+<div class="paragraph">
+<p>Remoting operations are being executed over Kafka. In the log you may see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Command execution (SlaveInstallerFactoryImpl.isWindows())</p>
+</li>
+<li>
+<p>Classloading (Classloader.fetch())</p>
+</li>
+<li>
+<p>Log streaming (Pipe.chunk())</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="5-run-jobs-with-remoting-kafka"><a class="anchor" href="#5-run-jobs-with-remoting-kafka"></a>5. Run jobs with remoting Kafka</h4>
+<div class="paragraph">
+<p>It is possible to run jobs on Agents connected over Kafka
+<span class="image center"><img src="/images/post-images/remoting-kafka-intro/remoting-kafka-run-job.png" alt="remoting kafka run job" title="Job run with Remoting Kafka Plugin"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="next-phase-plan"><a class="anchor" href="#next-phase-plan"></a>Next Phase Plan</h3>
+<div class="paragraph">
+<p>Here are the tasks planned for the next phase:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Support security for master-agent connection:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Kafka authentication/authorization (<a href="https://issues.jenkins-ci.org/browse/JENKINS-51472">JENKINS-51472</a>, <a href="https://issues.jenkins-ci.org/browse/JENKINS-51473">JENKINS-51473</a>).</p>
+</li>
+<li>
+<p>Agent secrets (<a href="https://issues.jenkins-ci.org/browse/JENKINS-51470">JENKINS-51470</a>).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Improve Kafka producer-consumer model to ensure reliability (<a href="https://issues.jenkins-ci.org/browse/JENKINS-51942">JENKINS-51942</a>).</p>
+</li>
+<li>
+<p>Bug fixing.</p>
+</li>
+<li>
+<p>Release alpha version and address feedback (<a href="https://issues.jenkins-ci.org/browse/JENKINS-51713">JENKINS-51713</a>).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-to-run-demo"><a class="anchor" href="#how-to-run-demo"></a>How to run demo</h3>
+<div class="paragraph">
+<p>You can try to run a demo of the plugin by following the <a href="https://github.com/jenkinsci/remoting-kafka-plugin/#plugin-demo-instructions">instruction</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://gitter.im/jenkinsci/remoting"><span class="image"><img src="https://badges.gitter.im/jenkinsci/remoting.svg" alt="title: &quot;Gitter&quot;"></span></a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/remoting-kafka-plugin">GitHub Repository</a></p>
+</li>
+<li>
+<p><a href="https://jenkins.io/projects/gsoc/2018/remoting-over-message-bus/">Project Page</a></p>
+</li>
+<li>
+<p><a href="https://youtu.be/qWHM8S0fzUw">Phase 1 Presentation Video</a></p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1GxkI17lZYQ6_pyAOR9sXNXq1K3LwkqjigXdxxf81VkE/edit?usp=sharing">Phase 1 Presentation Slides</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- starting partial author.html.haml -->
+<div id="about-the-author">
+<b class="author about-header">
+About the Author
+</b>
+<table class="author box">
+<tr>
+<td>
+<!-- starting partial avatar.html.haml -->
+<img alt="Pham Vu Tuan" class="author logo" src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logos/transparent/transparent.svg">
+
+<!-- ending partial avatar.html.haml -->
+</td>
+<td>
+<b class="author name">
+<a href="/blog/authors/pvtuan10">
+Pham Vu Tuan
+</a>
+</b>
+<p>
+<div class="paragraph">
+<p>Pham Vu Tuan is a developer from Singapore.
+He starts contributing to Jenkins from Google Summer of Code 2018 for <a href="https://jenkins.io/projects/gsoc/2018/remoting-over-message-bus/">Jenkins Remoting over Message Bus/Queue</a></p>
+</div>
+</p>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="author social-media-buttons">
+<li class="author">
+<a href="https://github.com/pvtuan10" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</td>
+</tr>
+</table>
+</div>
+
+<!-- ending partial author.html.haml -->
+</div>
+</div>
+</div>
+
+
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2018/06/2018-06-18-remoting-over-message-bus.adoc" title="Edit /blog/2018/06/2018-06-18-remoting-over-message-bus.adoc on GitHub">Improve this page</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2018/06/2018-06-18-remoting-over-message-bus.adoc" title="View /blog/2018/06/2018-06-18-remoting-over-message-bus.adoc history on GitHub">Page history</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+</body>
+</html>

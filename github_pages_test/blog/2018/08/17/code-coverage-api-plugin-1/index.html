@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Code Coverage API plugin: 1.0 Release
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Code Coverage API plugin: 1.0 Release" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Code Coverage API plugin: 1.0 Release" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Code Coverage API plugin: 1.0 Release" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2018/08/17/code-coverage-api-plugin-1/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Code Coverage API plugin: 1.0 Release" property="og:site_name">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="og:image">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/footer.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-md navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Use Jenkins
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc/developer">
+Extend Jenkins
+</a>
+<span class="dropdown-item">
+<strong>
+Use-cases
+</strong>
+</span>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+&nbsp;-&nbsp;Android
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+&nbsp;-&nbsp;C/C++
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+&nbsp;-&nbsp;Docker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+&nbsp;-&nbsp;Embedded
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+&nbsp;-&nbsp;GitHub
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+&nbsp;-&nbsp;Java
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+&nbsp;-&nbsp;PHP
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+&nbsp;-&nbsp;Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+&nbsp;-&nbsp;Python
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+&nbsp;-&nbsp;Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam/">
+Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/remoting/">
+Jenkins Remoting
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security">
+Security
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/press">
+Press
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('#content h' + i);
+    }
+  })
+</script>
+<div class="container blog-post">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2018/08/17/code-coverage-api-plugin-1/" title="Code Coverage API plugin: 1.0 Release">
+Code Coverage API plugin: 1.0 Release
+</a>
+</h1>
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+<div class="post-attrs">
+<span class="submitted">
+Published on
+2018-08-17
+by
+<a href="/blog/authors/shenyu_zheng">Shenyu Zheng</a>
+</span>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/plugins">
+plugins
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/gsoc">
+gsoc
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/gsoc2018">
+gsoc2018
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="paragraph">
+<p>I am happy to announce availability of Code Coverage API. These plugins have been recently released as 1.0, and they are now available in the Jenkins Update Center. In this blogpost I will introduce the features and project structure of Code Coverage API plugin.</p>
+</div>
+<div class="paragraph">
+<p>My name is Shenyu Zheng, and I am an undergraduate student in Computer Science and Technology at Henan University from China.</p>
+</div>
+<div class="sect2">
+<h3 id="overview"><a class="anchor" href="#overview"></a>Overview</h3>
+<div class="paragraph">
+<p>Code Coverage API plugin is one of <a href="https://jenkins.io/projects/gsoc/">GSoC 2018 Jenkins projects</a>.</p>
+</div>
+<div class="paragraph">
+<p>There are a lot of plugins which currently implement code coverage; however, they all use similar config, charts, and content. So it would be much better if we could have an API plugin which does the most repeated work for those plugins and offers a unified API which can be consumed by other plugins and external tools.</p>
+</div>
+<div class="paragraph">
+<p>My mentors are <a href="https://github.com/christ66">Steven Christou</a>, <a href="https://github.com/Supun94">Supun Wanniarachchi</a>, <a href="https://github.com/jeffpearce">Jeff Pearce</a> and <a href="https://github.com/oleg-nenashev">Oleg Nenashev</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="supported-coverage-formats"><a class="anchor" href="#supported-coverage-formats"></a>Supported Coverage Formats</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Embedded</p>
+<div class="ulist">
+<ul>
+<li>
+<p>JaCoCo</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Other plugins as an Extension of Code Coverage API plugin</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Cobertura (<a href="https://github.com/jenkinsci/cobertura-plugin">Cobertura Plugin</a>)</p>
+</li>
+<li>
+<p>llvm-cov (<a href="https://github.com/jenkinsci/llvm-cov-plugin">llvm-cov Plugin</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="features"><a class="anchor" href="#features"></a>Features</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Modernized coverage chart</p>
+</li>
+<li>
+<p>Coverage trend</p>
+</li>
+<li>
+<p>Source code navigation</p>
+</li>
+<li>
+<p>Parallel pipeline support</p>
+</li>
+<li>
+<p>Reports combining</p>
+</li>
+<li>
+<p>REST API</p>
+</li>
+<li>
+<p>Failed conditions and flexible threshold setting</p>
+</li>
+<li>
+<p>Other small features</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="modernized-coverage-chart"><a class="anchor" href="#modernized-coverage-chart"></a>Modernized Coverage Chart</h4>
+<div class="paragraph">
+<p>In the summary chart we can see the coverage summary of current coverage metric.
+<span class="image center"><img src="/images/post-images/2018-06-13-code-coverage-api-plugin/summary-chart.gif" alt="summary chart" title="Summary Chart"></span></p>
+</div>
+<div class="paragraph">
+<p>In the child summary chart, we can see the coverage summary of each child, also, we can use the range handler to filter item we want to see to reduce the chart size. If we want to see coverage details of the child, we can click the child name to see more information.
+<span class="image center"><img src="/images/post-images/2018-06-13-code-coverage-api-plugin/child-summary-chart.gif" alt="child summary chart" title="Child Summary Chart"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="coverage-trend"><a class="anchor" href="#coverage-trend"></a>Coverage Trend</h3>
+<div class="paragraph">
+<p>We also support coverage trend to show coverage metrics changing between builds.
+<span class="image center"><img src="/images/post-images/2018-06-13-code-coverage-api-plugin/trend-chart.gif" alt="trend chart" title="Trend Chart"></span></p>
+</div>
+<div class="sect3">
+<h4 id="source-code-navigation"><a class="anchor" href="#source-code-navigation"></a>Source Code Navigation</h4>
+<div class="paragraph">
+<p>You can enable source code navigation by specifying Source File Storing Level to save last build source files (enable source files navigation in current and last build) or save all build source files (enable source files navigation in all builds).
+<span class="image center"><img src="/images/post-images/code-coverage-api/source-files-config.png" alt="source files config" title="Source File Navigation Configuration"></span></p>
+</div>
+<div class="paragraph">
+<p>You can see source file with coverage information on File level coverage page.
+<span class="image center"><img src="/images/post-images/code-coverage-api/source-files-result.png" alt="source files result" title="Source File Navigation Result"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="parallel-pipeline-support"><a class="anchor" href="#parallel-pipeline-support"></a>Parallel Pipeline Support</h4>
+<div class="paragraph">
+<p>We support parallel pipeline. You can call the Code Coverage API plugin in different branches like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node {
+    parallel <span style="color:#606">firstBranch</span>: {
+        publishCoverage <span style="color:#606">adapters</span>: [jacocoAdapter(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">target/site/jacoco/jacoco.xml</span><span style="color:#710">'</span></span>)]
+}, <span style="color:#606">secondBranch</span>: {
+        publishCoverage <span style="color:#606">adapters</span>: [jacocoAdapter(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">jacoco.xml</span><span style="color:#710">'</span></span>)]
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="reports-combining"><a class="anchor" href="#reports-combining"></a>Reports Combining</h4>
+<div class="paragraph">
+<p>You can add tag on <code>publishCoverage</code> and Code Coverage API plugin will combine reports have same tag</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">node {
+    parallel firstBranch: {
+        publishCoverage adapters: [jacocoAdapter('target/site/jacoco/jacoco.xml')], tag: ‘t’
+}, secondBranch: {
+        publishCoverage adapters: [jacocoAdapter('jacoco.xml')], tag: ‘t’
+    }
+}</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="rest-api"><a class="anchor" href="#rest-api"></a>REST API</h4>
+<div class="paragraph">
+<p>We provide a REST API to retrieve coverage data:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Coverage result: <code>&#8230;&#8203;/{buildNumber}/coverage/&#8230;&#8203;/result/api/\{json|xml\}</code></p>
+</li>
+<li>
+<p>Trend result: <code>&#8230;&#8203;/{buildNumber}/coverage/&#8230;&#8203;/trend/api/\{json|xml\}</code></p>
+</li>
+<li>
+<p>Coverage result of last build: <code>&#8230;&#8203;/{buildNumber}/coverage/&#8230;&#8203;/last/result/api/\{json|xml\}</code></p>
+</li>
+<li>
+<p>Trend result of last build: <code>&#8230;&#8203;/{buildNumber}/coverage/&#8230;&#8203;/last/trend/api/\{json|xml\}</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="failed-conditions-and-flexible-threshold-setting"><a class="anchor" href="#failed-conditions-and-flexible-threshold-setting"></a>Failed Conditions and Flexible Threshold Setting</h4>
+<div class="paragraph">
+<p>You can set different failed conditions and threholds to control build result.
+<span class="image center"><img src="/images/post-images/code-coverage-api/thresholds-config.png" alt="thresholds config" title="Thresholds Configuration"></span></p>
+</div>
+<div class="paragraph">
+<p>If the thresholds satisfy the failed conditions, it will fail the build.
+<span class="image center"><img src="/images/post-images/code-coverage-api/thresholds-result.png" alt="thresholds result" title="Thresholds Result"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="other-small-features"><a class="anchor" href="#other-small-features"></a>Other Small Features</h4>
+<div class="paragraph">
+<p>We also have other small features like auto detecting reports, coverage filters, etc. You can find more information about these features in the plugin documentation.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="architecture"><a class="anchor" href="#architecture"></a>Architecture</h3>
+<div class="paragraph">
+<p>This API plugin will mainly do these things:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Find coverage reports according to the user’s config.</p>
+</li>
+<li>
+<p>Use adapters to convert reports into the our standard format.</p>
+</li>
+<li>
+<p>Parse standard format reports, and aggregate them.</p>
+</li>
+<li>
+<p>Show parsed result in a chart.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So, we can implement code coverage publishing by simply writing an adapter, and such adapter only needs to do one thing - convert a coverage report into the standard format. The implementation is based on extension points, so new adapters can be created in separate plugins. In order to simplify conversion for XML reports, there is also an abstraction layer which allows creating XSLT-based converters.</p>
+</div>
+<div class="paragraph">
+<p><strong>The below diagram show the architecture of Code Coverage API plugin</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/code-coverage-api/architecture.png" alt="architecture" title="Code Coverage API Plugin Architecture"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="implementing-a-new-coverage-plugin"><a class="anchor" href="#implementing-a-new-coverage-plugin"></a>Implementing a New Coverage Plugin</h3>
+<div class="paragraph">
+<p>We can implement a coverage plugin by implementing CoverageReportAdapter extension point. For example, by using the provided abstract layer, we can implement JaCoCo simple like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">final</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">JacocoReportAdapter</span> <span style="color:#088;font-weight:bold">extends</span> JavaXMLCoverageReportAdapter {
+
+    <span style="color:#007">@DataBoundConstructor</span>
+    <span style="color:#088;font-weight:bold">public</span> JacocoReportAdapter(<span style="color:#0a8;font-weight:bold">String</span> path) {
+        <span style="color:#950">super</span>(path);
+    }
+
+    <span style="color:#777">/**
+     * {@inheritDoc}
+     */</span>
+    <span style="color:#007">@Override</span>
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> getXSL() {
+        <span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">jacoco-to-standard.xsl</span><span style="color:#710">&quot;</span></span>;
+    }
+
+    <span style="color:#777">/**
+     * {@inheritDoc}
+     */</span>
+    <span style="color:#007">@Override</span>
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> getXSD() {
+        <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">null</span>;
+    }
+
+    <span style="color:#007">@Symbol</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">jacoco</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#007">@Extension</span>
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#088;font-weight:bold">final</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">JacocoReportAdapterDescriptor</span> <span style="color:#088;font-weight:bold">extends</span> JavaCoverageReportAdapterDescriptor {
+
+        <span style="color:#088;font-weight:bold">public</span> JacocoReportAdapterDescriptor() {
+            <span style="color:#950">super</span>(JacocoReportAdapter.class);
+        }
+
+        <span style="color:#007">@Nonnull</span>
+        <span style="color:#007">@Override</span>
+        <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> getDisplayName() {
+            <span style="color:#080;font-weight:bold">return</span> Messages.JacocoReportAdapter_displayName();
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All we need is to extend an abstract layer for XML-based Java report and provide an XSL file to convert the report to our standard format. There are also other extension points which are under development.</p>
+</div>
+<div class="paragraph">
+<p>If you want implement a new coverage format that we did not provide abstract layer, you need to register `CoverageElement`s and implement an simple parser. See <a href="https://github.com/jenkinsci/llvm-cov-plugin">llvm-cov Plugin</a> to get more details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="future-tasks"><a class="anchor" href="#future-tasks"></a>Future Tasks</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Support more coverage tools (<a href="https://issues.jenkins-ci.org/browse/JENKINS-52467">JENKINS-52467</a>, <a href="https://issues.jenkins-ci.org/browse/JENKINS-52469">JENKINS-52469</a> and etc.)</p>
+</li>
+<li>
+<p>Make the UI extensible (<a href="https://issues.jenkins-ci.org/browse/JENKINS-51738">JENKINS-51738</a>)</p>
+</li>
+<li>
+<p>Improve performance (<a href="https://issues.jenkins-ci.org/browse/JENKINS-52982">JENKINS-52982</a>)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="phase-3-presentation-slides"><a class="anchor" href="#phase-3-presentation-slides"></a>Phase 3 Presentation Slides</h3>
+<center>
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vThjuFZCChtXhHOKINDxuC4Sfbv0JtHDN9GqWZFe7DfmbEOPZOk-t8DYZJSDEMeMWFpLeTqOAZgj0pB/embed?start=false&loop=false&delayms=3000" frameborder="0" width="720" height="434" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</center>
+</div>
+<div class="sect2">
+<h3 id="phase-3-presentation-video"><a class="anchor" href="#phase-3-presentation-video"></a>Phase 3 Presentation Video</h3>
+<center>
+  <iframe width="720" height="434" src="https://www.youtube.com/embed/GGEtN4nbtng" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</center>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://gitter.im/jenkinsci/code-coverage-api-plugin"><span class="image"><img src="https://badges.gitter.im/jenkinsci/code-coverage-api-plugin.svg" alt="title: &quot;Gitter&quot;"></span></a></p>
+</li>
+<li>
+<p><a href="https://issues.jenkins-ci.org/issues/?jql=project+%3D+JENKINS+AND+component+%3D+code-coverage-api-plugin">JIRA Component</a></p>
+</li>
+<li>
+<p><a href="https://jenkins.io/projects/gsoc/2018/code-coverage-api-plugin/">Project Page</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/code-coverage-api-plugin">Project Repository</a></p>
+</li>
+</ul>
+</div>
+</div>
+<!-- starting partial author.html.haml -->
+<div id="about-the-author">
+<b class="author about-header">
+About the Author
+</b>
+<table class="author box">
+<tr>
+<td>
+<!-- starting partial avatar.html.haml -->
+<img alt="Shenyu Zheng" class="author logo" src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logos/transparent/transparent.svg">
+
+<!-- ending partial avatar.html.haml -->
+</td>
+<td>
+<b class="author name">
+<a href="/blog/authors/shenyu_zheng">
+Shenyu Zheng
+</a>
+</b>
+<p>
+<div class="paragraph">
+<p>Shenyu comes from China. He is a third year student now, and his major is
+Computer Science and technology. He has participated in GSoC 2018 for
+<a href="https://jenkins.io/projects/gsoc/2018/code-coverage-api-plugin/">Code Coverage API Plugin</a></p>
+</div>
+</p>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="author social-media-buttons">
+<li class="author">
+<a href="https://github.com/cizezsy" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</td>
+</tr>
+</table>
+</div>
+
+<!-- ending partial author.html.haml -->
+</div>
+</div>
+</div>
+
+
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2018/08/2018-08-17-code-coverage-api-plugin-1.0-release.adoc" title="Edit /blog/2018/08/2018-08-17-code-coverage-api-plugin-1.0-release.adoc on GitHub">Improve this page</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2018/08/2018-08-17-code-coverage-api-plugin-1.0-release.adoc" title="View /blog/2018/08/2018-08-17-code-coverage-api-plugin-1.0-release.adoc history on GitHub">Page history</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+</body>
+</html>

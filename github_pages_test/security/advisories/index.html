@@ -1,0 +1,2099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Security Advisories
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Security Advisories" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Security Advisories" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Security Advisories" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisories/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Security Advisories" property="og:site_name">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="og:image">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/footer.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-md navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Use Jenkins
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc/developer">
+Extend Jenkins
+</a>
+<span class="dropdown-item">
+<strong>
+Use-cases
+</strong>
+</span>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+&nbsp;-&nbsp;Android
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+&nbsp;-&nbsp;C/C++
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+&nbsp;-&nbsp;Docker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+&nbsp;-&nbsp;Embedded
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+&nbsp;-&nbsp;GitHub
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+&nbsp;-&nbsp;Java
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+&nbsp;-&nbsp;PHP
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+&nbsp;-&nbsp;Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+&nbsp;-&nbsp;Python
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+&nbsp;-&nbsp;Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam/">
+Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/remoting/">
+Jenkins Remoting
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security">
+Security
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/press">
+Press
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .toc {
+      float: right;
+  }
+</style>
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('.container .row.body h' + i);
+    }
+  })
+</script>
+<div class="container">
+<div class="row body">
+<div class="col-md-12">
+<h1>
+Security Advisories
+</h1>
+<div class="container">
+<div class="row">
+<p>
+This page lists all security advisories that have been published so far.
+</p>
+</div>
+<div class="row">
+<div class="container">
+<div class="row">
+<h3>
+2019
+</h3>
+</div>
+<div class="row">
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-07-17/">
+Jenkins Security Advisory 2019-07-17
+</a>
+<br>
+<small>
+<ul>
+<li>
+Affects Jenkins Core
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-07-11/">
+Jenkins Security Advisory 2019-07-11
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/caliper-ci" style="white-space: nowrap; padding: 2px;">
+Caliper CI
+</a>
+<a href="https://plugins.jenkins.io/depgraph-view" style="white-space: nowrap; padding: 2px;">
+Dependency Graph Viewer
+</a>
+<a href="https://plugins.jenkins.io/docker-plugin" style="white-space: nowrap; padding: 2px;">
+Docker
+</a>
+<a href="https://plugins.jenkins.io/embeddable-build-status" style="white-space: nowrap; padding: 2px;">
+Embeddable Build Status
+</a>
+<a href="https://plugins.jenkins.io/gogs-webhook" style="white-space: nowrap; padding: 2px;">
+Gogs
+</a>
+<a href="https://plugins.jenkins.io/mashup-portlets-plugin" style="white-space: nowrap; padding: 2px;">
+Mashup Portlets
+</a>
+<a href="https://plugins.jenkins.io/port-allocator" style="white-space: nowrap; padding: 2px;">
+Port Allocator
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-06-11/">
+Jenkins Security Advisory 2019-06-11
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/electricflow" style="white-space: nowrap; padding: 2px;">
+CloudBees Flow
+</a>
+<a href="https://plugins.jenkins.io/jx-resources" style="white-space: nowrap; padding: 2px;">
+JX Resources
+</a>
+<a href="https://plugins.jenkins.io/token-macro" style="white-space: nowrap; padding: 2px;">
+Token Macro
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-05-31/">
+Jenkins Security Advisory 2019-05-31
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/artifactory" style="white-space: nowrap; padding: 2px;">
+Artifactory
+</a>
+<a href="https://plugins.jenkins.io/gitea" style="white-space: nowrap; padding: 2px;">
+Gitea
+</a>
+<a href="https://plugins.jenkins.io/influxdb" style="white-space: nowrap; padding: 2px;">
+InfluxDB
+</a>
+<a href="https://plugins.jenkins.io/pipeline-maven" style="white-space: nowrap; padding: 2px;">
+Pipeline Maven Integration
+</a>
+<a href="https://plugins.jenkins.io/workflow-remote-loader" style="white-space: nowrap; padding: 2px;">
+Pipeline Remote Loader
+</a>
+<a href="https://plugins.jenkins.io/warnings-ng" style="white-space: nowrap; padding: 2px;">
+Warnings Next Generation
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-05-21/">
+Jenkins Security Advisory 2019-05-21
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/credentials" style="white-space: nowrap; padding: 2px;">
+Credentials
+</a>
+<a href="https://plugins.jenkins.io/pam-auth" style="white-space: nowrap; padding: 2px;">
+PAM Authentication
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-04-30/">
+Jenkins Security Advisory 2019-04-30
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/ansible-tower" style="white-space: nowrap; padding: 2px;">
+Ansible Tower
+</a>
+<a href="https://plugins.jenkins.io/aqua-microscanner" style="white-space: nowrap; padding: 2px;">
+Aqua MicroScanner
+</a>
+<a href="https://plugins.jenkins.io/azure-ad" style="white-space: nowrap; padding: 2px;">
+Azure AD
+</a>
+<a href="https://plugins.jenkins.io/github-oauth" style="white-space: nowrap; padding: 2px;">
+GitHub Authentication
+</a>
+<a href="https://plugins.jenkins.io/koji" style="white-space: nowrap; padding: 2px;">
+Koji
+</a>
+<a href="https://plugins.jenkins.io/swarm" style="white-space: nowrap; padding: 2px;">
+Self-Organizing Swarm Plug-in Modules
+</a>
+<a href="https://plugins.jenkins.io/sitemonitor" style="white-space: nowrap; padding: 2px;">
+SiteMonitor
+</a>
+<a href="https://plugins.jenkins.io/analysis-core" style="white-space: nowrap; padding: 2px;">
+Static Analysis Utilities
+</a>
+<a href="https://plugins.jenkins.io/twitter" style="white-space: nowrap; padding: 2px;">
+Twitter
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-04-17/">
+Jenkins Security Advisory 2019-04-17
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/azure-publishersettings-credentials" style="white-space: nowrap; padding: 2px;">
+Azure PublisherSettings Credentials
+</a>
+<a href="https://plugins.jenkins.io/gitlab-plugin" style="white-space: nowrap; padding: 2px;">
+GitLab
+</a>
+<a href="https://plugins.jenkins.io/jira-ext" style="white-space: nowrap; padding: 2px;">
+jira-ext
+</a>
+<a href="https://plugins.jenkins.io/ontrack" style="white-space: nowrap; padding: 2px;">
+ontrack Jenkins
+</a>
+<a href="https://plugins.jenkins.io/deployit-plugin" style="white-space: nowrap; padding: 2px;">
+XebiaLabs XL Deploy
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-04-10/">
+Jenkins Security Advisory 2019-04-10
+</a>
+<br>
+<small>
+<ul>
+<li>
+Affects Jenkins Core
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-04-03/">
+Jenkins Security Advisory 2019-04-03
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/snsnotify" style="white-space: nowrap; padding: 2px;">
+Amazon SNS Build Notifier
+</a>
+<a href="https://plugins.jenkins.io/aqua-security-scanner" style="white-space: nowrap; padding: 2px;">
+Aqua Security Scanner
+</a>
+<a href="https://plugins.jenkins.io/assembla-auth" style="white-space: nowrap; padding: 2px;">
+Assembla Auth
+</a>
+<a href="https://plugins.jenkins.io/audit2db" style="white-space: nowrap; padding: 2px;">
+Audit to Database
+</a>
+<a href="https://plugins.jenkins.io/aws-cloudwatch-logs-publisher" style="white-space: nowrap; padding: 2px;">
+AWS CloudWatch Logs Publisher
+</a>
+<a href="https://plugins.jenkins.io/aws-beanstalk-publisher-plugin" style="white-space: nowrap; padding: 2px;">
+AWS Elastic Beanstalk Publisher
+</a>
+<a href="https://plugins.jenkins.io/aws-device-farm" style="white-space: nowrap; padding: 2px;">
+aws-device-farm
+</a>
+<a href="https://plugins.jenkins.io/bitbucket-approve" style="white-space: nowrap; padding: 2px;">
+Bitbucket Approve
+</a>
+<a href="https://plugins.jenkins.io/bugzilla" style="white-space: nowrap; padding: 2px;">
+Bugzilla
+</a>
+<a href="https://plugins.jenkins.io/sinatra-chef-builder" style="white-space: nowrap; padding: 2px;">
+Chef Sinatra
+</a>
+<a href="https://plugins.jenkins.io/cloudcoreo-deploytime" style="white-space: nowrap; padding: 2px;">
+CloudCoreo DeployTime
+</a>
+<a href="https://plugins.jenkins.io/cloudshare-docker" style="white-space: nowrap; padding: 2px;">
+CloudShare Docker-Machine
+</a>
+<a href="https://plugins.jenkins.io/crittercism-dsym" style="white-space: nowrap; padding: 2px;">
+crittercism-dsym
+</a>
+<a href="https://plugins.jenkins.io/crowd" style="white-space: nowrap; padding: 2px;">
+Crowd Integration
+</a>
+<a href="https://plugins.jenkins.io/deployhub" style="white-space: nowrap; padding: 2px;">
+DeployHub
+</a>
+<a href="https://plugins.jenkins.io/diawi-upload" style="white-space: nowrap; padding: 2px;">
+Diawi Upload
+</a>
+<a href="https://plugins.jenkins.io/fabric-beta-publisher" style="white-space: nowrap; padding: 2px;">
+Fabric Beta Publisher
+</a>
+<a href="https://plugins.jenkins.io/ftppublisher" style="white-space: nowrap; padding: 2px;">
+FTP publisher
+</a>
+<a href="https://plugins.jenkins.io/gearman-plugin" style="white-space: nowrap; padding: 2px;">
+Gearman
+</a>
+<a href="https://plugins.jenkins.io/hockeyapp" style="white-space: nowrap; padding: 2px;">
+HockeyApp
+</a>
+<a href="https://plugins.jenkins.io/hyper-commons" style="white-space: nowrap; padding: 2px;">
+Hyper.sh Commons
+</a>
+<a href="https://plugins.jenkins.io/ircbot" style="white-space: nowrap; padding: 2px;">
+IRC
+</a>
+<a href="https://plugins.jenkins.io/jabber-server-plugin" style="white-space: nowrap; padding: 2px;">
+Jabber Server
+</a>
+<a href="https://plugins.jenkins.io/jenkins-cloudformation-plugin" style="white-space: nowrap; padding: 2px;">
+jenkins-cloudformation-plugin
+</a>
+<a href="https://plugins.jenkins.io/jenkins-reviewbot" style="white-space: nowrap; padding: 2px;">
+jenkins-reviewbot
+</a>
+<a href="https://plugins.jenkins.io/jenkins-jira-issue-updater" style="white-space: nowrap; padding: 2px;">
+Jira Issue Updater
+</a>
+<a href="https://plugins.jenkins.io/klaros-testmanagement" style="white-space: nowrap; padding: 2px;">
+Klaros-Testmanagement
+</a>
+<a href="https://plugins.jenkins.io/kmap-jenkins" style="white-space: nowrap; padding: 2px;">
+Kmap
+</a>
+<a href="https://plugins.jenkins.io/koji" style="white-space: nowrap; padding: 2px;">
+Koji
+</a>
+<a href="https://plugins.jenkins.io/mabl-integration" style="white-space: nowrap; padding: 2px;">
+mabl
+</a>
+<a href="https://plugins.jenkins.io/minio-storage" style="white-space: nowrap; padding: 2px;">
+Minio Storage
+</a>
+<a href="https://plugins.jenkins.io/netsparker-cloud-scan" style="white-space: nowrap; padding: 2px;">
+Netsparker Cloud Scan
+</a>
+<a href="https://plugins.jenkins.io/nomad" style="white-space: nowrap; padding: 2px;">
+Nomad
+</a>
+<a href="https://plugins.jenkins.io/octopusdeploy" style="white-space: nowrap; padding: 2px;">
+OctopusDeploy
+</a>
+<a href="https://plugins.jenkins.io/zap" style="white-space: nowrap; padding: 2px;">
+Official OWASP ZAP
+</a>
+<a href="https://plugins.jenkins.io/open-stf" style="white-space: nowrap; padding: 2px;">
+Open STF
+</a>
+<a href="https://plugins.jenkins.io/openid" style="white-space: nowrap; padding: 2px;">
+openid
+</a>
+<a href="https://plugins.jenkins.io/openshift-deployer" style="white-space: nowrap; padding: 2px;">
+OpenShift Deployer
+</a>
+<a href="https://plugins.jenkins.io/perfectomobile" style="white-space: nowrap; padding: 2px;">
+Perfecto Mobile
+</a>
+<a href="https://plugins.jenkins.io/relution-publisher" style="white-space: nowrap; padding: 2px;">
+Relution Enterprise Appstore Publisher
+</a>
+<a href="https://plugins.jenkins.io/sametime" style="white-space: nowrap; padding: 2px;">
+Sametime
+</a>
+<a href="https://plugins.jenkins.io/sra-deploy" style="white-space: nowrap; padding: 2px;">
+Serena SRA Deploy
+</a>
+<a href="https://plugins.jenkins.io/cloudtest" style="white-space: nowrap; padding: 2px;">
+SOASTA CloudTest
+</a>
+<a href="https://plugins.jenkins.io/starteam" style="white-space: nowrap; padding: 2px;">
+StarTeam
+</a>
+<a href="https://plugins.jenkins.io/TestFairy" style="white-space: nowrap; padding: 2px;">
+TestFairy
+</a>
+<a href="https://plugins.jenkins.io/trac-publisher-plugin" style="white-space: nowrap; padding: 2px;">
+Trac Publisher
+</a>
+<a href="https://plugins.jenkins.io/upload-pgyer" style="white-space: nowrap; padding: 2px;">
+Upload to pgyer
+</a>
+<a href="https://plugins.jenkins.io/veracode-scanner" style="white-space: nowrap; padding: 2px;">
+veracode-scanner
+</a>
+<a href="https://plugins.jenkins.io/labmanager" style="white-space: nowrap; padding: 2px;">
+VMware Lab Manager Slaves
+</a>
+<a href="https://plugins.jenkins.io/vmware-vrealize-automation-plugin" style="white-space: nowrap; padding: 2px;">
+VMware vRealize Automation
+</a>
+<a href="https://plugins.jenkins.io/vsts-cd" style="white-space: nowrap; padding: 2px;">
+VS Team Services Continuous Deployment
+</a>
+<a href="https://plugins.jenkins.io/websphere-deployer" style="white-space: nowrap; padding: 2px;">
+WebSphere Deployer
+</a>
+<a href="https://plugins.jenkins.io/wildfly-deployer" style="white-space: nowrap; padding: 2px;">
+WildFly Deployer
+</a>
+<a href="https://plugins.jenkins.io/youtrack-plugin" style="white-space: nowrap; padding: 2px;">
+youtrack-plugin
+</a>
+<a href="https://plugins.jenkins.io/zephyr-enterprise-test-management" style="white-space: nowrap; padding: 2px;">
+Zephyr Enterprise Test Management
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-03-25/">
+Jenkins Security Advisory 2019-03-25
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/ease-plugin" style="white-space: nowrap; padding: 2px;">
+Arxan MAM Publisher
+</a>
+<a href="https://plugins.jenkins.io/codebeamer-result-trend-updater" style="white-space: nowrap; padding: 2px;">
+Codebeamer Test Results Trend Updater
+</a>
+<a href="https://plugins.jenkins.io/ecs-publisher" style="white-space: nowrap; padding: 2px;">
+ECS publisher
+</a>
+<a href="https://plugins.jenkins.io/fortify-on-demand-uploader" style="white-space: nowrap; padding: 2px;">
+Fortify on Demand Uploader
+</a>
+<a href="https://plugins.jenkins.io/lockable-resources" style="white-space: nowrap; padding: 2px;">
+Lockable Resources
+</a>
+<a href="https://plugins.jenkins.io/workflow-cps" style="white-space: nowrap; padding: 2px;">
+Pipeline: Groovy
+</a>
+<a href="https://plugins.jenkins.io/prqa-plugin" style="white-space: nowrap; padding: 2px;">
+PRQA
+</a>
+<a href="https://plugins.jenkins.io/script-security" style="white-space: nowrap; padding: 2px;">
+Script Security
+</a>
+<a href="https://plugins.jenkins.io/slack" style="white-space: nowrap; padding: 2px;">
+Slack Notification
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-03-06/">
+Jenkins Security Advisory 2019-03-06
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/appdynamics-dashboard" style="white-space: nowrap; padding: 2px;">
+AppDynamics Dashboard
+</a>
+<a href="https://plugins.jenkins.io/azure-vm-agents" style="white-space: nowrap; padding: 2px;">
+Azure VM Agents
+</a>
+<a href="https://plugins.jenkins.io/testdroid-run-in-cloud" style="white-space: nowrap; padding: 2px;">
+Bitbar Run-in-Cloud
+</a>
+<a href="https://plugins.jenkins.io/email-ext" style="white-space: nowrap; padding: 2px;">
+Email Extension
+</a>
+<a href="https://plugins.jenkins.io/groovy" style="white-space: nowrap; padding: 2px;">
+Groovy
+</a>
+<a href="https://plugins.jenkins.io/job-dsl" style="white-space: nowrap; padding: 2px;">
+Job DSL
+</a>
+<a href="https://plugins.jenkins.io/matrix-project" style="white-space: nowrap; padding: 2px;">
+Matrix Project
+</a>
+<a href="https://plugins.jenkins.io/osf-builder-suite-for-sfcc-deploy" style="white-space: nowrap; padding: 2px;">
+OSF Builder Suite For Salesforce Commerce Cloud :: Deploy
+</a>
+<a href="https://plugins.jenkins.io/workflow-cps" style="white-space: nowrap; padding: 2px;">
+Pipeline: Groovy
+</a>
+<a href="https://plugins.jenkins.io/rabbitmq-publisher" style="white-space: nowrap; padding: 2px;">
+Rabbit-MQ Publisher
+</a>
+<a href="https://plugins.jenkins.io/repository-connector" style="white-space: nowrap; padding: 2px;">
+Repository Connector
+</a>
+<a href="https://plugins.jenkins.io/script-security" style="white-space: nowrap; padding: 2px;">
+Script Security
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-02-19/">
+Jenkins Security Advisory 2019-02-19
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/acunetix" style="white-space: nowrap; padding: 2px;">
+Acunetix
+</a>
+<a href="https://plugins.jenkins.io/ease-plugin" style="white-space: nowrap; padding: 2px;">
+Arxan MAM Publisher
+</a>
+<a href="https://plugins.jenkins.io/cloudfoundry" style="white-space: nowrap; padding: 2px;">
+Cloud Foundry
+</a>
+<a href="https://plugins.jenkins.io/electricflow" style="white-space: nowrap; padding: 2px;">
+CloudBees Flow
+</a>
+<a href="https://plugins.jenkins.io/jms-messaging" style="white-space: nowrap; padding: 2px;">
+JMS Messaging
+</a>
+<a href="https://plugins.jenkins.io/mattermost" style="white-space: nowrap; padding: 2px;">
+Mattermost Notification
+</a>
+<a href="https://plugins.jenkins.io/octopusdeploy" style="white-space: nowrap; padding: 2px;">
+OctopusDeploy
+</a>
+<a href="https://plugins.jenkins.io/script-security" style="white-space: nowrap; padding: 2px;">
+Script Security
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-01-28/">
+Jenkins Security Advisory 2019-01-28
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/active-directory" style="white-space: nowrap; padding: 2px;">
+Active Directory
+</a>
+<a href="https://plugins.jenkins.io/blueocean" style="white-space: nowrap; padding: 2px;">
+Blue Ocean
+</a>
+<a href="https://plugins.jenkins.io/config-file-provider" style="white-space: nowrap; padding: 2px;">
+Config File Provider
+</a>
+<a href="https://plugins.jenkins.io/git" style="white-space: nowrap; padding: 2px;">
+Git
+</a>
+<a href="https://plugins.jenkins.io/github-oauth" style="white-space: nowrap; padding: 2px;">
+GitHub Authentication
+</a>
+<a href="https://plugins.jenkins.io/groovy" style="white-space: nowrap; padding: 2px;">
+Groovy
+</a>
+<a href="https://plugins.jenkins.io/job-import-plugin" style="white-space: nowrap; padding: 2px;">
+Job Import
+</a>
+<a href="https://plugins.jenkins.io/kanboard" style="white-space: nowrap; padding: 2px;">
+Kanboard
+</a>
+<a href="https://plugins.jenkins.io/monitoring" style="white-space: nowrap; padding: 2px;">
+Monitoring
+</a>
+<a href="https://plugins.jenkins.io/oic-auth" style="white-space: nowrap; padding: 2px;">
+OpenId Connect Authentication
+</a>
+<a href="https://plugins.jenkins.io/script-security" style="white-space: nowrap; padding: 2px;">
+Script Security
+</a>
+<a href="https://plugins.jenkins.io/token-macro" style="white-space: nowrap; padding: 2px;">
+Token Macro
+</a>
+<a href="https://plugins.jenkins.io/warnings" style="white-space: nowrap; padding: 2px;">
+Warnings
+</a>
+<a href="https://plugins.jenkins.io/warnings-ng" style="white-space: nowrap; padding: 2px;">
+Warnings Next Generation
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-01-16/">
+Jenkins Security Advisory 2019-01-16
+</a>
+<br>
+<small>
+<ul>
+<li>
+Affects Jenkins Core
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2019-01-08/">
+Jenkins Security Advisory 2019-01-08
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/pipeline-model-definition" style="white-space: nowrap; padding: 2px;">
+Pipeline: Declarative
+</a>
+<a href="https://plugins.jenkins.io/workflow-cps" style="white-space: nowrap; padding: 2px;">
+Pipeline: Groovy
+</a>
+<a href="https://plugins.jenkins.io/script-security" style="white-space: nowrap; padding: 2px;">
+Script Security
+</a>
+</li>
+</ul>
+</small>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="container">
+<div class="row">
+<h3>
+2018
+</h3>
+</div>
+<div class="row">
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-12-05/">
+Jenkins Security Advisory 2018-12-05
+</a>
+<br>
+<small>
+<ul>
+<li>
+Affects Jenkins Core
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-10-29/">
+Jenkins Security Advisory 2018-10-29
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/workflow-cps" style="white-space: nowrap; padding: 2px;">
+Pipeline: Groovy
+</a>
+<a href="https://plugins.jenkins.io/script-security" style="white-space: nowrap; padding: 2px;">
+Script Security
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-10-10/">
+Jenkins Security Advisory 2018-10-10
+</a>
+<br>
+<small>
+<ul>
+<li>
+Affects Jenkins Core
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-09-25/">
+Jenkins Security Advisory 2018-09-25
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/arachni-scanner" style="white-space: nowrap; padding: 2px;">
+Arachni Scanner
+</a>
+<a href="https://plugins.jenkins.io/argus-notifier" style="white-space: nowrap; padding: 2px;">
+Argus Notifier
+</a>
+<a href="https://plugins.jenkins.io/artifactory" style="white-space: nowrap; padding: 2px;">
+Artifactory
+</a>
+<a href="https://plugins.jenkins.io/chatter-notifier" style="white-space: nowrap; padding: 2px;">
+Chatter Notifier
+</a>
+<a href="https://plugins.jenkins.io/config-file-provider" style="white-space: nowrap; padding: 2px;">
+Config File Provider
+</a>
+<a href="https://plugins.jenkins.io/crowd2" style="white-space: nowrap; padding: 2px;">
+Crowd 2 Integration
+</a>
+<a href="https://plugins.jenkins.io/dimensionsscm" style="white-space: nowrap; padding: 2px;">
+Dimensions
+</a>
+<a href="https://plugins.jenkins.io/emailext-template" style="white-space: nowrap; padding: 2px;">
+Email Extension Template
+</a>
+<a href="https://plugins.jenkins.io/git-changelog" style="white-space: nowrap; padding: 2px;">
+Git Changelog
+</a>
+<a href="https://plugins.jenkins.io/hipchat" style="white-space: nowrap; padding: 2px;">
+HipChat
+</a>
+<a href="https://plugins.jenkins.io/jira" style="white-space: nowrap; padding: 2px;">
+JIRA
+</a>
+<a href="https://plugins.jenkins.io/jobConfigHistory" style="white-space: nowrap; padding: 2px;">
+Job Configuration History
+</a>
+<a href="https://plugins.jenkins.io/junit" style="white-space: nowrap; padding: 2px;">
+JUnit
+</a>
+<a href="https://plugins.jenkins.io/mesos" style="white-space: nowrap; padding: 2px;">
+mesos
+</a>
+<a href="https://plugins.jenkins.io/metadata" style="white-space: nowrap; padding: 2px;">
+Metadata
+</a>
+<a href="https://plugins.jenkins.io/monitoring" style="white-space: nowrap; padding: 2px;">
+Monitoring
+</a>
+<a href="https://plugins.jenkins.io/mq-notifier" style="white-space: nowrap; padding: 2px;">
+MQ Notifier
+</a>
+<a href="https://plugins.jenkins.io/pam-auth" style="white-space: nowrap; padding: 2px;">
+PAM Authentication
+</a>
+<a href="https://plugins.jenkins.io/publish-over-dropbox" style="white-space: nowrap; padding: 2px;">
+Publish Over Dropbox
+</a>
+<a href="https://plugins.jenkins.io/rebuild" style="white-space: nowrap; padding: 2px;">
+Rebuilder
+</a>
+<a href="https://plugins.jenkins.io/sonar" style="white-space: nowrap; padding: 2px;">
+SonarQube Scanner
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-08-15/">
+Jenkins Security Advisory 2018-08-15
+</a>
+<br>
+<small>
+<ul>
+<li>
+Affects Jenkins Core
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-07-30/">
+Jenkins Security Advisory 2018-07-30
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/accurev" style="white-space: nowrap; padding: 2px;">
+AccuRev
+</a>
+<a href="https://plugins.jenkins.io/pangolin-testrail-connector" style="white-space: nowrap; padding: 2px;">
+Agiletestware Pangolin Connector for TestRail
+</a>
+<a href="https://plugins.jenkins.io/anchore-container-scanner" style="white-space: nowrap; padding: 2px;">
+Anchore Container Image Scanner
+</a>
+<a href="https://plugins.jenkins.io/confluence-publisher" style="white-space: nowrap; padding: 2px;">
+Confluence Publisher
+</a>
+<a href="https://plugins.jenkins.io/inedo-buildmaster" style="white-space: nowrap; padding: 2px;">
+Inedo BuildMaster Plugin
+</a>
+<a href="https://plugins.jenkins.io/inedo-proget" style="white-space: nowrap; padding: 2px;">
+Inedo ProGet Plugin
+</a>
+<a href="https://plugins.jenkins.io/kubernetes" style="white-space: nowrap; padding: 2px;">
+Kubernetes
+</a>
+<a href="https://plugins.jenkins.io/maven-artifact-choicelistprovider" style="white-space: nowrap; padding: 2px;">
+Maven Artifact ChoiceListProvider (Nexus)
+</a>
+<a href="https://plugins.jenkins.io/meliora-testlab" style="white-space: nowrap; padding: 2px;">
+meliora-testlab
+</a>
+<a href="https://plugins.jenkins.io/publish-over-cifs" style="white-space: nowrap; padding: 2px;">
+Publish Over CIFS
+</a>
+<a href="https://plugins.jenkins.io/resource-disposer" style="white-space: nowrap; padding: 2px;">
+Resource Disposer
+</a>
+<a href="https://plugins.jenkins.io/saltstack" style="white-space: nowrap; padding: 2px;">
+SaltStack
+</a>
+<a href="https://plugins.jenkins.io/shelve-project-plugin" style="white-space: nowrap; padding: 2px;">
+Shelve Project
+</a>
+<a href="https://plugins.jenkins.io/ssh-agent" style="white-space: nowrap; padding: 2px;">
+SSH Agent
+</a>
+<a href="https://plugins.jenkins.io/tinfoil-scan" style="white-space: nowrap; padding: 2px;">
+Tinfoil Security
+</a>
+<a href="https://plugins.jenkins.io/ecutest" style="white-space: nowrap; padding: 2px;">
+TraceTronic ECU-TEST
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-07-18/">
+Jenkins Security Advisory 2018-07-18
+</a>
+<br>
+<small>
+<ul>
+<li>
+Affects Jenkins Core
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-06-25/">
+Jenkins Security Advisory 2018-06-25
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/aws-codebuild" style="white-space: nowrap; padding: 2px;">
+AWS CodeBuild
+</a>
+<a href="https://plugins.jenkins.io/codedeploy" style="white-space: nowrap; padding: 2px;">
+AWS CodeDeploy
+</a>
+<a href="https://plugins.jenkins.io/aws-codepipeline" style="white-space: nowrap; padding: 2px;">
+AWS CodePipeline
+</a>
+<a href="https://plugins.jenkins.io/badge" style="white-space: nowrap; padding: 2px;">
+Badge
+</a>
+<a href="https://plugins.jenkins.io/collabnet" style="white-space: nowrap; padding: 2px;">
+CollabNet Plugins
+</a>
+<a href="https://plugins.jenkins.io/configuration-as-code" style="white-space: nowrap; padding: 2px;">
+Configuration as Code
+</a>
+<a href="https://plugins.jenkins.io/fortify-cloudscan-jenkins-plugin" style="white-space: nowrap; padding: 2px;">
+Fortify CloudScan
+</a>
+<a href="https://plugins.jenkins.io/github" style="white-space: nowrap; padding: 2px;">
+GitHub
+</a>
+<a href="https://plugins.jenkins.io/zos-connector" style="white-space: nowrap; padding: 2px;">
+IBM z/OS Connector
+</a>
+<a href="https://plugins.jenkins.io/openstack-cloud" style="white-space: nowrap; padding: 2px;">
+OpenStack Cloud
+</a>
+<a href="https://plugins.jenkins.io/saml" style="white-space: nowrap; padding: 2px;">
+SAML
+</a>
+<a href="https://plugins.jenkins.io/ssh-credentials" style="white-space: nowrap; padding: 2px;">
+SSH Credentials
+</a>
+<a href="https://plugins.jenkins.io/urltrigger" style="white-space: nowrap; padding: 2px;">
+URLTrigger
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-06-04/">
+Jenkins Security Advisory 2018-06-04
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/absint-astree" style="white-space: nowrap; padding: 2px;">
+AbsInt Astrée
+</a>
+blackduck-hub
+<a href="https://plugins.jenkins.io/cas-plugin" style="white-space: nowrap; padding: 2px;">
+CAS
+</a>
+<a href="https://plugins.jenkins.io/git" style="white-space: nowrap; padding: 2px;">
+Git
+</a>
+<a href="https://plugins.jenkins.io/github" style="white-space: nowrap; padding: 2px;">
+GitHub
+</a>
+<a href="https://plugins.jenkins.io/github-branch-source" style="white-space: nowrap; padding: 2px;">
+GitHub Branch Source
+</a>
+<a href="https://plugins.jenkins.io/ghprb" style="white-space: nowrap; padding: 2px;">
+GitHub Pull Request Builder
+</a>
+<a href="https://plugins.jenkins.io/kubernetes" style="white-space: nowrap; padding: 2px;">
+Kubernetes
+</a>
+<a href="https://plugins.jenkins.io/blackduck-detect" style="white-space: nowrap; padding: 2px;">
+Synopsys Detect
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-05-09/">
+Jenkins Security Advisory 2018-05-09
+</a>
+<br>
+<small>
+<ul>
+<li>
+Affects Jenkins Core
+</li>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+blackduck-hub
+<a href="https://plugins.jenkins.io/gitlab-hook" style="white-space: nowrap; padding: 2px;">
+Gitlab Hook
+</a>
+<a href="https://plugins.jenkins.io/groovy-postbuild" style="white-space: nowrap; padding: 2px;">
+Groovy Postbuild
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-04-16/">
+Jenkins Security Advisory 2018-04-16
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/email-ext" style="white-space: nowrap; padding: 2px;">
+Email Extension
+</a>
+<a href="https://plugins.jenkins.io/google-login" style="white-space: nowrap; padding: 2px;">
+Google Login
+</a>
+<a href="https://plugins.jenkins.io/htmlpublisher" style="white-space: nowrap; padding: 2px;">
+HTML Publisher
+</a>
+<a href="https://plugins.jenkins.io/s3" style="white-space: nowrap; padding: 2px;">
+S3 publisher
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-04-11/">
+Jenkins Security Advisory 2018-04-11
+</a>
+<br>
+<small>
+<ul>
+<li>
+Affects Jenkins Core
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-03-26/">
+Jenkins Security Advisory 2018-03-26
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/ansible" style="white-space: nowrap; padding: 2px;">
+Ansible
+</a>
+Copy To Slave
+<a href="https://plugins.jenkins.io/cucumber-living-documentation" style="white-space: nowrap; padding: 2px;">
+Cucumber Living Documentation
+</a>
+<a href="https://plugins.jenkins.io/ghprb" style="white-space: nowrap; padding: 2px;">
+GitHub Pull Request Builder
+</a>
+Liquibase Runner
+<a href="https://plugins.jenkins.io/mailer" style="white-space: nowrap; padding: 2px;">
+Mailer
+</a>
+Perforce
+<a href="https://plugins.jenkins.io/reverse-proxy-auth-plugin" style="white-space: nowrap; padding: 2px;">
+Reverse Proxy Auth
+</a>
+<a href="https://plugins.jenkins.io/vsphere-cloud" style="white-space: nowrap; padding: 2px;">
+vSphere
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-02-26/">
+Jenkins Security Advisory 2018-02-26
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+Azure Slave
+<a href="https://plugins.jenkins.io/coverity" style="white-space: nowrap; padding: 2px;">
+Coverity
+</a>
+<a href="https://plugins.jenkins.io/cppncss" style="white-space: nowrap; padding: 2px;">
+CppNCSS
+</a>
+<a href="https://plugins.jenkins.io/envinject" style="white-space: nowrap; padding: 2px;">
+Environment Injector
+</a>
+<a href="https://plugins.jenkins.io/gerrit-trigger" style="white-space: nowrap; padding: 2px;">
+Gerrit Trigger
+</a>
+<a href="https://plugins.jenkins.io/git" style="white-space: nowrap; padding: 2px;">
+Git
+</a>
+<a href="https://plugins.jenkins.io/google-play-android-publisher" style="white-space: nowrap; padding: 2px;">
+Google Play Android Publisher
+</a>
+<a href="https://plugins.jenkins.io/ownership" style="white-space: nowrap; padding: 2px;">
+Job and Node ownership
+</a>
+<a href="https://plugins.jenkins.io/mercurial" style="white-space: nowrap; padding: 2px;">
+Mercurial
+</a>
+<a href="https://plugins.jenkins.io/promoted-builds" style="white-space: nowrap; padding: 2px;">
+promoted builds
+</a>
+<a href="https://plugins.jenkins.io/subversion" style="white-space: nowrap; padding: 2px;">
+Subversion
+</a>
+<a href="https://plugins.jenkins.io/testlink" style="white-space: nowrap; padding: 2px;">
+TestLink
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-02-14/">
+Jenkins Security Advisory 2018-02-14
+</a>
+<br>
+<small>
+<ul>
+<li>
+Affects Jenkins Core
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-02-05/">
+Jenkins Security Advisory 2018-02-05
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/android-lint" style="white-space: nowrap; padding: 2px;">
+Android Lint
+</a>
+<a href="https://plugins.jenkins.io/ccm" style="white-space: nowrap; padding: 2px;">
+CCM
+</a>
+<a href="https://plugins.jenkins.io/credentials-binding" style="white-space: nowrap; padding: 2px;">
+Credentials Binding
+</a>
+<a href="https://plugins.jenkins.io/junit" style="white-space: nowrap; padding: 2px;">
+JUnit
+</a>
+<a href="https://plugins.jenkins.io/workflow-support" style="white-space: nowrap; padding: 2px;">
+Pipeline: Supporting APIs
+</a>
+</li>
+</ul>
+</small>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2018-01-22/">
+Jenkins Security Advisory 2018-01-22
+</a>
+<br>
+<small>
+<ul>
+<li>
+<span style="white-space: nowrap;">
+Affects Plugins:
+</span>
+<a href="https://plugins.jenkins.io/ant" style="white-space: nowrap; padding: 2px;">
+Ant
+</a>
+<a href="https://plugins.jenkins.io/checkstyle" style="white-space: nowrap; padding: 2px;">
+Checkstyle
+</a>
+<a href="https://plugins.jenkins.io/dry" style="white-space: nowrap; padding: 2px;">
+DRY
+</a>
+<a href="https://plugins.jenkins.io/findbugs" style="white-space: nowrap; padding: 2px;">
+FindBugs
+</a>
+<a href="https://plugins.jenkins.io/workflow-durable-task-step" style="white-space: nowrap; padding: 2px;">
+Pipeline: Nodes and Processes
+</a>
+<a href="https://plugins.jenkins.io/pmd" style="white-space: nowrap; padding: 2px;">
+PMD
+</a>
+<a href="https://plugins.jenkins.io/release" style="white-space: nowrap; padding: 2px;">
+Release
+</a>
+<a href="https://plugins.jenkins.io/translation" style="white-space: nowrap; padding: 2px;">
+Translation Assistance
+</a>
+<a href="https://plugins.jenkins.io/warnings" style="white-space: nowrap; padding: 2px;">
+Warnings
+</a>
+</li>
+</ul>
+</small>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="container">
+<div class="row">
+<h3>
+2017
+</h3>
+</div>
+<div class="row">
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-12-14/">
+Jenkins Security Advisory 2017-12-14
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-12-11/">
+Jenkins Security Advisory 2017-12-11
+(plugin)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-12-06/">
+Jenkins Security Advisory 2017-12-06
+(plugin)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-12-05/">
+Jenkins Security Advisory 2017-12-05
+(core and plugins)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-11-16/">
+Jenkins Security Advisory 2017-11-16
+(plugin)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-11-08/">
+Jenkins Security Advisory 2017-11-08
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-10-23/">
+Jenkins Security Advisory 2017-10-23
+(plugins)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-10-11/">
+Jenkins Security Advisory 2017-10-11
+(core and plugins)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-09-27/">
+Jenkins Security Advisory 2017-09-27
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-08-08/">
+Jenkins Security Advisory 2017-08-08
+(plugin)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-08-07/">
+Jenkins Security Advisory 2017-08-07
+(plugins)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-07-10/">
+Jenkins Security Advisory 2017-07-10
+(plugins)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-06-06/">
+Jenkins Security Advisory 2017-06-06
+(plugin)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-04-27/">
+Jenkins Security Advisory 2017-04-27
+(plugin)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-04-26/">
+Jenkins Security Advisory 2017-04-26
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-04-10/">
+Jenkins Security Advisory 2017-04-10
+(plugins)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-03-20/">
+Jenkins Security Advisory 2017-03-20
+(plugins)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-03-09/">
+Jenkins Security Advisory 2017-03-09
+(plugin)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-03-07/">
+Jenkins Security Advisory 2017-03-07
+(plugin)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2017-02-01/">
+Jenkins Security Advisory 2017-02-01
+(core)
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="container">
+<div class="row">
+<h3>
+2016
+</h3>
+</div>
+<div class="row">
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2016-11-16/">
+Jenkins Security Advisory 2016-11-16
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2016-07-27/">
+Jenkins Security Advisory 2016-07-27
+(plugin)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2016-06-20/">
+Jenkins Security Advisory 2016-06-20
+(plugins)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2016-05-11/">
+Jenkins Security Advisory 2016-05-11
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2016-04-11/">
+Jenkins Security Advisory 2016-04-11
+(plugins)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2016-02-24/">
+Jenkins Security Advisory 2016-02-24
+(core)
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="container">
+<div class="row">
+<h3>
+2015
+</h3>
+</div>
+<div class="row">
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2015-12-09/">
+Jenkins Security Advisory 2015-12-09
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2015-11-11/">
+Jenkins Security Advisory 2015-11-11
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2015-10-12/">
+Jenkins Security Advisory 2015-10-12
+(plugin)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2015-10-01/">
+Jenkins Security Advisory 2015-10-01
+(other)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2015-03-23/">
+Jenkins Security Advisory 2015-03-23
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2015-02-27/">
+Jenkins Security Advisory 2015-02-27
+(core and plugins)
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="container">
+<div class="row">
+<h3>
+2014
+</h3>
+</div>
+<div class="row">
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2014-10-30/">
+Jenkins Security Advisory 2014-10-30
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2014-10-15/">
+Jenkins Security Advisory 2014-10-15
+(other)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2014-10-01/">
+Jenkins Security Advisory 2014-10-01
+(core and plugin)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2014-02-14/">
+Jenkins Security Advisory 2014-02-14
+(core)
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="container">
+<div class="row">
+<h3>
+2013
+</h3>
+</div>
+<div class="row">
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2013-11-20/">
+Jenkins Security Advisory 2013-11-20
+(plugins)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2013-05-02/">
+Jenkins Security Advisory 2013-05-02
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2013-02-16/">
+Jenkins Security Advisory 2013-02-16
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2013-01-04/">
+Jenkins Security Advisory 2013-01-04
+(core)
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="container">
+<div class="row">
+<h3>
+2012
+</h3>
+</div>
+<div class="row">
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2012-11-20/">
+Jenkins Security Advisory 2012-11-20
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2012-09-17/">
+Jenkins Security Advisory 2012-09-17
+(core and plugins)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2012-03-05/">
+Jenkins Security Advisory 2012-03-05
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2012-01-24/">
+Jenkins Security Advisory 2012-01-24
+(plugin)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2012-01-12/">
+Jenkins Security Advisory 2012-01-12
+(core)
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="container">
+<div class="row">
+<h3>
+2011
+</h3>
+</div>
+<div class="row">
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2011-11-08/">
+Jenkins Security Advisory 2011-11-08
+(core)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2011-10-28/">
+Jenkins Security Advisory 2011-10-28
+(plugin)
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2011-10-20/">
+Jenkins Security Advisory 2011-10-20
+(plugin)
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="container">
+<div class="row">
+<h3>
+2010
+</h3>
+</div>
+<div class="row">
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security/advisory/2010-07-05/">
+Hudson Security Advisory 2010-07-05
+(core)
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//security/advisories.html.haml" title="Edit /security/advisories.html.haml on GitHub">Improve this page</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//security/advisories.html.haml" title="View /security/advisories.html.haml history on GitHub">Page history</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+</body>
+</html>

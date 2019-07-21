@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+GSoC Project Intro: Pipeline as YAML
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="GSoC Project Intro: Pipeline as YAML" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="GSoC Project Intro: Pipeline as YAML" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="GSoC Project Intro: Pipeline as YAML" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2018/06/15/simple-pull-request-plugin/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="GSoC Project Intro: Pipeline as YAML" property="og:site_name">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="og:image">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/footer.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-md navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Use Jenkins
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc/developer">
+Extend Jenkins
+</a>
+<span class="dropdown-item">
+<strong>
+Use-cases
+</strong>
+</span>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+&nbsp;-&nbsp;Android
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+&nbsp;-&nbsp;C/C++
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+&nbsp;-&nbsp;Docker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+&nbsp;-&nbsp;Embedded
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+&nbsp;-&nbsp;GitHub
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+&nbsp;-&nbsp;Java
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+&nbsp;-&nbsp;PHP
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+&nbsp;-&nbsp;Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+&nbsp;-&nbsp;Python
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+&nbsp;-&nbsp;Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam/">
+Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/remoting/">
+Jenkins Remoting
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security">
+Security
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/press">
+Press
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('#content h' + i);
+    }
+  })
+</script>
+<div class="container blog-post">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2018/06/15/simple-pull-request-plugin/" title="GSoC Project Intro: Pipeline as YAML">
+GSoC Project Intro: Pipeline as YAML
+</a>
+</h1>
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+<div class="post-attrs">
+<span class="submitted">
+Published on
+2018-06-15
+by
+<a href="/blog/authors/abhishek_gautam">Abhishek Gautam</a>
+</span>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/gsoc2018">
+gsoc2018
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/gsoc">
+gsoc
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/plugin">
+plugin
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/pipeline">
+pipeline
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/yaml">
+yaml
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="about-me"><a class="anchor" href="#about-me"></a>About me</h3>
+<div class="paragraph">
+<p>I am Abhishek Gautam, 3rd year student from Visvesvaraya National Institute of
+technology, India, Nagpur. I was a member of ACM Chapter and Google student developer club of my
+college. I am passionate about automation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mentors"><a class="anchor" href="#mentors"></a>Mentors</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/oleg-nenashev">Oleg Nenashev</a> (Org Admin)</p>
+</li>
+<li>
+<p><a href="https://github.com/martinda">Martin d&#8217;Anjou</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kwhetstone">Kristin Whetstone</a></p>
+</li>
+<li>
+<p><a href="https://github.com/grandvizier">Jeff Knurek</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="project-summary"><a class="anchor" href="#project-summary"></a>Project Summary</h3>
+<div class="paragraph">
+<p>This is a GSoC 2018 project.</p>
+</div>
+<div class="paragraph">
+<p>This project aims to develop a pull request Job Plugin. Users should be able to
+configure job type using YAML file placed in root directory of the
+Git repository being the subject of the pull request. The plugin should interact with various
+platforms like Bitbucket, Github, Gitlab, etc whenever a pull request is created or updated.</p>
+</div>
+<div class="paragraph">
+<p>Plugin detects the presence of certain types of the report at conventional locations,
+and publish them automatically. If the reports are not present at conventional location,
+can specify the location using the YAML file.</p>
+</div>
+<div class="sect3">
+<h4 id="benefits-to-the-community"><a class="anchor" href="#benefits-to-the-community"></a>Benefits to the community</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Project administrators will be able to handle builds for pull requests more easily.</p>
+</li>
+<li>
+<p>Build specifications for pull request can be written in a concise declarative format.</p>
+</li>
+<li>
+<p>Build reports will be automatically published to Github, Bitbucket, etc.</p>
+</li>
+<li>
+<p>Build status updates will be sent to git servers automatically.</p>
+</li>
+<li>
+<p>Users will not have to deal with pipeline code.</p>
+</li>
+<li>
+<p>If there will be no merge conflicts or build failures, the PR can be merged into target branch.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="prior-work"><a class="anchor" href="#prior-work"></a>Prior work</h3>
+<div class="olist arabic">
+<ol class="arabic" start="1">
+<li>
+<p><a href="https://github.com/Jenkinsci/travis-yml-plugin">Travis YML Plugin</a>:
+Designed to run .travis.yml as Jenkins pipeline job.
+Travis-CI does not support external pull requests. Jenkins environment
+is different than Travis and does not always make sense to use configurations
+defined for other environment in Jenkins. Also maintenance of this is slowed
+down and last commit for this plugin was on 14 Nov 2016.
+<a href="https://github.com/Jenkinsci/travis-yml-plugin/commits/master">Click here</a> to check.</p>
+</li>
+<li>
+<p><a href="https://github.com/ndeloof/codeship-plugin">CodeShip Plugin</a>:
+This plugin is designed to convert codeship "steps.yaml" and
+"services.yaml" to scripted pipeline code. This plugin has never been released.</p>
+</li>
+<li>
+<p><a href="https://github.com/constantcontact/jenkins_pipeline_builder">Jenkins pipeline builder</a>:
+This is a external non-Java-based tool, which cannot be easily converted to a Jenkins plugin.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="design"><a class="anchor" href="#design"></a>Design</h3>
+<div class="paragraph">
+<p>This plugin will be developed on the top of the MultiBranch Pipeline plugin.</p>
+</div>
+<div class="paragraph">
+<p>For now the plugin is bulding branches and Pull request both using Jenkinsfile.yaml,
+but this plugin is inclined to use for pull requests. This will be fixed in next coding phase.</p>
+</div>
+<div class="paragraph">
+<p>This plugin is following below steps for now:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>clone target repo</p>
+</li>
+<li>
+<p>checkout to target branch</p>
+</li>
+<li>
+<p>fetch the source branch</p>
+</li>
+<li>
+<p>merge source-branch</p>
+</li>
+<li>
+<p>call user call user script to build the repo.</p>
+</li>
+<li>
+<p>push changes of pull request to target branch</p>
+</li>
+<li>
+<p>publish test reports</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Plugin will start above steps if and only if the pull request is
+mergeable, to avoid merge conflicts while merging the source branch to target
+branch. Pull request&#8217;s payload contains information if the pull request changes
+are mergeable or not hence, the pull request is mergebale or not can also be
+decided by the payload of webhook also.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-to-run-the-plugin"><a class="anchor" href="#how-to-run-the-plugin"></a>How to run the Plugin</h3>
+<div class="paragraph">
+<p>See <a href="https://github.com/Jenkinsci/simple-pull-request-job-plugin/blob/master/README.md">How to run the demo</a>
+and set credentials, owner and repository on your own and you will be good to go.</p>
+</div>
+<div class="sect3">
+<h4 id="example-branch-source-configuration"><a class="anchor" href="#example-branch-source-configuration"></a>Example branch-source configuration.</h4>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/gsoc-simple-pull-request-plugin/branch-source-configuration.png" alt="branch source configuration" title="Jenkinsfile.yaml"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="phase-1-features"><a class="anchor" href="#phase-1-features"></a>Phase 1 features</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Users are able to select the Jenkinsfile.yaml file as the source for the Pipeline configuration.</p>
+</li>
+<li>
+<p>Git Push step</p>
+</li>
+<li>
+<p>harvest results and reports (and post in the pull request)</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>junit()</code></p>
+</li>
+<li>
+<p><code>findbugs()</code></p>
+</li>
+<li>
+<p><code>archiveArtifacts()</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Basic interface to parse and get build specifications from YAML file.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="things-decided"><a class="anchor" href="#things-decided"></a>Things decided</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To build the plugin on the top of multibranch pipeline plugin. As that plugin has implementation of</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Nice interface to show different branch and pull requests build separately with use of suitable plugins like Github, Bitbucket.</p>
+</li>
+<li>
+<p>Detect trusted revisions in a repository.</p>
+</li>
+<li>
+<p>Publishing of build status to the repository.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Convert the YAML configuration to declarative pipeline.</p>
+</li>
+<li>
+<p>User will provide path to the script relative to the root directory of the repository
+without extension (.sh or .bat) in the YAML file. The plugin will generate pipeline script to detect the
+platform and call .sh or .bat script.</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Example:
+  Path provided: ./scripts/hello
+  a. On UNIX machine “./scripts/hello.sh” will be called
+  b. On non-UNIX machine “./scripts/hello.bat” will be called.</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="implementations-till-now"><a class="anchor" href="#implementations-till-now"></a>Implementations till now</h3>
+<div class="paragraph">
+<p>A first prototype of the plugin is ready. It supports all features of Multi-Branch Pipeline and offers the following features.</p>
+</div>
+<div class="paragraph">
+<p>Build description is defined via YAML file stored within the SCM repo. This plugin
+will depend on GitHub plugin, Bitbucket plugin, Gitlab plugin if users will be
+using respective paltfroms for their repositories.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Basic conversion of YAML to Declarative Pipeline: A class YamlToPipeline
+is written which will load the "Jenkinsfile.yaml" and make use of PipelineSnippetGenerator class
+to generate Declarative pipeline code.</p>
+</li>
+<li>
+<p>Reporting of results.</p>
+</li>
+<li>
+<p>Plugin is using Yaml from target branch right now. (Maybe this needs some discussion, example:
+what if pull request contains changes in Jenkinsfile.yaml)</p>
+</li>
+<li>
+<p>Git Push step: To push the changes of pull request to the target branch. This is implemented
+using git-plugin, PushCommand is used for this from git-plugin. credentialId,
+branch name and repository url for intracting with Github, Bitbucket, etc
+will be taken automatically from "Branch-Source" (Users have to fill thes
+details of branch source in job configuration UI). (You can see
+<a href="https://github.com/Jenkinsci/simple-pull-request-job-plugin/blob/master/README.md">How to run the demo</a>)</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="jenkinsfile-yaml-example"><a class="anchor" href="#jenkinsfile-yaml-example"></a>Jenkinsfile.yaml example</h3>
+<div class="paragraph">
+<p>For the phase 1 prototype demonstration, the following yaml file was used.
+Note that this format is subject to change in the next phases of the project,
+as we formalise the yaml format definition.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">agent</span>:
+    <span style="color:#606">dockerImage</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">maven:3.5.3-jdk-8</span></span>
+    <span style="color:#606">args</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">-v /tmp:/tmp</span></span>
+
+<span style="color:#606">testResultPaths</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">target/surefire-reports/*.xml</span></span>
+
+<span style="color:#606">findBugs</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">target/*.xml</span></span>
+
+<span style="color:#606">stages</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: First</span></span>
+      <span style="color:#606">scripts</span>:
+        -   <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">./scripts/hello</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Build</span></span>
+      <span style="color:#606">scripts</span>:
+        -   <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">./scripts/build</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">name: Tests</span></span>
+      <span style="color:#606">scripts</span>:
+        -   <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">./scripts/test</span></span>
+
+<span style="color:#606">archiveArtifacts</span>:
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">Jenkinsfile.yaml</span></span>
+    - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">scripts/hello.sh</span></span></code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="from-the-yaml-file-shown-above-the-plugin-generates-the-following-pipeline-code"><a class="anchor" href="#from-the-yaml-file-shown-above-the-plugin-generates-the-following-pipeline-code"></a>From the yaml file shown above, the plugin generates the following pipeline code:</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">pipeline {
+  agent {
+    docker {
+      image <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3.5.3-jdk-8</span><span style="color:#710">'</span></span>
+      args <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">-v /tmp:/tmp</span><span style="color:#710">'</span></span>
+      alwaysPull <span style="color:#069">false</span>
+      reuseNode <span style="color:#069">false</span>
+    }
+  }
+  stages {
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">First</span><span style="color:#710">'</span></span>) {
+      steps {
+        script {
+          <span style="color:#080;font-weight:bold">if</span> (isUnix()) {
+            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./scripts/hello.sh</span><span style="color:#710">'</span></span>
+          } <span style="color:#080;font-weight:bold">else</span> {
+            bat <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./scripts/hello.bat</span><span style="color:#710">'</span></span>
+          }
+        }
+      }
+    }
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
+      steps {
+        script {
+          <span style="color:#080;font-weight:bold">if</span> (isUnix()) {
+            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./scripts/build.sh</span><span style="color:#710">'</span></span>
+          } <span style="color:#080;font-weight:bold">else</span> {
+            bat <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./scripts/build.bat</span><span style="color:#710">'</span></span>
+          }
+        }pipeline
+      }
+      post {
+        success {
+          archiveArtifacts <span style="color:#606">artifacts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">**/target/*.jar</span><span style="color:#710">'</span></span>
+          archiveArtifacts <span style="color:#606">artifacts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Jenkinsfile.yaml</span><span style="color:#710">'</span></span>
+          archiveArtifacts <span style="color:#606">artifacts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">scripts/hello.sh</span><span style="color:#710">'</span></span>
+        }
+      }
+    }
+    stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Tests</span><span style="color:#710">'</span></span>) {
+      steps {
+        script {
+          <span style="color:#080;font-weight:bold">if</span> (isUnix()) {
+            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./scripts/test.sh</span><span style="color:#710">'</span></span>
+          } <span style="color:#080;font-weight:bold">else</span> {
+            bat <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./scripts/test.bat</span><span style="color:#710">'</span></span>
+          }
+        }
+      }
+      post {
+        success {
+          junit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">target/surefire-reports/*.xml</span><span style="color:#710">'</span></span>
+        }
+        always {
+          findbugs <span style="color:#606">pattern</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">target/*.xml</span><span style="color:#710">'</span></span>
+        }
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pipeline-view-in-jenkins-instance"><a class="anchor" href="#pipeline-view-in-jenkins-instance"></a>Pipeline view in Jenkins instance</h4>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/gsoc-simple-pull-request-plugin/pipeline-view.png" alt="pipeline view" title="Jenkinsfile.yaml"></span></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="coding-phase-2-plans"><a class="anchor" href="#coding-phase-2-plans"></a>Coding Phase 2 plans</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Decide a proper YAML format to use for Jenkinsfile.yaml</p>
+</li>
+<li>
+<p>Create Step Configurator for SPRP plugin. <a href="https://issues.jenkins-ci.org/browse/JENKINS-51637">Jenkins-51637</a>.
+This will enable users to use Pipeline steps in Jenkinsfile.yaml.</p>
+</li>
+<li>
+<p>Automatic indentation generation in the generated Pipeline SnipperGenerator class.</p>
+</li>
+<li>
+<p>Write tests for the plugin.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><a href="https://issues.Jenkins-ci.org/browse/Jenkins-51809">Jira Epic</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-to-reach-me"><a class="anchor" href="#how-to-reach-me"></a>How to reach me</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Email: <a href="mailto:gautamabhishek46@gmail.com">gautamabhishek46@gmail.com</a></p>
+</li>
+<li>
+<p>Gitter room: <a href="https://gitter.im/Jenkinsci/simple-pull-request-job-plugin" class="bare">https://gitter.im/Jenkinsci/simple-pull-request-job-plugin</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="references"><a class="anchor" href="#references"></a>References</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.google.com/document/d/1cuC0AvQG3e4GCjIoCwK3J0tcJVAz1eNDKV8d_zXxlO8/edit">Initial proposal of the project</a></p>
+</li>
+<li>
+<p><a href="https://github.com/Jenkinsci/simple-pull-request-job-plugin">Project repository</a></p>
+</li>
+<li>
+<p><a href="https://Jenkins.io/projects/gsoc/2018/simple-pull-request-job-plugin/">Project page</a></p>
+</li>
+<li>
+<p><a href="https://gitter.im/Jenkinsci/simple-pull-request-job-plugin?utm_source=share-link&amp;utm_medium=link&amp;utm_campaign=share-link">Gitter chat</a></p>
+</li>
+<li>
+<p><a href="https://issues.Jenkins-ci.org/issues/?jql=project%20%3D%20Jenkins%20AND%20component%20%3D%20simple-pull-request-job-plugin">Bug Tracker</a></p>
+</li>
+<li>
+<p><a href="https://github.com/gautamabhishek46/dummy">Demo Repository</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=qWHM8S0fzUw">Phase 1 Presentation video</a>(June 14, 2018)</p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1R63XK4Nmd5EBmMdF2rkevV1iZxjTom19XFHdgjY9qeA/edit?usp=sharing">Phase 1 Presentation Slides</a>(June 14, 2018)</p>
+</li>
+</ul>
+</div>
+</div>
+<!-- starting partial author.html.haml -->
+<div id="about-the-author">
+<b class="author about-header">
+About the Author
+</b>
+<table class="author box">
+<tr>
+<td>
+<!-- starting partial avatar.html.haml -->
+<img alt="Abhishek Gautam" class="author logo" src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/avatars/abhishek_gautam.jpg">
+
+<!-- ending partial avatar.html.haml -->
+</td>
+<td>
+<b class="author name">
+<a href="/blog/authors/abhishek_gautam">
+Abhishek Gautam
+</a>
+</b>
+<p>
+<div class="paragraph">
+<p>Abhishek is a 3rd year Computer Science student from Visvesvaraya National
+Institute of Technology, Nagpur, India. He has done some website projects for
+his college technical festival. He is also a regular competitive programmer
+(abhishekg1128 at codechef). He has done two internships as a Game Programmer
+as well. He was a member of ACM Chapter and Google student developer club of his
+college. His interest in automation motivated his participation in the Jenkins
+GSOC 2018 program.</p>
+</div>
+</p>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="author social-media-buttons">
+<li class="author">
+<a href="https://github.com/gautamabhishek46" target="_blank">
+GitHub
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</td>
+</tr>
+</table>
+</div>
+
+<!-- ending partial author.html.haml -->
+</div>
+</div>
+</div>
+
+
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2018/06/2018-06-15-simple-pull-request-plugin.adoc" title="Edit /blog/2018/06/2018-06-15-simple-pull-request-plugin.adoc on GitHub">Improve this page</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2018/06/2018-06-15-simple-pull-request-plugin.adoc" title="View /blog/2018/06/2018-06-15-simple-pull-request-plugin.adoc history on GitHub">Page history</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+</body>
+</html>

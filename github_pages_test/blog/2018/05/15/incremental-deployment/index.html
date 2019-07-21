@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+Automatic deployment of “incremental” commits to Jenkins core and plugins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="description">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="ie=edge" http-equiv="x-ua-compatible">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon.ico" rel="icon" sizes="32x32" type="img/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<meta content="Automatic deployment of “incremental” commits to Jenkins core and plugins" name="apple-mobile-web-app-title">
+<!-- Twitter Card data -->
+<meta content="summary_large_image" name="twitter:card">
+<meta content="@JenkinsCI" name="twitter:site">
+<meta content="Automatic deployment of “incremental” commits to Jenkins core and plugins" name="twitter:title">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="twitter:description">
+<meta content="@JenkinsCI" name="twitter:creator">
+<!-- Twitter Summary card images must be at least 120x120px -->
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="twitter:image">
+<!-- Open Graph data -->
+<meta content="Automatic deployment of “incremental” commits to Jenkins core and plugins" property="og:title">
+<meta content="article" property="og:type">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2018/05/15/incremental-deployment/index.html" property="og:url">
+<meta content="Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software" name="og:description">
+<meta content="Automatic deployment of “incremental” commits to Jenkins core and plugins" property="og:site_name">
+<meta content="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logo-title-opengraph.png" name="og:image">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/jenkins.css" media="screen" rel="stylesheet">
+<!-- Non-obtrusive CSS styles -->
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/ionicons/css/ionicons.min.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/footer.css" media="screen" rel="stylesheet">
+<link href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/css/font-awesome.min.css" media="screen" rel="stylesheet">
+</head>
+<body>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/jquery/jquery.min.js"></script>
+<!-- starting partial toptoolbar.html.haml -->
+<nav class="navbar navbar-expand-md navbar-dark top bg-dark fixed-top" id="ji-toolbar">
+<a class="navbar-brand" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test">
+Jenkins
+</a>
+<button class="navbar-toggler" data-target="#CollapsingNavbar" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="CollapsingNavbar">
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Documentation
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Use Jenkins
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc/developer">
+Extend Jenkins
+</a>
+<span class="dropdown-item">
+<strong>
+Use-cases
+</strong>
+</span>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+&nbsp;-&nbsp;Android
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+&nbsp;-&nbsp;C/C++
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+&nbsp;-&nbsp;Docker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+&nbsp;-&nbsp;Embedded
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+&nbsp;-&nbsp;GitHub
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+&nbsp;-&nbsp;Java
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+&nbsp;-&nbsp;PHP
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+&nbsp;-&nbsp;Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+&nbsp;-&nbsp;Python
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+&nbsp;-&nbsp;Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Community
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/participate">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam">
+Meet
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins.io/">
+Wiki
+</a>
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/">
+<strong>
+Special Interest Groups
+</strong>
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/advocacy-and-outreach/">
+&nbsp;-&nbsp;Advocacy and Outreach
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/chinese-localization/">
+&nbsp;-&nbsp;Chinese Localization
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/cloud-native/">
+&nbsp;-&nbsp;Cloud Native
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/docs/">
+&nbsp;-&nbsp;Documentation
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/gsoc/">
+&nbsp;-&nbsp;Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/hw-and-eda/">
+&nbsp;-&nbsp;Hardware and EDA
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/pipeline-authoring/">
+&nbsp;-&nbsp;Pipeline Authoring
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs/platform/">
+&nbsp;-&nbsp;Platform
+</a>
+</div>
+</li>
+<li class="dropdown nav-item">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+Subprojects
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/evergreen/">
+Evergreen
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/gsoc/">
+Google Summer of Code in Jenkins
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jam/">
+Jenkins Area Meetups
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/jcasc/">
+Jenkins Configuration as Code
+</a>
+<a class="dropdown-item feature" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/projects/remoting/">
+Jenkins Remoting
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+About
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/security">
+Security
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/press">
+Press
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/project/conduct">
+Conduct
+</a>
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/artwork">
+Artwork
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<!-- starting partial dropdown.html.haml -->
+<button aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown">
+English
+</button>
+
+<!-- ending partial dropdown.html.haml -->
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/zh">
+中文 Chinese
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-outline-secondary" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/download">
+Download
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Spacing to make the fixed-top sticky navbar not occlude any content below it -->
+<div class="pt-4">
+&nbsp;
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    for (var i = 1 ; i <= 6 ; i ++) {
+      anchors.add('#content h' + i);
+    }
+  })
+</script>
+<div class="container blog-post">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/blog/2018/05/15/incremental-deployment/" title="Automatic deployment of “incremental” commits to Jenkins core and plugins">
+Automatic deployment of “incremental” commits to Jenkins core and plugins
+</a>
+</h1>
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+<div class="post-attrs">
+<span class="submitted">
+Published on
+2018-05-15
+by
+<a href="/blog/authors/jglick">Jesse Glick</a>
+</span>
+<ul class="list-inline tags">
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/evergreen">
+evergreen
+</a>
+</li>
+<li>
+<a class="tag-link" href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node/tags/developer">
+developer
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="paragraph">
+<p>A couple of weeks ago, Tyler mentioned some
+<a href="/blog/2018/04/27/essentials-versions-are-numbered/#developer-improvements">developer improvements in Essentials</a>
+that had been recently introduced:
+the ability for
+<a href="https://ci.jenkins.io/">ci.jenkins.io</a>
+builds to get deployed automatically to an “Incrementals” Maven repository,
+as described in
+<a href="https://github.com/jenkinsci/jep/blob/master/jep/305/README.adoc">JEP-305</a>.
+For a plugin maintainer, you just need to
+<a href="https://github.com/jenkinsci/incrementals-tools/blob/master/README.md#enabling-incrementals-the-easy-way">turn on this support</a>
+and you are ready to both deploy individual Git commits from your repository
+without the need to run heavyweight traditional Maven releases,
+and to depend directly on similar commits of Jenkins core or other plugins.
+This is a stepping stone toward continuous delivery, and ultimately deployment, of Jenkins itself.</p>
+</div>
+<div class="paragraph">
+<p>Here I would like to peek behind the curtain a bit at how we did this,
+since the solution turns out to be very interesting for people thinking about security in Jenkins.
+I will gloss over the Maven arcana required to get the project version to look like <code>1.40-rc301.87ce0dd8909b</code>
+(a real example from the
+<a href="https://repo.jenkins-ci.org/incrementals/org/jenkins-ci/plugins/copyartifact/1.40-rc301.87ce0dd8909b/">Copy Artifact plugin</a>)
+rather than the usual <code>1.40-SNAPSHOT</code>, and why this format is even useful.
+Suffice it to say that if you had enough permissions, you could run</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">mvn -Dset.changelist -DskipTests clean deploy</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>from your laptop to publish your latest commit.
+Indeed as
+<a href="https://github.com/jenkinsci/jep/blob/master/jep/305/README.adoc#automated-deployment-to-the-incrementals-repository">mentioned in the JEP</a>,
+the most straightforward server setup would be to run more or less that command
+from the <code>buildPlugin</code> function called from a typical <code>Jenkinsfile</code>,
+with some predefined credentials adequate to upload to the Maven repository.</p>
+</div>
+<div class="paragraph">
+<p>Unfortunately, that simple solution did not look very secure.
+If you offer deployment credentials to a Jenkins job,
+you need to trust anyone who might configure that job (here, its <code>Jenkinsfile</code>)
+to use those credentials appropriately.
+(The <code>withCredentials</code> step will mask the password from the log file, to prevent <em>accidental</em> disclosures.
+It in no way blocks <em>deliberate</em> misuse or theft.)
+If your Jenkins service runs inside a protected network and works with private repositories,
+that is probably good enough.</p>
+</div>
+<div class="paragraph">
+<p>For this project, we wanted to permit incremental deployments from any pull request.
+Jenkins will refuse to run <code>Jenkinsfile</code> modifications from people
+who would not normally be able to merge the pull request or push directly,
+and those people would be more or less trustworthy Jenkins developers,
+but that is of no help if a pull request changes <code>pom.xml</code>
+or other source files used by the build itself.
+If the server administrator exposes a secret to a job,
+and it is bound to an environment variable while running some open-ended command like a Maven build,
+there is no practical way to control what might happen.</p>
+</div>
+<div class="paragraph">
+<p>The lesson here is that the unit of access control in Jenkins is the job.
+You can control who can configure a job, or who can edit files it uses,
+but you have no control over what the job <em>does</em> or how it might use any credentials.
+For JEP-305, therefore, we wanted a way to perform deployments from builds considered as black boxes.
+This means a division of responsibility:
+the build produces some artifacts, however it sees fit;
+and another process picks up those artifacts and deploys them.</p>
+</div>
+<div class="paragraph">
+<p>This worked was tracked in
+<a href="https://issues.jenkins-ci.org/browse/INFRA-1571">INFRA-1571</a>.
+The idea was to create a “serverless function” in Azure
+that would retrieve artifacts from Jenkins at the end of a build,
+perform a set of validations to ensure that the artifacts follow an expected repository path pattern,
+and finally deploy them to Artifactory using a trusted token.
+I prototyped this in Java, Tyler
+<a href="https://github.com/jenkins-infra/community-functions/blob/master/incrementals-publisher/README.adoc">rewrote it in JavaScript</a>,
+and together we brought it into production.</p>
+</div>
+<div class="paragraph">
+<p>The crucial bit here is what information (or misinformation!) the Jenkins build can send to the function.
+All we actually need to know is the build URL, so the
+<a href="https://github.com/jenkins-infra/pipeline-library/blob/442485fc03101d4f52856ea48825a4d45acece7e/vars/infra.groovy#L227-L245">call site from Jenkins</a>
+is quite simple.
+When the function is called with this URL,
+it starts off by performing input validation:
+it knows what the Jenkins base URL is,
+and what a build URL from inside an organization folder is supposed to look like:
+<code><a href="https://ci.jenkins.io/job/Plugins/job/git-plugin/job/PR-582/17/" class="bare">https://ci.jenkins.io/job/Plugins/job/git-plugin/job/PR-582/17/</a></code>, for example.</p>
+</div>
+<div class="paragraph">
+<p>The next step is to call back to Jenkins and ask it for some metadata about that build.
+While we do not trust the <em>build</em>, we trust the server that ran it to be properly configured.
+An obstacle here was that the <code>ci.jenkins.io</code> server had been configured to disable the Jenkins REST API;
+with Tyler’s guidance I was able to amend this policy to permit API requests from registered users
+(or, in the case of the Incrementals publisher, a bot).</p>
+</div>
+<div class="paragraph">
+<p>If you want to try this at home, get an
+<a href="https://ci.jenkins.io/me/configure">API token</a>,
+pick a build of an “incrementalified” plugin or Jenkins core,
+and run something like</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">curl -igu &lt;login&gt;:&lt;token&gt; 'https://ci.jenkins.io/job/Plugins/job/git-plugin/job/PR-582/17/api/json?pretty&amp;tree=actions[revision[hash,pullHash]]'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You will see a <code>hash</code> or <code>pullHash</code> corresponding to the <em>main commit</em> of that build.
+(This information was added to the Jenkins REST API to support this use case in
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-50777">JENKINS-50777</a>.)
+The main commit is selected when the build starts
+and always corresponds to the version of <code>Jenkinsfile</code> in the repository for which the job is named.
+While a build might <code>checkout</code> any number of repositories,
+<code>checkout scm</code> always picks “this” repository in “this” version.
+Therefore the deployment function knows for sure which commit the sources came from,
+and will refuse to deploy artifacts named for some other commit.</p>
+</div>
+<div class="paragraph">
+<p>Next it looks up information about the Git repository at the folder level (again from JENKINS-50777):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">curl -igu &lt;login&gt;:&lt;token&gt; 'https://ci.jenkins.io/job/Plugins/job/git-plugin/api/json?pretty&amp;tree=sources[source[repoOwner,repository]]'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Git repository now needs to be correlated to a list of Maven artifact paths that this component is expected to produce.
+The
+<a href="https://github.com/jenkins-infra/repository-permissions-updater">repository-permissions-updater</a>
+(RPU) tool already had a list of artifact paths used to perform permission checks on regular release deployments to Artifactory; in
+<a href="https://issues.jenkins-ci.org/browse/INFRA-1598">INFRA-1598</a>
+I extended it to also record the GitHub repository name, as can be seen
+<a href="https://ci.jenkins.io/job/Infra/job/repository-permissions-updater/job/master/lastSuccessfulBuild/artifact/json/github.index.json">here</a>.
+Now the function knows that the CI build in this example may legitimately create artifacts in the <code>org/jenkins-ci/plugins/git/</code> namespace
+including <code>38c569094828</code> in their versions.
+The build is expected to have produced artifacts in the same structure as <code>mvn install</code> sends to the local repository,
+so the function downloads everything associated with that commit hash:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">curl -sg 'https://ci.jenkins.io/job/Plugins/job/git-plugin/job/PR-582/17/artifact/**/*-rc*.38c569094828/*-rc*.38c569094828*/*zip*/archive.zip' | jar t</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When all the artifacts are indeed inside the expected path(s),
+and at least one POM file is included (here <code>org/jenkins-ci/plugins/git/3.9.0-rc1671.38c569094828/git-3.9.0-rc1671.38c569094828.pom</code>),
+then the ZIP file looks good—ready to send to Artifactory.</p>
+</div>
+<div class="paragraph">
+<p>One last check is whether the commit has already been deployed (perhaps this is a rebuild).
+If it has not, the function uses the Artifactory REST API to atomically upload the ZIP file
+and uses the GitHub Status API to associate a message with the commit
+so that you can see right in your pull request that it got deployed:</p>
+</div>
+<div class="paragraph">
+<p><span class="image left"><img src="/images/post-images/2018-05-15/incrementals-status.png" alt="incrementals status" width="1104"></span></p>
+</div>
+<div class="paragraph">
+<p>One more bit of caution was required.
+Just because we successfully published some bits from some PR does not mean they should be <em>used</em>!
+We also needed a tool which lets you select the newest published version of some artifact
+<em>within a particular branch</em>, usually <code>master</code>.
+This was tracked in
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-50953">JENKINS-50953</a>
+and is available to start with as a Maven command operating on a <code>pom.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">mvn incrementals:update</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will check Artifactory for updates to relevant components.
+When each one is found, it will use the GitHub API to check whether the commit has been merged to the selected branch.
+Only matches are offered for update.</p>
+</div>
+<div class="paragraph">
+<p>Putting all this together, we have a system for continuously delivering components
+from any of the hundreds of Jenkins Git repositories
+triggered by the simple act of filing a pull request.
+Securing that system was a lot of work
+but highlights how boundaries of trust interact with CI/CD.</p>
+</div>
+<!-- starting partial author.html.haml -->
+<div id="about-the-author">
+<b class="author about-header">
+About the Author
+</b>
+<table class="author box">
+<tr>
+<td>
+<!-- starting partial avatar.html.haml -->
+<img alt="Jesse Glick" class="author logo" src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/images/logos/transparent/transparent.svg">
+
+<!-- ending partial avatar.html.haml -->
+</td>
+<td>
+<b class="author name">
+<a href="/blog/authors/jglick">
+Jesse Glick
+</a>
+</b>
+<p>
+<div class="paragraph">
+<p>Jesse has been developing Jenkins core and plugins for years.
+He is the coauthor with Kohsuke of the core infrastructure of the Pipeline system.</p>
+</div>
+</p>
+<!-- starting partial social-media-buttons.html.haml -->
+<ul class="author social-media-buttons">
+<li class="author">
+<a href="https://github.com/jglick" target="_blank">
+GitHub
+</a>
+</li>
+<li class="author">
+<a href="https://twitter.com/tyvole" target="_blank">
+Twitter
+</a>
+</li>
+</ul>
+
+<!-- ending partial social-media-buttons.html.haml -->
+</td>
+</tr>
+</table>
+</div>
+
+<!-- ending partial author.html.haml -->
+</div>
+</div>
+</div>
+
+
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/anchor-js/anchor.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2018/05/2018-05-15-incremental-deployment.adoc" title="Edit /blog/2018/05/2018-05-15-incremental-deployment.adoc on GitHub">Improve this page</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2018/05/2018-05-15-incremental-deployment.adoc" title="View /blog/2018/05/2018-05-15-incremental-deployment.adoc history on GitHub">Page history</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img alt="Creative Commons Attribution-ShareAlike license" src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative
+Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+<div class="links col-md-8">
+<div class="container">
+<div class="row">
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/events">
+Events
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/php">
+PHP
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins.io">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="area col-md-3">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/sigs">
+Special Interest Groups
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/merchandise">
+Merchandise
+</a>
+</li>
+<li>
+<a href="https://tempora-mutantur.github.io/jenkins.io/github_pages_test/awards">
+Awards
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-000000-0', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+  
+  $(function(){
+    var $body = $(document.body);
+    $(".nav-link.dropdown-toggle").on("mousedown", function(){
+      $body.addClass("no-outline");
+    })
+    $body.on("keydown", function(){
+      $body.removeClass("no-outline");
+    })
+  })
+</script>
+</body>
+</html>
